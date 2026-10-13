@@ -1,0 +1,1909 @@
+{
+  "@context": {
+    "@vocab": "https://asendia.com/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "asendia": "https://asendia.com/schema#",
+    "packageIDs": "asendia:packageIDs",
+    "packageID": {
+      "@id": "asendia:packageID",
+      "@type": "xsd:string"
+    },
+    "ConsolidationOrdersRequest": "asendia:ConsolidationOrdersRequest",
+    "accountNumber": {
+      "@id": "asendia:accountNumber",
+      "@type": "xsd:string"
+    },
+    "orderNumber": {
+      "@id": "asendia:orderNumber",
+      "@type": "xsd:string"
+    },
+    "productCode": {
+      "@id": "asendia:productCode",
+      "@type": "xsd:string"
+    },
+    "ConsolidationOrdersResponse": "asendia:ConsolidationOrdersResponse",
+    "messages": {
+      "@id": "asendia:messages",
+      "@container": "@list"
+    },
+    "ResponseStatus": "asendia:ResponseStatus",
+    "responseStatusCode": {
+      "@id": "asendia:responseStatusCode",
+      "@type": "xsd:integer"
+    },
+    "responseStatusMessage": {
+      "@id": "asendia:responseStatusMessage",
+      "@type": "xsd:string"
+    },
+    "ConsolidationOrdersResponseApiResponse": "asendia:ConsolidationOrdersResponseApiResponse",
+    "data": {
+      "@id": "asendia:data"
+    },
+    "responseStatus": {
+      "@id": "asendia:responseStatus"
+    },
+    "Weight": "asendia:Weight",
+    "value": {
+      "@id": "asendia:value",
+      "@type": "xsd:integer"
+    },
+    "qualif": {
+      "@id": "asendia:qualif",
+      "@type": "xsd:string"
+    },
+    "Dimensions": "asendia:Dimensions",
+    "length": {
+      "@id": "asendia:length"
+    },
+    "width": {
+      "@id": "asendia:width"
+    },
+    "height": {
+      "@id": "asendia:height"
+    },
+    "WeightAndDimension": "asendia:WeightAndDimension",
+    "weight": {
+      "@id": "asendia:weight"
+    },
+    "dimensions": {
+      "@id": "asendia:dimensions"
+    },
+    "ParcelInfos": "asendia:ParcelInfos",
+    "parcelNumber": {
+      "@id": "asendia:parcelNumber",
+      "@type": "xsd:string"
+    },
+    "originParcelNumber": {
+      "@id": "asendia:originParcelNumber",
+      "@type": "xsd:string"
+    },
+    "returnParcelNumber": {
+      "@id": "asendia:returnParcelNumber"
+    },
+    "weightAndDimension": {
+      "@id": "asendia:weightAndDimension"
+    },
+    "mpsId": {
+      "@id": "asendia:mpsId"
+    },
+    "originMpsId": {
+      "@id": "asendia:originMpsId"
+    },
+    "ServiceCodes": "asendia:ServiceCodes",
+    "asCode": {
+      "@id": "asendia:asCode"
+    },
+    "soCode": {
+      "@id": "asendia:soCode",
+      "@type": "xsd:string"
+    },
+    "Destination": "asendia:Destination",
+    "zipCode": {
+      "@id": "asendia:zipCode",
+      "@type": "xsd:string"
+    },
+    "countryCode": {
+      "@id": "asendia:countryCode",
+      "@type": "xsd:string"
+    },
+    "destinationDepot": {
+      "@id": "asendia:destinationDepot",
+      "@type": "xsd:string"
+    },
+    "TourInfo": "asendia:TourInfo",
+    "area": {
+      "@id": "asendia:area",
+      "@type": "xsd:string"
+    },
+    "stop": {
+      "@id": "asendia:stop"
+    },
+    "deliveryTour": {
+      "@id": "asendia:deliveryTour",
+      "@type": "xsd:string"
+    },
+    "runSheetNumber": {
+      "@id": "asendia:runSheetNumber",
+      "@type": "xsd:string"
+    },
+    "EventLocation": "asendia:EventLocation",
+    "city": {
+      "@id": "asendia:city"
+    },
+    "Gps": "asendia:Gps",
+    "latitude": {
+      "@id": "asendia:latitude",
+      "@type": "xsd:decimal"
+    },
+    "longitude": {
+      "@id": "asendia:longitude",
+      "@type": "xsd:decimal"
+    },
+    "ReceiverAddress": "asendia:ReceiverAddress",
+    "name": {
+      "@id": "asendia:name",
+      "@type": "xsd:string"
+    },
+    "propertyNumber": {
+      "@id": "asendia:propertyNumber",
+      "@type": "xsd:string"
+    },
+    "street": {
+      "@id": "asendia:street",
+      "@type": "xsd:string"
+    },
+    "TranscodedItem": "asendia:TranscodedItem",
+    "scanCode": {
+      "@id": "asendia:scanCode",
+      "@type": "xsd:string"
+    },
+    "reasonCodes": {
+      "@id": "asendia:reasonCodes",
+      "@container": "@list"
+    },
+    "compInfos": {
+      "@id": "asendia:compInfos",
+      "@container": "@list"
+    },
+    "compInfosJson": {
+      "@id": "asendia:compInfosJson",
+      "@type": "xsd:string"
+    },
+    "Transcodification": "asendia:Transcodification",
+    "language": {
+      "@id": "asendia:language",
+      "@type": "xsd:string"
+    },
+    "transcodedItems": {
+      "@id": "asendia:transcodedItems",
+      "@container": "@list"
+    },
+    "TTEventsRequest": "asendia:TTEventsRequest",
+    "parcelInfos": {
+      "@id": "asendia:parcelInfos"
+    },
+    "statusType": {
+      "@id": "asendia:statusType",
+      "@type": "xsd:string"
+    },
+    "serviceCodes": {
+      "@id": "asendia:serviceCodes"
+    },
+    "destination": {
+      "@id": "asendia:destination"
+    },
+    "depot": {
+      "@id": "asendia:depot",
+      "@type": "xsd:string"
+    },
+    "statusDateTime": {
+      "@id": "asendia:statusDateTime",
+      "@type": "xsd:dateTime"
+    },
+    "tourInfo": {
+      "@id": "asendia:tourInfo"
+    },
+    "actorId": {
+      "@id": "asendia:actorId"
+    },
+    "operativerId": {
+      "@id": "asendia:operativerId"
+    },
+    "buDateTime": {
+      "@id": "asendia:buDateTime"
+    },
+    "dueDateTime": {
+      "@id": "asendia:dueDateTime"
+    },
+    "pickupOrderNumber": {
+      "@id": "asendia:pickupOrderNumber"
+    },
+    "scanGenerated": {
+      "@id": "asendia:scanGenerated",
+      "@type": "xsd:boolean"
+    },
+    "agent": {
+      "@id": "asendia:agent"
+    },
+    "container": {
+      "@id": "asendia:container"
+    },
+    "currentContainer": {
+      "@id": "asendia:currentContainer"
+    },
+    "externalRef": {
+      "@id": "asendia:externalRef"
+    },
+    "eventLocation": {
+      "@id": "asendia:eventLocation"
+    },
+    "timeSlot": {
+      "@id": "asendia:timeSlot"
+    },
+    "gps": {
+      "@id": "asendia:gps"
+    },
+    "images": {
+      "@id": "asendia:images",
+      "@container": "@list"
+    },
+    "notifications": {
+      "@id": "asendia:notifications",
+      "@container": "@list"
+    },
+    "receiverAddress": {
+      "@id": "asendia:receiverAddress"
+    },
+    "thirdPartyAddress": {
+      "@id": "asendia:thirdPartyAddress"
+    },
+    "transcodifications": {
+      "@id": "asendia:transcodifications",
+      "@container": "@list"
+    },
+    "TTEventsResponse": "asendia:TTEventsResponse",
+    "TTEventsResponseApiResponse": "asendia:TTEventsResponseApiResponse",
+    "weightUnitEnum": "asendia:weightUnitEnum",
+    "dimUnitEnum": "asendia:dimUnitEnum",
+    "PreProcessParcelRequest": "asendia:PreProcessParcelRequest",
+    "trackingNumbers": {
+      "@id": "asendia:trackingNumbers",
+      "@type": "xsd:string"
+    },
+    "processingLocation": {
+      "@id": "asendia:processingLocation",
+      "@type": "xsd:string"
+    },
+    "totalPackageWeight": {
+      "@id": "asendia:totalPackageWeight",
+      "@type": "xsd:decimal"
+    },
+    "weightUnit": {
+      "@id": "asendia:weightUnit"
+    },
+    "dimLength": {
+      "@id": "asendia:dimLength",
+      "@type": "xsd:decimal"
+    },
+    "dimWidth": {
+      "@id": "asendia:dimWidth",
+      "@type": "xsd:decimal"
+    },
+    "dimHeight": {
+      "@id": "asendia:dimHeight",
+      "@type": "xsd:decimal"
+    },
+    "dimUnit": {
+      "@id": "asendia:dimUnit"
+    },
+    "BooleanApiResponse": "asendia:BooleanApiResponse",
+    "GenericPreProcessParcelRequest": "asendia:GenericPreProcessParcelRequest",
+    "trackingNumber": {
+      "@id": "asendia:trackingNumber",
+      "@type": "xsd:string"
+    },
+    "machineId": {
+      "@id": "asendia:machineId",
+      "@type": "xsd:string"
+    },
+    "GenericPreProcessParcelResponse": "asendia:GenericPreProcessParcelResponse",
+    "success": {
+      "@id": "asendia:success",
+      "@type": "xsd:boolean"
+    },
+    "packageId": {
+      "@id": "asendia:packageId",
+      "@type": "xsd:integer"
+    },
+    "preProcessStatus": {
+      "@id": "asendia:preProcessStatus",
+      "@type": "xsd:string"
+    },
+    "errorMessage": {
+      "@id": "asendia:errorMessage",
+      "@type": "xsd:string"
+    },
+    "GenericPreProcessParcelResponseApiResponse": "asendia:GenericPreProcessParcelResponseApiResponse",
+    "ReportData": "asendia:ReportData",
+    "formatCode": {
+      "@id": "asendia:formatCode",
+      "@type": "xsd:string"
+    },
+    "contentTypeId": {
+      "@id": "asendia:contentTypeId",
+      "@type": "xsd:integer"
+    },
+    "contentTypeName": {
+      "@id": "asendia:contentTypeName",
+      "@type": "xsd:string"
+    },
+    "contentSize": {
+      "@id": "asendia:contentSize",
+      "@type": "xsd:string"
+    },
+    "createdOn": {
+      "@id": "asendia:createdOn",
+      "@type": "xsd:dateTime"
+    },
+    "createdBy": {
+      "@id": "asendia:createdBy",
+      "@type": "xsd:string"
+    },
+    "exportedOn": {
+      "@id": "asendia:exportedOn",
+      "@type": "xsd:dateTime"
+    },
+    "exportedBy": {
+      "@id": "asendia:exportedBy",
+      "@type": "xsd:string"
+    },
+    "friendlyName": {
+      "@id": "asendia:friendlyName",
+      "@type": "xsd:string"
+    },
+    "contentData": {
+      "@id": "asendia:contentData",
+      "@type": "xsd:string"
+    },
+    "reportId": {
+      "@id": "asendia:reportId",
+      "@type": "xsd:integer"
+    },
+    "fileName": {
+      "@id": "asendia:fileName",
+      "@type": "xsd:string"
+    },
+    "orientation": {
+      "@id": "asendia:orientation",
+      "@type": "xsd:string"
+    },
+    "fileLocationPath": {
+      "@id": "asendia:fileLocationPath",
+      "@type": "xsd:string"
+    },
+    "carrierLabelType": {
+      "@id": "asendia:carrierLabelType",
+      "@type": "xsd:string"
+    },
+    "isS3File": {
+      "@id": "asendia:isS3File",
+      "@type": "xsd:boolean"
+    },
+    "numberOfCopies": {
+      "@id": "asendia:numberOfCopies",
+      "@type": "xsd:integer"
+    },
+    "ReportDataListApiResponse": "asendia:ReportDataListApiResponse",
+    "VolumizerPreProcessParcelRequest": "asendia:VolumizerPreProcessParcelRequest",
+    "connectionId": {
+      "@id": "asendia:connectionId",
+      "@type": "xsd:string"
+    },
+    "alibiMemoryId": {
+      "@id": "asendia:alibiMemoryId",
+      "@type": "xsd:string"
+    },
+    "scaleId": {
+      "@id": "asendia:scaleId",
+      "@type": "xsd:string"
+    },
+    "processedDate": {
+      "@id": "asendia:processedDate",
+      "@type": "xsd:string"
+    },
+    "processedTime": {
+      "@id": "asendia:processedTime",
+      "@type": "xsd:string"
+    },
+    "VolumizerPreProcessParcelResponse": "asendia:VolumizerPreProcessParcelResponse",
+    "VolumizerPreProcessParcelResponseApiResponse": "asendia:VolumizerPreProcessParcelResponseApiResponse",
+    "DWSResponseLog": "asendia:DWSResponseLog",
+    "responseMessage": {
+      "@id": "asendia:responseMessage",
+      "@type": "xsd:string"
+    },
+    "statusCode": {
+      "@id": "asendia:statusCode",
+      "@type": "xsd:integer"
+    },
+    "action": {
+      "@id": "asendia:action",
+      "@type": "xsd:string"
+    },
+    "VitronicDataItem": "asendia:VitronicDataItem",
+    "packageIssueId": {
+      "@id": "asendia:packageIssueId",
+      "@type": "xsd:integer"
+    },
+    "jobNumber": {
+      "@id": "asendia:jobNumber",
+      "@type": "xsd:string"
+    },
+    "coreProductName": {
+      "@id": "asendia:coreProductName",
+      "@type": "xsd:string"
+    },
+    "weightWithUnit": {
+      "@id": "asendia:weightWithUnit",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "asendia:status",
+      "@type": "xsd:integer"
+    },
+    "statusName": {
+      "@id": "asendia:statusName",
+      "@type": "xsd:string"
+    },
+    "date": {
+      "@id": "asendia:date",
+      "@type": "xsd:dateTime"
+    },
+    "dwsResponseLogs": {
+      "@id": "asendia:dwsResponseLogs",
+      "@container": "@list"
+    },
+    "alibiCaptureOn": {
+      "@id": "asendia:alibiCaptureOn",
+      "@type": "xsd:string"
+    },
+    "VitronicDataItemListApiResponse": "asendia:VitronicDataItemListApiResponse",
+    "InvoiceType": "asendia:InvoiceType",
+    "WeightType": "asendia:WeightType",
+    "ExternalInvoiceLines": "asendia:ExternalInvoiceLines",
+    "location": {
+      "@id": "asendia:location",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "asendia:description",
+      "@type": "xsd:string"
+    },
+    "province": {
+      "@id": "asendia:province",
+      "@type": "xsd:string"
+    },
+    "postageMaterialCode": {
+      "@id": "asendia:postageMaterialCode",
+      "@type": "xsd:string"
+    },
+    "pieces": {
+      "@id": "asendia:pieces",
+      "@type": "xsd:integer"
+    },
+    "weightCode": {
+      "@id": "asendia:weightCode"
+    },
+    "asendiaProductCode": {
+      "@id": "asendia:asendiaProductCode",
+      "@type": "xsd:string"
+    },
+    "postageTotal": {
+      "@id": "asendia:postageTotal",
+      "@type": "xsd:decimal"
+    },
+    "taxMaterialCode": {
+      "@id": "asendia:taxMaterialCode",
+      "@type": "xsd:string"
+    },
+    "gstTotal": {
+      "@id": "asendia:gstTotal",
+      "@type": "xsd:decimal"
+    },
+    "hstTotal": {
+      "@id": "asendia:hstTotal",
+      "@type": "xsd:decimal"
+    },
+    "pstTotal": {
+      "@id": "asendia:pstTotal",
+      "@type": "xsd:decimal"
+    },
+    "qstTotal": {
+      "@id": "asendia:qstTotal",
+      "@type": "xsd:decimal"
+    },
+    "ExternalAttachment": "asendia:ExternalAttachment",
+    "fileContents": {
+      "@id": "asendia:fileContents",
+      "@type": "xsd:string"
+    },
+    "ExternalInvoice": "asendia:ExternalInvoice",
+    "customerAccountNumber": {
+      "@id": "asendia:customerAccountNumber",
+      "@type": "xsd:string"
+    },
+    "invoiceType": {
+      "@id": "asendia:invoiceType"
+    },
+    "invoiceNumber": {
+      "@id": "asendia:invoiceNumber",
+      "@type": "xsd:string"
+    },
+    "invoiceDate": {
+      "@id": "asendia:invoiceDate",
+      "@type": "xsd:dateTime"
+    },
+    "invoiceCurrencyIso3": {
+      "@id": "asendia:invoiceCurrencyIso3",
+      "@type": "xsd:string"
+    },
+    "invoiceLines": {
+      "@id": "asendia:invoiceLines",
+      "@container": "@list"
+    },
+    "attachments": {
+      "@id": "asendia:attachments",
+      "@container": "@list"
+    },
+    "SalesOrderItemResponse": "asendia:SalesOrderItemResponse",
+    "sku": {
+      "@id": "asendia:sku",
+      "@type": "xsd:string"
+    },
+    "lineId": {
+      "@id": "asendia:lineId",
+      "@type": "xsd:integer"
+    },
+    "lotNumbered": {
+      "@id": "asendia:lotNumbered",
+      "@type": "xsd:boolean"
+    },
+    "itemValue": {
+      "@id": "asendia:itemValue",
+      "@type": "xsd:decimal"
+    },
+    "itemDescription": {
+      "@id": "asendia:itemDescription",
+      "@type": "xsd:string"
+    },
+    "quantity": {
+      "@id": "asendia:quantity",
+      "@type": "xsd:integer"
+    },
+    "unitWeight": {
+      "@id": "asendia:unitWeight",
+      "@type": "xsd:decimal"
+    },
+    "FulfillmentItems": "asendia:FulfillmentItems",
+    "lot": {
+      "@id": "asendia:lot",
+      "@type": "xsd:string"
+    },
+    "SalesOrderFulfillmentRecords": "asendia:SalesOrderFulfillmentRecords",
+    "fulfillmentDate": {
+      "@id": "asendia:fulfillmentDate",
+      "@type": "xsd:dateTime"
+    },
+    "dateShipped": {
+      "@id": "asendia:dateShipped",
+      "@type": "xsd:dateTime"
+    },
+    "totalPackageValue": {
+      "@id": "asendia:totalPackageValue",
+      "@type": "xsd:decimal"
+    },
+    "items": {
+      "@id": "asendia:items",
+      "@container": "@list"
+    },
+    "currencyTypeEnum": "asendia:currencyTypeEnum",
+    "contentTypeEnum": "asendia:contentTypeEnum",
+    "SaleOrderItem": "asendia:SaleOrderItem",
+    "htsNumber": {
+      "@id": "asendia:htsNumber",
+      "@type": "xsd:string"
+    },
+    "countryOfOrigin": {
+      "@id": "asendia:countryOfOrigin",
+      "@type": "xsd:string"
+    },
+    "ReturnAddress": "asendia:ReturnAddress",
+    "returnFirstName": {
+      "@id": "asendia:returnFirstName",
+      "@type": "xsd:string"
+    },
+    "returnLastName": {
+      "@id": "asendia:returnLastName",
+      "@type": "xsd:string"
+    },
+    "returnBusinessName": {
+      "@id": "asendia:returnBusinessName",
+      "@type": "xsd:string"
+    },
+    "returnAddressLine1": {
+      "@id": "asendia:returnAddressLine1",
+      "@type": "xsd:string"
+    },
+    "returnAddressLine2": {
+      "@id": "asendia:returnAddressLine2",
+      "@type": "xsd:string"
+    },
+    "returnAddressLine3": {
+      "@id": "asendia:returnAddressLine3",
+      "@type": "xsd:string"
+    },
+    "returnCity": {
+      "@id": "asendia:returnCity",
+      "@type": "xsd:string"
+    },
+    "returnProvince": {
+      "@id": "asendia:returnProvince",
+      "@type": "xsd:string"
+    },
+    "returnPostalCode": {
+      "@id": "asendia:returnPostalCode",
+      "@type": "xsd:string"
+    },
+    "returnCountryISO2": {
+      "@id": "asendia:returnCountryISO2",
+      "@type": "xsd:string"
+    },
+    "RecipientAddress": "asendia:RecipientAddress",
+    "recipientFirstName": {
+      "@id": "asendia:recipientFirstName",
+      "@type": "xsd:string"
+    },
+    "recipientLastName": {
+      "@id": "asendia:recipientLastName",
+      "@type": "xsd:string"
+    },
+    "recipientBusinessName": {
+      "@id": "asendia:recipientBusinessName",
+      "@type": "xsd:string"
+    },
+    "recipientAddressLine1": {
+      "@id": "asendia:recipientAddressLine1",
+      "@type": "xsd:string"
+    },
+    "recipientAddressLine2": {
+      "@id": "asendia:recipientAddressLine2",
+      "@type": "xsd:string"
+    },
+    "recipientAddressLine3": {
+      "@id": "asendia:recipientAddressLine3",
+      "@type": "xsd:string"
+    },
+    "recipientCity": {
+      "@id": "asendia:recipientCity",
+      "@type": "xsd:string"
+    },
+    "recipientProvince": {
+      "@id": "asendia:recipientProvince",
+      "@type": "xsd:string"
+    },
+    "recipientPostalCode": {
+      "@id": "asendia:recipientPostalCode",
+      "@type": "xsd:string"
+    },
+    "recipientCountryISO2": {
+      "@id": "asendia:recipientCountryISO2",
+      "@type": "xsd:string"
+    },
+    "ResponseSalesOrder": "asendia:ResponseSalesOrder",
+    "orderStatus": {
+      "@id": "asendia:orderStatus",
+      "@type": "xsd:string"
+    },
+    "fulfillments": {
+      "@id": "asendia:fulfillments",
+      "@container": "@list"
+    },
+    "orderID": {
+      "@id": "asendia:orderID",
+      "@type": "xsd:integer"
+    },
+    "orderTotal": {
+      "@id": "asendia:orderTotal",
+      "@type": "xsd:decimal"
+    },
+    "orderTax": {
+      "@id": "asendia:orderTax",
+      "@type": "xsd:decimal"
+    },
+    "orderShipping": {
+      "@id": "asendia:orderShipping",
+      "@type": "xsd:decimal"
+    },
+    "saleDate": {
+      "@id": "asendia:saleDate",
+      "@type": "xsd:dateTime"
+    },
+    "currencyType": {
+      "@id": "asendia:currencyType"
+    },
+    "contentType": {
+      "@id": "asendia:contentType"
+    },
+    "returnAddress": {
+      "@id": "asendia:returnAddress"
+    },
+    "recipientAddress": {
+      "@id": "asendia:recipientAddress"
+    },
+    "ResponseSalesOrderApiResponse": "asendia:ResponseSalesOrderApiResponse",
+    "SalesOrder": "asendia:SalesOrder",
+    "SalesOrderApiResponse": "asendia:SalesOrderApiResponse",
+    "VoidSalesOrder": "asendia:VoidSalesOrder",
+    "InventoryAdjustmentResponse": "asendia:InventoryAdjustmentResponse",
+    "adjustmentDate": {
+      "@id": "asendia:adjustmentDate",
+      "@type": "xsd:dateTime"
+    },
+    "reason": {
+      "@id": "asendia:reason",
+      "@type": "xsd:string"
+    },
+    "lotNumber": {
+      "@id": "asendia:lotNumber",
+      "@type": "xsd:string"
+    },
+    "InventoryAdjustmentResponseListApiResponse": "asendia:InventoryAdjustmentResponseListApiResponse",
+    "PurchaseOrderItemResponse": "asendia:PurchaseOrderItemResponse",
+    "ItemsReceived": "asendia:ItemsReceived",
+    "expirationDate": {
+      "@id": "asendia:expirationDate",
+      "@type": "xsd:dateTime"
+    },
+    "PurchaseOrderReceipt": "asendia:PurchaseOrderReceipt",
+    "receiptDate": {
+      "@id": "asendia:receiptDate",
+      "@type": "xsd:dateTime"
+    },
+    "asendiaReceiptId": {
+      "@id": "asendia:asendiaReceiptId",
+      "@type": "xsd:integer"
+    },
+    "itemsReceived": {
+      "@id": "asendia:itemsReceived",
+      "@container": "@list"
+    },
+    "ItemReceipt": "asendia:ItemReceipt",
+    "purchaseOrderId": {
+      "@id": "asendia:purchaseOrderId",
+      "@type": "xsd:integer"
+    },
+    "purchaseOrderNumber": {
+      "@id": "asendia:purchaseOrderNumber",
+      "@type": "xsd:string"
+    },
+    "receipts": {
+      "@id": "asendia:receipts",
+      "@container": "@list"
+    },
+    "ItemReceiptApiResponse": "asendia:ItemReceiptApiResponse",
+    "PurchaseOrderItem": "asendia:PurchaseOrderItem",
+    "leadTimeDays": {
+      "@id": "asendia:leadTimeDays",
+      "@type": "xsd:integer"
+    },
+    "personalUseExemption": {
+      "@id": "asendia:personalUseExemption",
+      "@type": "xsd:integer"
+    },
+    "orderAlertThreshold": {
+      "@id": "asendia:orderAlertThreshold",
+      "@type": "xsd:integer"
+    },
+    "PurchaseOrder": "asendia:PurchaseOrder",
+    "StringApiResponse": "asendia:StringApiResponse",
+    "InsertProcessingEntryRequest": "asendia:InsertProcessingEntryRequest",
+    "jobId": {
+      "@id": "asendia:jobId",
+      "@type": "xsd:string"
+    },
+    "bagId": {
+      "@id": "asendia:bagId",
+      "@type": "xsd:string"
+    },
+    "pieceId": {
+      "@id": "asendia:pieceId",
+      "@type": "xsd:string"
+    },
+    "bin": {
+      "@id": "asendia:bin",
+      "@type": "xsd:string"
+    },
+    "mailStop": {
+      "@id": "asendia:mailStop",
+      "@type": "xsd:string"
+    },
+    "sortCode": {
+      "@id": "asendia:sortCode",
+      "@type": "xsd:string"
+    },
+    "thickness": {
+      "@id": "asendia:thickness",
+      "@type": "xsd:decimal"
+    },
+    "size": {
+      "@id": "asendia:size",
+      "@type": "xsd:string"
+    },
+    "custom1": {
+      "@id": "asendia:custom1",
+      "@type": "xsd:string"
+    },
+    "zone": {
+      "@id": "asendia:zone",
+      "@type": "xsd:string"
+    },
+    "indicia": {
+      "@id": "asendia:indicia",
+      "@type": "xsd:string"
+    },
+    "machineID": {
+      "@id": "asendia:machineID",
+      "@type": "xsd:string"
+    },
+    "worldWare": {
+      "@id": "asendia:worldWare",
+      "@type": "xsd:string"
+    },
+    "Int32ApiResponse": "asendia:Int32ApiResponse",
+    "CloseBagRequest": "asendia:CloseBagRequest",
+    "dispatcher": {
+      "@id": "asendia:dispatcher",
+      "@type": "xsd:string"
+    },
+    "FinishRunRequest": "asendia:FinishRunRequest",
+    "getBinNumberResponse": "asendia:getBinNumberResponse",
+    "getBinNumberResponseApiResponse": "asendia:getBinNumberResponseApiResponse",
+    "putPackageToBinRequest": "asendia:putPackageToBinRequest",
+    "binNumber": {
+      "@id": "asendia:binNumber",
+      "@type": "xsd:string"
+    },
+    "errorCode": {
+      "@id": "asendia:errorCode",
+      "@type": "xsd:string"
+    },
+    "errorDescription": {
+      "@id": "asendia:errorDescription",
+      "@type": "xsd:string"
+    },
+    "putBinCloseRequest": "asendia:putBinCloseRequest",
+    "shipmentsToClose": "asendia:shipmentsToClose",
+    "containerNumber": {
+      "@id": "asendia:containerNumber",
+      "@type": "xsd:string"
+    },
+    "dispatchNumber": {
+      "@id": "asendia:dispatchNumber",
+      "@type": "xsd:string"
+    },
+    "closeShipmentRequestModel": "asendia:closeShipmentRequestModel",
+    "subAccountNumber": {
+      "@id": "asendia:subAccountNumber",
+      "@type": "xsd:string"
+    },
+    "shippingLocation": {
+      "@id": "asendia:shippingLocation",
+      "@type": "xsd:string"
+    },
+    "processingPoint": {
+      "@id": "asendia:processingPoint",
+      "@type": "xsd:string"
+    },
+    "isDirectAccess": {
+      "@id": "asendia:isDirectAccess",
+      "@type": "xsd:boolean"
+    },
+    "pickupCarrier": {
+      "@id": "asendia:pickupCarrier",
+      "@type": "xsd:string"
+    },
+    "trackingIdentifier": {
+      "@id": "asendia:trackingIdentifier",
+      "@type": "xsd:string"
+    },
+    "transportReference": {
+      "@id": "asendia:transportReference",
+      "@type": "xsd:string"
+    },
+    "customerReferenceNumber1": {
+      "@id": "asendia:customerReferenceNumber1",
+      "@type": "xsd:string"
+    },
+    "customerReferenceNumber2": {
+      "@id": "asendia:customerReferenceNumber2",
+      "@type": "xsd:string"
+    },
+    "customerReferenceNumber3": {
+      "@id": "asendia:customerReferenceNumber3",
+      "@type": "xsd:string"
+    },
+    "dhlbolNumber": {
+      "@id": "asendia:dhlbolNumber",
+      "@type": "xsd:string"
+    },
+    "closeShipmentRequest": "asendia:closeShipmentRequest",
+    "closeShipmentsRequest": {
+      "@id": "asendia:closeShipmentsRequest"
+    },
+    "labelTypeEnum": "asendia:labelTypeEnum",
+    "jobDocument": "asendia:jobDocument",
+    "type": {
+      "@id": "asendia:type"
+    },
+    "content": {
+      "@id": "asendia:content",
+      "@type": "xsd:string"
+    },
+    "closeShipmentResponseModel": "asendia:closeShipmentResponseModel",
+    "jobStatus": {
+      "@id": "asendia:jobStatus",
+      "@type": "xsd:string"
+    },
+    "jobCreationDate": {
+      "@id": "asendia:jobCreationDate",
+      "@type": "xsd:dateTime"
+    },
+    "jobProductCode": {
+      "@id": "asendia:jobProductCode",
+      "@type": "xsd:string"
+    },
+    "jobProductName": {
+      "@id": "asendia:jobProductName",
+      "@type": "xsd:string"
+    },
+    "jobQuoteCode": {
+      "@id": "asendia:jobQuoteCode",
+      "@type": "xsd:string"
+    },
+    "jobQuoteName": {
+      "@id": "asendia:jobQuoteName",
+      "@type": "xsd:string"
+    },
+    "jobTotalWeight": {
+      "@id": "asendia:jobTotalWeight",
+      "@type": "xsd:decimal"
+    },
+    "jobWeightUnit": {
+      "@id": "asendia:jobWeightUnit"
+    },
+    "jobTotalPieces": {
+      "@id": "asendia:jobTotalPieces",
+      "@type": "xsd:integer"
+    },
+    "packageUsedInAnotherJob": {
+      "@id": "asendia:packageUsedInAnotherJob",
+      "@container": "@list"
+    },
+    "jobDocuments": {
+      "@id": "asendia:jobDocuments",
+      "@container": "@list"
+    },
+    "postCloseShipmentResponse": "asendia:postCloseShipmentResponse",
+    "closeShipment": {
+      "@id": "asendia:closeShipment"
+    },
+    "TransportData": "asendia:TransportData",
+    "flightNumber": {
+      "@id": "asendia:flightNumber",
+      "@type": "xsd:string"
+    },
+    "etd": {
+      "@id": "asendia:etd",
+      "@type": "xsd:string"
+    },
+    "eta": {
+      "@id": "asendia:eta",
+      "@type": "xsd:string"
+    },
+    "originPort": {
+      "@id": "asendia:originPort",
+      "@type": "xsd:string"
+    },
+    "destinationPort": {
+      "@id": "asendia:destinationPort",
+      "@type": "xsd:string"
+    },
+    "CloseDAShipmentRequest": "asendia:CloseDAShipmentRequest",
+    "manifestDate": {
+      "@id": "asendia:manifestDate",
+      "@type": "xsd:string"
+    },
+    "transport": {
+      "@id": "asendia:transport"
+    },
+    "CloseDAShipmentsRequest": "asendia:CloseDAShipmentsRequest",
+    "closeDAShipmentRequest": {
+      "@id": "asendia:closeDAShipmentRequest"
+    },
+    "closeDAShipmentResponseModel": "asendia:closeDAShipmentResponseModel",
+    "receptacleNumbers": {
+      "@id": "asendia:receptacleNumbers",
+      "@container": "@list"
+    },
+    "serviceDispatchNumbers": {
+      "@id": "asendia:serviceDispatchNumbers",
+      "@container": "@list"
+    },
+    "shipmentDispatchNumber": {
+      "@id": "asendia:shipmentDispatchNumber",
+      "@type": "xsd:string"
+    },
+    "receptacleLabels": {
+      "@id": "asendia:receptacleLabels",
+      "@container": "@list"
+    },
+    "postCloseDAShipmentResponse": "asendia:postCloseDAShipmentResponse",
+    "closeDAShipment": {
+      "@id": "asendia:closeDAShipment"
+    },
+    "tradeItemNumberTypeEnum": "asendia:tradeItemNumberTypeEnum",
+    "articlesModel": "asendia:articlesModel",
+    "articleDescription": {
+      "@id": "asendia:articleDescription",
+      "@type": "xsd:string"
+    },
+    "articleDescriptionCn": {
+      "@id": "asendia:articleDescriptionCn",
+      "@type": "xsd:string"
+    },
+    "unitValue": {
+      "@id": "asendia:unitValue",
+      "@type": "xsd:decimal"
+    },
+    "harmonizedCode": {
+      "@id": "asendia:harmonizedCode",
+      "@type": "xsd:string"
+    },
+    "originPostalCode": {
+      "@id": "asendia:originPostalCode",
+      "@type": "xsd:string"
+    },
+    "originManufacturer": {
+      "@id": "asendia:originManufacturer",
+      "@type": "xsd:string"
+    },
+    "destinationTariffCode": {
+      "@id": "asendia:destinationTariffCode",
+      "@type": "xsd:string"
+    },
+    "productURL": {
+      "@id": "asendia:productURL",
+      "@type": "xsd:string"
+    },
+    "composition": {
+      "@id": "asendia:composition",
+      "@type": "xsd:string"
+    },
+    "tradeItemNumber": {
+      "@id": "asendia:tradeItemNumber",
+      "@type": "xsd:string"
+    },
+    "tradeItemNumberType": {
+      "@id": "asendia:tradeItemNumberType"
+    },
+    "fdaPriorNotice": {
+      "@id": "asendia:fdaPriorNotice",
+      "@type": "xsd:string"
+    },
+    "hasBattery": {
+      "@id": "asendia:hasBattery",
+      "@type": "xsd:boolean"
+    },
+    "dgnFlag": {
+      "@id": "asendia:dgnFlag",
+      "@type": "xsd:boolean"
+    },
+    "dgnCategory": {
+      "@id": "asendia:dgnCategory",
+      "@type": "xsd:string"
+    },
+    "dgnUnNumber": {
+      "@id": "asendia:dgnUnNumber",
+      "@type": "xsd:string"
+    },
+    "dgnPInumber": {
+      "@id": "asendia:dgnPInumber",
+      "@type": "xsd:string"
+    },
+    "dgnEccn": {
+      "@id": "asendia:dgnEccn",
+      "@type": "xsd:string"
+    },
+    "volatileOrganicCompoundInGrams": {
+      "@id": "asendia:volatileOrganicCompoundInGrams",
+      "@type": "xsd:integer"
+    },
+    "dds": {
+      "@id": "asendia:dds",
+      "@type": "xsd:string"
+    },
+    "certifierId": {
+      "@id": "asendia:certifierId",
+      "@type": "xsd:string"
+    },
+    "productId": {
+      "@id": "asendia:productId",
+      "@type": "xsd:string"
+    },
+    "certificateVersionId": {
+      "@id": "asendia:certificateVersionId",
+      "@type": "xsd:string"
+    },
+    "feesModel": "asendia:feesModel",
+    "feeAmount": {
+      "@id": "asendia:feeAmount",
+      "@type": "xsd:decimal"
+    },
+    "feeType": {
+      "@id": "asendia:feeType",
+      "@type": "xsd:string"
+    },
+    "feeCurrencyCode": {
+      "@id": "asendia:feeCurrencyCode",
+      "@type": "xsd:string"
+    },
+    "parcelModel": "asendia:parcelModel",
+    "parcelId": {
+      "@id": "asendia:parcelId",
+      "@type": "xsd:string"
+    },
+    "ashid": {
+      "@id": "asendia:ashid",
+      "@type": "xsd:string"
+    },
+    "returnToSender": {
+      "@id": "asendia:returnToSender",
+      "@type": "xsd:boolean"
+    },
+    "parcelWeight": {
+      "@id": "asendia:parcelWeight",
+      "@type": "xsd:decimal"
+    },
+    "format": {
+      "@id": "asendia:format",
+      "@type": "xsd:string"
+    },
+    "parcelValue": {
+      "@id": "asendia:parcelValue",
+      "@type": "xsd:decimal"
+    },
+    "reasonForExport": {
+      "@id": "asendia:reasonForExport",
+      "@type": "xsd:string"
+    },
+    "parcelContentDescription": {
+      "@id": "asendia:parcelContentDescription",
+      "@type": "xsd:string"
+    },
+    "customsPaymentMethod": {
+      "@id": "asendia:customsPaymentMethod",
+      "@type": "xsd:string"
+    },
+    "gstCollected": {
+      "@id": "asendia:gstCollected",
+      "@type": "xsd:boolean"
+    },
+    "gstExemptionCode": {
+      "@id": "asendia:gstExemptionCode",
+      "@type": "xsd:string"
+    },
+    "cpCcode": {
+      "@id": "asendia:cpCcode",
+      "@type": "xsd:string"
+    },
+    "discountAmount": {
+      "@id": "asendia:discountAmount",
+      "@type": "xsd:decimal"
+    },
+    "pcccCode": {
+      "@id": "asendia:pcccCode",
+      "@type": "xsd:string"
+    },
+    "asendiaPudoPointID": {
+      "@id": "asendia:asendiaPudoPointID",
+      "@type": "xsd:string"
+    },
+    "articles": {
+      "@id": "asendia:articles",
+      "@container": "@list"
+    },
+    "fees": {
+      "@id": "asendia:fees",
+      "@container": "@list"
+    },
+    "senderModel": "asendia:senderModel",
+    "senderFirstName": {
+      "@id": "asendia:senderFirstName",
+      "@type": "xsd:string"
+    },
+    "senderLastName": {
+      "@id": "asendia:senderLastName",
+      "@type": "xsd:string"
+    },
+    "senderBusinessName": {
+      "@id": "asendia:senderBusinessName",
+      "@type": "xsd:string"
+    },
+    "senderAddressLine1": {
+      "@id": "asendia:senderAddressLine1",
+      "@type": "xsd:string"
+    },
+    "senderAddressLine2": {
+      "@id": "asendia:senderAddressLine2",
+      "@type": "xsd:string"
+    },
+    "senderAddressLine3": {
+      "@id": "asendia:senderAddressLine3",
+      "@type": "xsd:string"
+    },
+    "senderCity": {
+      "@id": "asendia:senderCity",
+      "@type": "xsd:string"
+    },
+    "senderProvince": {
+      "@id": "asendia:senderProvince",
+      "@type": "xsd:string"
+    },
+    "senderPostalCode": {
+      "@id": "asendia:senderPostalCode",
+      "@type": "xsd:string"
+    },
+    "senderCountryCode": {
+      "@id": "asendia:senderCountryCode",
+      "@type": "xsd:string"
+    },
+    "senderPhoneNumber": {
+      "@id": "asendia:senderPhoneNumber",
+      "@type": "xsd:string"
+    },
+    "senderMobileNumber": {
+      "@id": "asendia:senderMobileNumber",
+      "@type": "xsd:string"
+    },
+    "senderEmail": {
+      "@id": "asendia:senderEmail",
+      "@type": "xsd:string"
+    },
+    "senderEORI": {
+      "@id": "asendia:senderEORI",
+      "@type": "xsd:string"
+    },
+    "senderIOSS": {
+      "@id": "asendia:senderIOSS",
+      "@type": "xsd:string"
+    },
+    "senderTaxID": {
+      "@id": "asendia:senderTaxID",
+      "@type": "xsd:string"
+    },
+    "senderOriginTaxID": {
+      "@id": "asendia:senderOriginTaxID",
+      "@type": "xsd:string"
+    },
+    "senderAEO": {
+      "@id": "asendia:senderAEO",
+      "@type": "xsd:string"
+    },
+    "senderIdentificationNumber": {
+      "@id": "asendia:senderIdentificationNumber",
+      "@type": "xsd:string"
+    },
+    "sellerModel": "asendia:sellerModel",
+    "sellerFirstName": {
+      "@id": "asendia:sellerFirstName",
+      "@type": "xsd:string"
+    },
+    "sellerLastName": {
+      "@id": "asendia:sellerLastName",
+      "@type": "xsd:string"
+    },
+    "sellerBusinessName": {
+      "@id": "asendia:sellerBusinessName",
+      "@type": "xsd:string"
+    },
+    "sellerAddressLine1": {
+      "@id": "asendia:sellerAddressLine1",
+      "@type": "xsd:string"
+    },
+    "sellerAddressLine2": {
+      "@id": "asendia:sellerAddressLine2",
+      "@type": "xsd:string"
+    },
+    "sellerAddressLine3": {
+      "@id": "asendia:sellerAddressLine3",
+      "@type": "xsd:string"
+    },
+    "sellerCity": {
+      "@id": "asendia:sellerCity",
+      "@type": "xsd:string"
+    },
+    "sellerProvince": {
+      "@id": "asendia:sellerProvince",
+      "@type": "xsd:string"
+    },
+    "sellerPostalCode": {
+      "@id": "asendia:sellerPostalCode",
+      "@type": "xsd:string"
+    },
+    "sellerCountryCode": {
+      "@id": "asendia:sellerCountryCode",
+      "@type": "xsd:string"
+    },
+    "sellerPhoneNumber": {
+      "@id": "asendia:sellerPhoneNumber",
+      "@type": "xsd:string"
+    },
+    "sellerMobileNumber": {
+      "@id": "asendia:sellerMobileNumber",
+      "@type": "xsd:string"
+    },
+    "sellerEmail": {
+      "@id": "asendia:sellerEmail",
+      "@type": "xsd:string"
+    },
+    "sellerEORI": {
+      "@id": "asendia:sellerEORI",
+      "@type": "xsd:string"
+    },
+    "sellerIOSS": {
+      "@id": "asendia:sellerIOSS",
+      "@type": "xsd:string"
+    },
+    "sellerTaxID": {
+      "@id": "asendia:sellerTaxID",
+      "@type": "xsd:string"
+    },
+    "sellerOriginTaxID": {
+      "@id": "asendia:sellerOriginTaxID",
+      "@type": "xsd:string"
+    },
+    "sellerAEO": {
+      "@id": "asendia:sellerAEO",
+      "@type": "xsd:string"
+    },
+    "sellerIdentificationNumber": {
+      "@id": "asendia:sellerIdentificationNumber",
+      "@type": "xsd:string"
+    },
+    "recipientModel": "asendia:recipientModel",
+    "recipientHouseNumber": {
+      "@id": "asendia:recipientHouseNumber",
+      "@type": "xsd:string"
+    },
+    "recipientCountryCode": {
+      "@id": "asendia:recipientCountryCode",
+      "@type": "xsd:string"
+    },
+    "recipientEmail": {
+      "@id": "asendia:recipientEmail",
+      "@type": "xsd:string"
+    },
+    "recipientPhoneNumber": {
+      "@id": "asendia:recipientPhoneNumber",
+      "@type": "xsd:string"
+    },
+    "recipientMobileNumber": {
+      "@id": "asendia:recipientMobileNumber",
+      "@type": "xsd:string"
+    },
+    "recipientIdentificationNumber": {
+      "@id": "asendia:recipientIdentificationNumber",
+      "@type": "xsd:string"
+    },
+    "recipientIdentificationType": {
+      "@id": "asendia:recipientIdentificationType",
+      "@type": "xsd:string"
+    },
+    "recipientTaxID": {
+      "@id": "asendia:recipientTaxID",
+      "@type": "xsd:string"
+    },
+    "recipientEORI": {
+      "@id": "asendia:recipientEORI",
+      "@type": "xsd:string"
+    },
+    "recipientAEO": {
+      "@id": "asendia:recipientAEO",
+      "@type": "xsd:string"
+    },
+    "recipientLatitude": {
+      "@id": "asendia:recipientLatitude",
+      "@type": "xsd:decimal"
+    },
+    "recipientLongitude": {
+      "@id": "asendia:recipientLongitude",
+      "@type": "xsd:decimal"
+    },
+    "recipientPudoId": {
+      "@id": "asendia:recipientPudoId",
+      "@type": "xsd:string"
+    },
+    "importerModel": "asendia:importerModel",
+    "importerFirstName": {
+      "@id": "asendia:importerFirstName",
+      "@type": "xsd:string"
+    },
+    "importerLastName": {
+      "@id": "asendia:importerLastName",
+      "@type": "xsd:string"
+    },
+    "importerBusinessName": {
+      "@id": "asendia:importerBusinessName",
+      "@type": "xsd:string"
+    },
+    "importerAddressLine1": {
+      "@id": "asendia:importerAddressLine1",
+      "@type": "xsd:string"
+    },
+    "importerAddressLine2": {
+      "@id": "asendia:importerAddressLine2",
+      "@type": "xsd:string"
+    },
+    "importerAddressLine3": {
+      "@id": "asendia:importerAddressLine3",
+      "@type": "xsd:string"
+    },
+    "importerHouseNumber": {
+      "@id": "asendia:importerHouseNumber",
+      "@type": "xsd:string"
+    },
+    "importerCity": {
+      "@id": "asendia:importerCity",
+      "@type": "xsd:string"
+    },
+    "importerProvince": {
+      "@id": "asendia:importerProvince",
+      "@type": "xsd:string"
+    },
+    "importerPostalCode": {
+      "@id": "asendia:importerPostalCode",
+      "@type": "xsd:string"
+    },
+    "importerCountryCode": {
+      "@id": "asendia:importerCountryCode",
+      "@type": "xsd:string"
+    },
+    "importerEmail": {
+      "@id": "asendia:importerEmail",
+      "@type": "xsd:string"
+    },
+    "importerPhoneNumber": {
+      "@id": "asendia:importerPhoneNumber",
+      "@type": "xsd:string"
+    },
+    "importerMobileNumber": {
+      "@id": "asendia:importerMobileNumber",
+      "@type": "xsd:string"
+    },
+    "importerEORI": {
+      "@id": "asendia:importerEORI",
+      "@type": "xsd:string"
+    },
+    "importerTaxID": {
+      "@id": "asendia:importerTaxID",
+      "@type": "xsd:string"
+    },
+    "importerAEO": {
+      "@id": "asendia:importerAEO",
+      "@type": "xsd:string"
+    },
+    "importerIdentificationNumber": {
+      "@id": "asendia:importerIdentificationNumber",
+      "@type": "xsd:string"
+    },
+    "returnsModel": "asendia:returnsModel",
+    "returnsName": {
+      "@id": "asendia:returnsName",
+      "@type": "xsd:string"
+    },
+    "returnsAddressLine1": {
+      "@id": "asendia:returnsAddressLine1",
+      "@type": "xsd:string"
+    },
+    "returnsAddressLine2": {
+      "@id": "asendia:returnsAddressLine2",
+      "@type": "xsd:string"
+    },
+    "returnsAddressLine3": {
+      "@id": "asendia:returnsAddressLine3",
+      "@type": "xsd:string"
+    },
+    "returnsCity": {
+      "@id": "asendia:returnsCity",
+      "@type": "xsd:string"
+    },
+    "returnsProvince": {
+      "@id": "asendia:returnsProvince",
+      "@type": "xsd:string"
+    },
+    "returnsPostalCode": {
+      "@id": "asendia:returnsPostalCode",
+      "@type": "xsd:string"
+    },
+    "returnsCountryCode": {
+      "@id": "asendia:returnsCountryCode",
+      "@type": "xsd:string"
+    },
+    "pudoAddress": "asendia:pudoAddress",
+    "address1": {
+      "@id": "asendia:address1",
+      "@type": "xsd:string"
+    },
+    "address2": {
+      "@id": "asendia:address2",
+      "@type": "xsd:string"
+    },
+    "address3": {
+      "@id": "asendia:address3",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "asendia:state",
+      "@type": "xsd:string"
+    },
+    "pudoId": {
+      "@id": "asendia:pudoId",
+      "@type": "xsd:string"
+    },
+    "title": {
+      "@id": "asendia:title",
+      "@type": "xsd:string"
+    },
+    "suburb": {
+      "@id": "asendia:suburb",
+      "@type": "xsd:string"
+    },
+    "streetNumber": {
+      "@id": "asendia:streetNumber",
+      "@type": "xsd:string"
+    },
+    "radius": {
+      "@id": "asendia:radius",
+      "@type": "xsd:decimal"
+    },
+    "parcelRequestModel": "asendia:parcelRequestModel",
+    "includeRate": {
+      "@id": "asendia:includeRate",
+      "@type": "xsd:boolean"
+    },
+    "labelType": {
+      "@id": "asendia:labelType",
+      "@type": "xsd:string"
+    },
+    "labelRotation": {
+      "@id": "asendia:labelRotation",
+      "@type": "xsd:integer"
+    },
+    "customsDocumentType": {
+      "@id": "asendia:customsDocumentType",
+      "@type": "xsd:string"
+    },
+    "getLabel": {
+      "@id": "asendia:getLabel",
+      "@type": "xsd:boolean"
+    },
+    "quoteCode": {
+      "@id": "asendia:quoteCode",
+      "@type": "xsd:string"
+    },
+    "insurance": {
+      "@id": "asendia:insurance",
+      "@type": "xsd:string"
+    },
+    "injectionPoint": {
+      "@id": "asendia:injectionPoint",
+      "@type": "xsd:string"
+    },
+    "parcel": {
+      "@id": "asendia:parcel"
+    },
+    "sender": {
+      "@id": "asendia:sender"
+    },
+    "seller": {
+      "@id": "asendia:seller"
+    },
+    "recipient": {
+      "@id": "asendia:recipient"
+    },
+    "importer": {
+      "@id": "asendia:importer"
+    },
+    "returns": {
+      "@id": "asendia:returns"
+    },
+    "postParcelRequestModel": "asendia:postParcelRequestModel",
+    "createParcelRequest": {
+      "@id": "asendia:createParcelRequest"
+    },
+    "shippingRate": "asendia:shippingRate",
+    "rate": {
+      "@id": "asendia:rate",
+      "@type": "xsd:decimal"
+    },
+    "systemMessage": {
+      "@id": "asendia:systemMessage",
+      "@type": "xsd:string"
+    },
+    "label": "asendia:label",
+    "parcelPackageLabel": "asendia:parcelPackageLabel",
+    "barcodeReference": {
+      "@id": "asendia:barcodeReference",
+      "@type": "xsd:string"
+    },
+    "labels": {
+      "@id": "asendia:labels",
+      "@container": "@list"
+    },
+    "postParcelResponse": "asendia:postParcelResponse",
+    "shippingRates": {
+      "@id": "asendia:shippingRates",
+      "@container": "@list"
+    },
+    "parcelLabels": {
+      "@id": "asendia:parcelLabels"
+    },
+    "parcelStatus": {
+      "@id": "asendia:parcelStatus",
+      "@type": "xsd:string"
+    },
+    "parcelCode": {
+      "@id": "asendia:parcelCode",
+      "@type": "xsd:string"
+    },
+    "parcelInbound": {
+      "@id": "asendia:parcelInbound",
+      "@type": "xsd:string"
+    },
+    "parcelOutbound": {
+      "@id": "asendia:parcelOutbound",
+      "@type": "xsd:string"
+    },
+    "parcelRouteCode": {
+      "@id": "asendia:parcelRouteCode",
+      "@type": "xsd:string"
+    },
+    "customerParcelRequestModel": "asendia:customerParcelRequestModel",
+    "masterServiceId": {
+      "@id": "asendia:masterServiceId",
+      "@type": "xsd:string"
+    },
+    "masterServiceName": {
+      "@id": "asendia:masterServiceName",
+      "@type": "xsd:string"
+    },
+    "customerOriginImpc": {
+      "@id": "asendia:customerOriginImpc",
+      "@type": "xsd:string"
+    },
+    "postCustomerParcelRequestModel": "asendia:postCustomerParcelRequestModel",
+    "ukArticlesModel": "asendia:ukArticlesModel",
+    "cpcCode": {
+      "@id": "asendia:cpcCode",
+      "@type": "xsd:string"
+    },
+    "ukFeesModel": "asendia:ukFeesModel",
+    "ukParcelModel": "asendia:ukParcelModel",
+    "ducr": {
+      "@id": "asendia:ducr",
+      "@container": "@list"
+    },
+    "ukSenderModel": "asendia:ukSenderModel",
+    "ukSellerModel": "asendia:ukSellerModel",
+    "ukRecipientModel": "asendia:ukRecipientModel",
+    "w3w": {
+      "@id": "asendia:w3w",
+      "@type": "xsd:string"
+    },
+    "ukImporterModel": "asendia:ukImporterModel",
+    "ukReturnsModel": "asendia:ukReturnsModel",
+    "ukParcelRequestModel": "asendia:ukParcelRequestModel",
+    "parcelCount": {
+      "@id": "asendia:parcelCount",
+      "@type": "xsd:integer"
+    },
+    "parcelIndex": {
+      "@id": "asendia:parcelIndex",
+      "@type": "xsd:integer"
+    },
+    "asukServiceCode": {
+      "@id": "asendia:asukServiceCode",
+      "@type": "xsd:string"
+    },
+    "asukSubService": {
+      "@id": "asendia:asukSubService",
+      "@type": "xsd:string"
+    },
+    "overLabelFlag": {
+      "@id": "asendia:overLabelFlag",
+      "@type": "xsd:boolean"
+    },
+    "barcode": {
+      "@id": "asendia:barcode",
+      "@type": "xsd:string"
+    },
+    "flag": {
+      "@id": "asendia:flag",
+      "@type": "xsd:integer"
+    },
+    "routeCode": {
+      "@id": "asendia:routeCode",
+      "@type": "xsd:string"
+    },
+    "splitType": {
+      "@id": "asendia:splitType",
+      "@type": "xsd:string"
+    },
+    "customerCode": {
+      "@id": "asendia:customerCode",
+      "@type": "xsd:string"
+    },
+    "exceptionCode": {
+      "@id": "asendia:exceptionCode",
+      "@type": "xsd:string"
+    },
+    "exceptionReason": {
+      "@id": "asendia:exceptionReason",
+      "@type": "xsd:string"
+    },
+    "labelError": {
+      "@id": "asendia:labelError",
+      "@type": "xsd:string"
+    },
+    "uiError": {
+      "@id": "asendia:uiError",
+      "@type": "xsd:string"
+    },
+    "deliveryOptionDeliveryNotification": {
+      "@id": "asendia:deliveryOptionDeliveryNotification",
+      "@type": "xsd:string"
+    },
+    "consignmentWeight": {
+      "@id": "asendia:consignmentWeight",
+      "@type": "xsd:decimal"
+    },
+    "deliveryType": {
+      "@id": "asendia:deliveryType",
+      "@type": "xsd:string"
+    },
+    "released": {
+      "@id": "asendia:released",
+      "@type": "xsd:boolean"
+    },
+    "releaseDate": {
+      "@id": "asendia:releaseDate",
+      "@type": "xsd:dateTime"
+    },
+    "locationName": {
+      "@id": "asendia:locationName",
+      "@type": "xsd:string"
+    },
+    "postUKParcelRequestModel": "asendia:postUKParcelRequestModel",
+    "deleteParcelRequest": "asendia:deleteParcelRequest",
+    "RequestedLocation": "asendia:RequestedLocation",
+    "country": {
+      "@id": "asendia:country",
+      "@type": "xsd:string"
+    },
+    "zipcode": {
+      "@id": "asendia:zipcode",
+      "@type": "xsd:string"
+    },
+    "PudoAddress": "asendia:PudoAddress",
+    "WorkHours": "asendia:WorkHours",
+    "mo": {
+      "@id": "asendia:mo",
+      "@container": "@list"
+    },
+    "tu": {
+      "@id": "asendia:tu",
+      "@container": "@list"
+    },
+    "we": {
+      "@id": "asendia:we",
+      "@container": "@list"
+    },
+    "th": {
+      "@id": "asendia:th",
+      "@container": "@list"
+    },
+    "fr": {
+      "@id": "asendia:fr",
+      "@container": "@list"
+    },
+    "sa": {
+      "@id": "asendia:sa",
+      "@container": "@list"
+    },
+    "su": {
+      "@id": "asendia:su",
+      "@container": "@list"
+    },
+    "closedPeriods": {
+      "@id": "asendia:closedPeriods",
+      "@container": "@list"
+    },
+    "PudoPoint": "asendia:PudoPoint",
+    "asendiaPudoPointId": {
+      "@id": "asendia:asendiaPudoPointId",
+      "@type": "xsd:string"
+    },
+    "supplierId": {
+      "@id": "asendia:supplierId",
+      "@type": "xsd:string"
+    },
+    "serviceCode": {
+      "@id": "asendia:serviceCode",
+      "@type": "xsd:string"
+    },
+    "distance": {
+      "@id": "asendia:distance",
+      "@type": "xsd:decimal"
+    },
+    "workHours": {
+      "@id": "asendia:workHours"
+    },
+    "AdditionalData": "asendia:AdditionalData",
+    "key": {
+      "@id": "asendia:key",
+      "@type": "xsd:string"
+    },
+    "PudoLocatorResponse": "asendia:PudoLocatorResponse",
+    "requestedLocation": {
+      "@id": "asendia:requestedLocation"
+    },
+    "pudoPoints": {
+      "@id": "asendia:pudoPoints",
+      "@container": "@list"
+    },
+    "code": {
+      "@id": "asendia:code",
+      "@type": "xsd:integer"
+    },
+    "note": {
+      "@id": "asendia:note",
+      "@type": "xsd:string"
+    },
+    "transactionKey": {
+      "@id": "asendia:transactionKey",
+      "@type": "xsd:string"
+    },
+    "additionalData": {
+      "@id": "asendia:additionalData"
+    },
+    "PudoLocatorResponseApiResponse": "asendia:PudoLocatorResponseApiResponse",
+    "Barcode": "asendia:Barcode",
+    "aimCode": {
+      "@id": "asendia:aimCode",
+      "@type": "xsd:string"
+    }
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "Asendia API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects Asendia's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-13) from openapi/asendia-a1-consolidation-openapi.yml, openapi/asendia-a1-dpd-tracking-openapi.yml, openapi/asendia-a1-dws-openapi.yml.",
+  "dcterms:created": "2026-10-13",
+  "dcterms:source": [
+    "openapi/asendia-a1-consolidation-openapi.yml",
+    "openapi/asendia-a1-dpd-tracking-openapi.yml",
+    "openapi/asendia-a1-dws-openapi.yml",
+    "openapi/asendia-a1-externalinvoiceimport-openapi.yml",
+    "openapi/asendia-a1-fulfillment-openapi.yml"
+  ]
+}

@@ -1,0 +1,113 @@
+generated: '2026-10-13'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 9
+  own: 7
+  other_domain: 2
+  platform: 0
+  roles:
+  - api
+  - docs
+  - other
+  - support
+  - website
+hosts:
+- host: a1api.asendiausa.com
+  found_by:
+  - pointer
+  - apis[]
+  types:
+  - Documentation
+  serves:
+  - api
+  - docs
+  registrable_domain: asendiausa.com
+  role: docs
+  relation: other-domain
+- host: api.asendia.com
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: asendia.com
+  role: api
+  relation: own
+- host: asendia.com
+  found_by:
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: asendia.com
+  role: other
+  relation: own
+- host: jp.asendia.com
+  found_by:
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: asendia.com
+  role: other
+  relation: own
+- host: support.asendia.com
+  found_by:
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: asendia.com
+  role: support
+  relation: own
+- host: track.asendia.com
+  found_by:
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: asendia.com
+  role: other
+  relation: own
+- host: vn.asendia.com
+  found_by:
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: asendia.com
+  role: other
+  relation: own
+- host: www.asendia.com
+  found_by:
+  - pointer
+  - probed
+  - contract-discovery
+  - well-known
+  types:
+  - Website
+  - PrivacyPolicy
+  - TermsOfService
+  - Newsroom
+  serves: []
+  registrable_domain: asendia.com
+  role: website
+  relation: own
+- host: www.asendiausa.com
+  found_by:
+  - pointer
+  types:
+  - Website
+  serves: []
+  registrable_domain: asendiausa.com
+  role: website
+  relation: other-domain

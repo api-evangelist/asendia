@@ -1,0 +1,203 @@
+openapi: 3.0.1
+info:
+  title: A1 Web Services
+  description: These are all the APIs needed to handle ServiceNow v1.0
+  contact:
+    name: Asendia USA Web Service Team for any questions or comments.
+    email: john.mcshane@asendia.com;chris.joiner@asendia.com;katie.vogt@asendia.com;ammi.cabrera@asendia.com
+  version: ServiceNow v1.0
+paths:
+  /api/A1/v1.0/ServiceNow/Account:
+    get:
+      tags:
+      - ServiceNow
+      parameters:
+      - name: accountNumber
+        in: query
+        schema:
+          type: string
+      - name: fromDate
+        in: query
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CustomerAccountListApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerAccountListApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CustomerAccountListApiResponse'
+  /api/A1/v1.0/ServiceNow/Contact:
+    get:
+      tags:
+      - ServiceNow
+      parameters:
+      - name: accountNumber
+        in: query
+        schema:
+          type: string
+      - name: fromDate
+        in: query
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CustomerContactListApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerContactListApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CustomerContactListApiResponse'
+components:
+  schemas:
+    CustomerAccount:
+      type: object
+      properties:
+        accountCode:
+          type: string
+          nullable: true
+        companyName:
+          type: string
+          nullable: true
+        division:
+          type: string
+          nullable: true
+        parentAccount:
+          type: string
+          nullable: true
+        salesReps:
+          type: array
+          items:
+            type: string
+          nullable: true
+        customerCareReps:
+          type: array
+          items:
+            type: string
+          nullable: true
+        a1CustomerServiceNotes:
+          type: array
+          items:
+            type: string
+          nullable: true
+        updatedOn:
+          type: string
+          format: date-time
+      additionalProperties: false
+    ResponseStatus:
+      type: object
+      properties:
+        responseStatusCode:
+          type: integer
+          description: This is used to display the code for the return status.
+          format: int32
+        responseStatusMessage:
+          type: string
+          description: This is used for a human readable return status message.
+          nullable: true
+      additionalProperties: false
+      description: Displays the status of the Return
+    CustomerAccountListApiResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerAccount'
+          nullable: true
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+          nullable: true
+      additionalProperties: false
+    Contact:
+      type: object
+      properties:
+        contactTypes:
+          type: array
+          items:
+            type: string
+          nullable: true
+        active:
+          type: boolean
+        firstName:
+          type: string
+          nullable: true
+        lastName:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        addressLine1:
+          type: string
+          nullable: true
+        addressLine2:
+          type: string
+          nullable: true
+        addressLine3:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        province:
+          type: string
+          nullable: true
+        postalCode:
+          type: string
+          nullable: true
+        countryIso2:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+      additionalProperties: false
+    CustomerContact:
+      type: object
+      properties:
+        accountCode:
+          type: string
+          nullable: true
+        companyName:
+          type: string
+          nullable: true
+        updatedOn:
+          type: string
+          format: date-time
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+          nullable: true
+      additionalProperties: false
+    CustomerContactListApiResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerContact'
+          nullable: true
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+          nullable: true
+      additionalProperties: false

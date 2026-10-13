@@ -1,0 +1,208 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "A1 Web Services",
+    "description": "These are all the APIs needed to handle Put To Light v1.0",
+    "contact": {
+      "name": "Asendia USA Web Service Team for any questions or comments.",
+      "email": "john.mcshane@asendia.com;chris.joiner@asendia.com;katie.vogt@asendia.com;ammi.cabrera@asendia.com"
+    },
+    "version": "Put To Light v1.0"
+  },
+  "paths": {
+    "/api/A1/Operation/PutToLight/Barcode": {
+      "post": {
+        "tags": [
+          "PutToLight"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BarcodeScan"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BarcodeScan"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BarcodeScan"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BarcodeScan"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/A1/Operation/PutToLight/Barcode2": {
+      "post": {
+        "tags": [
+          "PutToLight"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BarcodeScan"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BarcodeScan"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BarcodeScan"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BarcodeScan"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Barcode": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "aimCode": {
+            "type": "string",
+            "description": "Will not be used",
+            "nullable": true
+          },
+          "data": {
+            "type": "string",
+            "description": "Raw barcode string."
+          }
+        },
+        "additionalProperties": false
+      },
+      "BarcodeScan": {
+        "required": [
+          "barcodes",
+          "moduleName"
+        ],
+        "type": "object",
+        "properties": {
+          "barcodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Barcode"
+            },
+            "description": "List of objects containing barcode data"
+          },
+          "moduleName": {
+            "type": "string",
+            "description": "The name of the module that scanned the barcode."
+          },
+          "timeStamp": {
+            "type": "string",
+            "description": "The date and time the barcode was scanned. This field should use the ISO-8601 format of 'YYYY-MM-DDThh:mm:ss.sssZ'",
+            "nullable": true
+          },
+          "subscriptionId": {
+            "type": "string",
+            "description": "<br>Will not be used",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResponseStatus": {
+        "type": "object",
+        "properties": {
+          "responseStatusCode": {
+            "type": "integer",
+            "description": "This is used to display the code for the return status.",
+            "format": "int32"
+          },
+          "responseStatusMessage": {
+            "type": "string",
+            "description": "This is used for a human readable return status message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Displays the status of the Return"
+      },
+      "StringApiResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "string",
+            "nullable": true
+          },
+          "responseStatus": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ResponseStatus"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "A1 Web Services",
+    "description": "These are all the APIs needed to handle Consolidation v1.0",
+    "contact": {
+      "name": "Asendia USA Web Service Team for any questions or comments.",
+      "email": "john.mcshane@asendia.com;chris.joiner@asendia.com;katie.vogt@asendia.com;ammi.cabrera@asendia.com"
+    },
+    "version": "Consolidation v1.0"
+  },
+  "paths": {
+    "/api/A1/v1.0/Consolidation/Orders": {
+      "post": {
+        "tags": [
+          "Consolidation"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsolidationOrdersRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsolidationOrdersRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsolidationOrdersRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsolidationOrdersRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsolidationOrdersResponseApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsolidationOrdersResponseApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsolidationOrdersResponseApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "packageIDs": {
+        "required": [
+          "packageID"
+        ],
+        "type": "object",
+        "properties": {
+          "packageID": {
+            "maxLength": 35,
+            "minLength": 4,
+            "type": "string",
+            "description": "Unique identifier given to each physical package. This number cannot be reused, and will match the package label's barcode. We recommend this to be 20 characters or under alphanumeric, no spaces, special characters or hyphens."
+          }
+        },
+        "additionalProperties": false
+      },
+      "ConsolidationOrdersRequest": {
+        "required": [
+          "accountNumber",
+          "orderNumber",
+          "packageIDs",
+          "productCode"
+        ],
+        "type": "object",
+        "properties": {
+          "accountNumber": {
+            "maxLength": 12,
+            "type": "string",
+            "description": "Asendia's account number designated for the shipper. This will be provided at account setup."
+          },
+          "orderNumber": {
+            "maxLength": 35,
+            "type": "string",
+            "description": "The order identifier number. This is the number representing all packages within an order."
+          },
+          "productCode": {
+            "maxLength": 5,
+            "type": "string",
+            "description": "The Product Codes will be provided on a per-integration basis.\r\nThis indicates the customer’s preferred service or routing for the package."
+          },
+          "packageIDs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/packageIDs"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "ConsolidationOrdersResponse": {
+        "type": "object",
+        "properties": {
+          "messages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResponseStatus": {
+        "type": "object",
+        "properties": {
+          "responseStatusCode": {
+            "type": "integer",
+            "description": "This is used to display the code for the return status.",
+            "format": "int32"
+          },
+          "responseStatusMessage": {
+            "type": "string",
+            "description": "This is used for a human readable return status message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Displays the status of the Return"
+      },
+      "ConsolidationOrdersResponseApiResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ConsolidationOrdersResponse"
+              }
+            ],
+            "nullable": true
+          },
+          "responseStatus": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ResponseStatus"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

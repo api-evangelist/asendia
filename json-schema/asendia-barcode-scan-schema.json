@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-barcode-scan-schema.json",
+  "title": "BarcodeScan",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-put-to-light-openapi.yml#/components/schemas/BarcodeScan",
+  "required": [
+    "barcodes",
+    "moduleName"
+  ],
+  "type": "object",
+  "properties": {
+    "barcodes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Barcode"
+      },
+      "description": "List of objects containing barcode data"
+    },
+    "moduleName": {
+      "type": "string",
+      "description": "The name of the module that scanned the barcode."
+    },
+    "timeStamp": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The date and time the barcode was scanned. This field should use the ISO-8601 format of 'YYYY-MM-DDThh:mm:ss.sssZ'"
+    },
+    "subscriptionId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "<br>Will not be used"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "Barcode": {
+      "required": [
+        "data"
+      ],
+      "type": "object",
+      "properties": {
+        "aimCode": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Will not be used"
+        },
+        "data": {
+          "type": "string",
+          "description": "Raw barcode string."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,518 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-sales-order-schema.json",
+  "title": "SalesOrder",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/SalesOrder",
+  "required": [
+    "accountNumber",
+    "contentType",
+    "currencyType",
+    "items",
+    "orderID",
+    "orderNumber",
+    "orderShipping",
+    "orderTax",
+    "orderTotal",
+    "processingLocation",
+    "productCode",
+    "recipientAddress",
+    "returnAddress",
+    "saleDate"
+  ],
+  "type": "object",
+  "properties": {
+    "accountNumber": {
+      "maxLength": 12,
+      "minLength": 5,
+      "type": "string",
+      "description": "Asendia's account number designated for the shipper. This will be provided at account setup."
+    },
+    "processingLocation": {
+      "maxLength": 3,
+      "minLength": 3,
+      "type": "string",
+      "description": "The Asendia's location in where the physical package will be processed.\r\nPossible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC, TOR, CAL"
+    },
+    "productCode": {
+      "type": "string",
+      "description": "The Product Codes will be provided on a per-integration basis.\r\nThis indicates the customer’s preferred service or routing for the package."
+    },
+    "orderID": {
+      "type": "integer",
+      "description": "Asendia's Customer internal reference for an order number",
+      "format": "int32"
+    },
+    "orderNumber": {
+      "maxLength": 20,
+      "minLength": 5,
+      "type": "string",
+      "description": "Recipient Order Number"
+    },
+    "orderTotal": {
+      "type": "number",
+      "description": "Total of the complete order",
+      "format": "double"
+    },
+    "orderTax": {
+      "type": "number",
+      "description": "Total tax charged for this order",
+      "format": "double"
+    },
+    "orderShipping": {
+      "type": "number",
+      "description": "The amount charged for shipping",
+      "format": "double"
+    },
+    "saleDate": {
+      "type": "string",
+      "description": "Date Recipient Purchased the Item",
+      "format": "date-time"
+    },
+    "currencyType": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/currencyTypeEnum"
+        }
+      ],
+      "description": "The currency for all given values related to the package and items. This is required to be USD."
+    },
+    "contentType": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/contentTypeEnum"
+        }
+      ],
+      "description": "Category of what is in the package. (Most common is M):\r\n1. M = Merchandise\r\n2. G = Gift\r\n3. D = Document\r\nGift cannot be used when using Swiss Post or La Poste Asendia Services\r\nWhen in doubt use M"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SaleOrderItem"
+      },
+      "description": "An item level information about each of the individual items inside the package"
+    },
+    "returnAddress": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ReturnAddress"
+        }
+      ],
+      "description": "Return Address Information"
+    },
+    "recipientAddress": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/RecipientAddress"
+        }
+      ],
+      "description": "Recipient Address Information"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "RecipientAddress": {
+      "required": [
+        "recipientAddressLine1",
+        "recipientCity",
+        "recipientCountryISO2",
+        "recipientFirstName",
+        "recipientLastName",
+        "recipientPostalCode",
+        "recipientProvince"
+      ],
+      "type": "object",
+      "properties": {
+        "recipientFirstName": {
+          "maxLength": 50,
+          "minLength": 3,
+          "type": "string",
+          "description": "The package recipient's first name"
+        },
+        "recipientLastName": {
+          "maxLength": 50,
+          "minLength": 3,
+          "type": "string",
+          "description": "The package recipient's last name"
+        },
+        "recipientBusinessName": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The package recipient's business name"
+        },
+        "recipientAddressLine1": {
+          "maxLength": 50,
+          "minLength": 3,
+          "type": "string",
+          "description": "The first line of the package recipient's street address"
+        },
+        "recipientAddressLine2": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The second line of the package recipient's street address"
+        },
+        "recipientAddressLine3": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The third line of the package recipient's street address"
+        },
+        "recipientCity": {
+          "maxLength": 50,
+          "minLength": 3,
+          "type": "string",
+          "description": "The City of the package recipient's address"
+        },
+        "recipientProvince": {
+          "maxLength": 20,
+          "type": "string",
+          "description": "The state or province of the package recipient's street address"
+        },
+        "recipientPostalCode": {
+          "maxLength": 20,
+          "type": "string",
+          "description": "The package recipient's postal code"
+        },
+        "recipientCountryISO2": {
+          "maxLength": 2,
+          "minLength": 2,
+          "type": "string",
+          "description": "The 2-character ISO country code for the package receipient's street address.\r\nSee for more information: http://www.iso.org/iso/country_codes"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ReturnAddress": {
+      "required": [
+        "returnAddressLine1",
+        "returnCity",
+        "returnCountryISO2",
+        "returnFirstName",
+        "returnLastName",
+        "returnPostalCode",
+        "returnProvince"
+      ],
+      "type": "object",
+      "properties": {
+        "returnFirstName": {
+          "maxLength": 50,
+          "minLength": 3,
+          "type": "string",
+          "description": "The package's sender's first name"
+        },
+        "returnLastName": {
+          "maxLength": 50,
+          "minLength": 3,
+          "type": "string",
+          "description": "The package's sender's last name"
+        },
+        "returnBusinessName": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The package's sender's business name"
+        },
+        "returnAddressLine1": {
+          "maxLength": 50,
+          "minLength": 3,
+          "type": "string",
+          "description": "The first line of the sender's street address"
+        },
+        "returnAddressLine2": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The second line of the sender's street address"
+        },
+        "returnAddressLine3": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The third line of the sender's street address"
+        },
+        "returnCity": {
+          "maxLength": 50,
+          "minLength": 2,
+          "type": "string",
+          "description": "The City of sender's address"
+        },
+        "returnProvince": {
+          "maxLength": 50,
+          "type": "string",
+          "description": "The state of province of the sender's street address"
+        },
+        "returnPostalCode": {
+          "maxLength": 20,
+          "minLength": 3,
+          "type": "string",
+          "description": "The sender's postal code"
+        },
+        "returnCountryISO2": {
+          "maxLength": 2,
+          "minLength": 2,
+          "type": "string",
+          "description": "The 2-character ISO country code for the sender's street address.\r\nSee for more information: http://www.iso.org/iso/country_codes"
+        }
+      },
+      "additionalProperties": false
+    },
+    "SaleOrderItem": {
+      "required": [
+        "itemDescription",
+        "itemValue",
+        "lineId",
+        "lotNumbered",
+        "quantity",
+        "sku"
+      ],
+      "type": "object",
+      "properties": {
+        "htsNumber": {
+          "maxLength": 20,
+          "minLength": 3,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": " The Harmonized Tariff Schedule code required by international customs specifications.\r\nSee for more information: http://www.usitc.gov/tata/hts/index.htm"
+        },
+        "countryOfOrigin": {
+          "maxLength": 2,
+          "minLength": 2,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The 2-character ISO country code in which the product was manufactured, as required by international customs specifications.\r\nSee for more information: http://www.iso.org/iso/country_codes"
+        },
+        "sku": {
+          "minLength": 3,
+          "type": "string",
+          "description": "SKU of item"
+        },
+        "lineId": {
+          "type": "integer",
+          "description": "Customer reference",
+          "format": "int32"
+        },
+        "lotNumbered": {
+          "type": "boolean",
+          "description": "Identifier for SKU to track expiration date"
+        },
+        "itemValue": {
+          "type": "number",
+          "description": "Rate of the item for the customer",
+          "format": "double"
+        },
+        "itemDescription": {
+          "maxLength": 150,
+          "minLength": 3,
+          "type": "string",
+          "description": "The item description that describes what the item is."
+        },
+        "quantity": {
+          "maximum": 1000000,
+          "minimum": 1,
+          "type": "integer",
+          "description": "The total quantity of the product units within the package.",
+          "format": "int32"
+        },
+        "unitWeight": {
+          "maximum": 1000,
+          "minimum": 0,
+          "type": "number",
+          "description": "The total weight for a single unit of the product, in pounds.",
+          "format": "double"
+        }
+      },
+      "additionalProperties": false
+    },
+    "contentTypeEnum": {
+      "enum": [
+        "M",
+        "G",
+        "D"
+      ],
+      "type": "string"
+    },
+    "currencyTypeEnum": {
+      "enum": [
+        "AED",
+        "COP",
+        "HUF",
+        "MDL",
+        "RON",
+        "UYU",
+        "AFN",
+        "CRC",
+        "IDR",
+        "MGA",
+        "RSD",
+        "UZS",
+        "ALL",
+        "CUP",
+        "ILS",
+        "MKD",
+        "RUB",
+        "VEB",
+        "AMD",
+        "CVE",
+        "IMP",
+        "MMK",
+        "RWF",
+        "VND",
+        "ANG",
+        "CYP",
+        "INR",
+        "MNT",
+        "SAR",
+        "VUV",
+        "AOA",
+        "CZK",
+        "IQD",
+        "MOP",
+        "SBD",
+        "WST",
+        "ARS",
+        "DJF",
+        "IRR",
+        "MRO",
+        "SCR",
+        "XAF",
+        "AUD",
+        "DKK",
+        "ISK",
+        "MTL",
+        "SDD",
+        "XCD",
+        "AWG",
+        "DOP",
+        "JEP",
+        "MUR",
+        "SEK",
+        "XOF",
+        "AZN",
+        "DZD",
+        "JMD",
+        "MVR",
+        "SGD",
+        "XPF",
+        "BAM",
+        "EEK",
+        "JOD",
+        "MWK",
+        "SHP",
+        "YER",
+        "BBD",
+        "EGP",
+        "JPY",
+        "MXN",
+        "SKK",
+        "ZAR",
+        "BDT",
+        "ERN",
+        "KES",
+        "MYR",
+        "SLL",
+        "ZMK",
+        "BGN",
+        "ETB",
+        "KGS",
+        "MZM",
+        "SOS",
+        "ZWD",
+        "BHD",
+        "EUR",
+        "KHR",
+        "NAD",
+        "SRD",
+        "BIF",
+        "FJD",
+        "KMF",
+        "NGN",
+        "STD",
+        "BMD",
+        "FKP",
+        "KPW",
+        "NIO",
+        "SYP",
+        "BND",
+        "GBP",
+        "KRW",
+        "NOK",
+        "SZL",
+        "BOB",
+        "GEL",
+        "KWD",
+        "NPR",
+        "THB",
+        "BRL",
+        "GGP",
+        "KYD",
+        "NZD",
+        "TJS",
+        "BSD",
+        "GHC",
+        "KZT",
+        "OMR",
+        "TMM",
+        "BTN",
+        "GIP",
+        "LAK",
+        "PAB",
+        "TND",
+        "BWP",
+        "GMD",
+        "LBP",
+        "PEN",
+        "TOP",
+        "BYR",
+        "GNF",
+        "LKR",
+        "PGK",
+        "TRY",
+        "BZD",
+        "GTQ",
+        "LRD",
+        "PHP",
+        "TTD",
+        "CAD",
+        "GYD",
+        "LSL",
+        "PKR",
+        "TWD",
+        "CDF",
+        "HKD",
+        "LTL",
+        "PLN",
+        "TZS",
+        "CHF",
+        "HNL",
+        "LVL",
+        "PYG",
+        "UAH",
+        "CLP",
+        "HRK",
+        "LYD",
+        "QAR",
+        "UGX",
+        "CNY",
+        "HTG",
+        "MAD",
+        "RMB",
+        "USD"
+      ],
+      "type": "string"
+    }
+  }
+}

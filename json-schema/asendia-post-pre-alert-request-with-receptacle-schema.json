@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-post-pre-alert-request-with-receptacle-schema.json",
+  "title": "postPreAlertRequestWithReceptacle",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-shippingplatform-openapi.yml#/components/schemas/postPreAlertRequestWithReceptacle",
+  "required": [
+    "accountNumber",
+    "masterAirwayBill",
+    "receptacles",
+    "referenceDispatchNumber",
+    "transportationType"
+  ],
+  "type": "object",
+  "properties": {
+    "accountNumber": {
+      "maxLength": 12,
+      "type": "string",
+      "description": "Asendia's account number designated for the shipper. This will be provided at account setup."
+    },
+    "subAccountNumber": {
+      "maxLength": 12,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Asendia's sub account number designated for the shipper, if applicable. This will be provided at account setup."
+    },
+    "masterAirwayBill": {
+      "maxLength": 20,
+      "type": "string",
+      "description": "Master Airway Bill."
+    },
+    "transportationType": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/TransPortationTypeEnum"
+        }
+      ],
+      "description": "Transportation Type Ground OR Air"
+    },
+    "referenceDispatchNumber": {
+      "maxLength": 20,
+      "type": "string",
+      "description": "Customer Reference Dispatch Number"
+    },
+    "receptacles": {
+      "minLength": 0,
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/preAlertReceptacle"
+      },
+      "description": "List of Receptacles with associated Tracking Numbers to Close."
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "TransPortationTypeEnum": {
+      "enum": [
+        "air",
+        "ground"
+      ],
+      "type": "string"
+    },
+    "preAlertReceptacle": {
+      "required": [
+        "receptacleNumber",
+        "trackingNumbers"
+      ],
+      "type": "object",
+      "properties": {
+        "receptacleNumber": {
+          "type": "string",
+          "description": "The receptacle number associated with the barcode on the pallet."
+        },
+        "trackingNumbers": {
+          "minLength": 0,
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of Tracking Numbers to Close."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,229 @@
+generated: '2026-10-13'
+method: derived
+generator: derive-mcp-candidate.py
+source:
+- openapi/asendia-a1-consolidation-openapi.yml
+- openapi/asendia-a1-dpd-tracking-openapi.yml
+- openapi/asendia-a1-dws-openapi.yml
+- openapi/asendia-a1-externalinvoiceimport-openapi.yml
+- openapi/asendia-a1-fulfillment-openapi.yml
+- openapi/asendia-a1-idmailinterface-openapi.yml
+- openapi/asendia-a1-npi-openapi.yml
+- openapi/asendia-a1-parcel-openapi.yml
+- openapi/asendia-a1-pudo-locator-openapi.yml
+- openapi/asendia-a1-put-to-light-openapi.yml
+- openapi/asendia-a1-receptacle-openapi.yml
+- openapi/asendia-a1-servicenow-openapi.yml
+- openapi/asendia-a1-shippingplatform-openapi.yml
+- openapi/asendia-a1-shippingplatformbulk-openapi.yml
+- openapi/asendia-a1-tracking-openapi.yml
+status: candidate
+deployment:
+  mode: none
+  auth: unknown
+  verified: probed
+note: 'No MCP server was found. The pre-flight posted tools/list to /mcp on api.asendia.com, www.asendia.com, asendia.com, jp.asendia.com; verdict
+  opaque (https://www.asendia.com/mcp answered 403: the edge authenticates before it routes, which proves nothing either way). Candidate tools
+  below are derived from the 48 operation(s) in the provider''s own OpenAPI (40 listed); they describe what a server WOULD expose, not one that
+  exists.'
+tools:
+- name: create_consolidation_orders
+  operationId: POST /api/A1/v1.0/Consolidation/Orders
+  method: POST
+  path: /api/A1/v1.0/Consolidation/Orders
+  description: POST /api/A1/v1.0/Consolidation/Orders
+- name: create_dpdtracking_ttevents
+  operationId: POST /api/A1/v1.0/DPDTracking/TTEvents
+  method: POST
+  path: /api/A1/v1.0/DPDTracking/TTEvents
+  description: POST /api/A1/v1.0/DPDTracking/TTEvents
+- name: create_dws_preprocessparcel2
+  operationId: POST /api/A1/Operation/DWS/PreProcessParcel2
+  method: POST
+  path: /api/A1/Operation/DWS/PreProcessParcel2
+  description: POST /api/A1/Operation/DWS/PreProcessParcel2
+- name: create_externalinvoiceimport_invoice
+  operationId: POST /api/A1/v1.0/ExternalInvoiceImport/Invoice
+  method: POST
+  path: /api/A1/v1.0/ExternalInvoiceImport/Invoice
+  description: POST /api/A1/v1.0/ExternalInvoiceImport/Invoice
+- name: get_fulfillment_salesorder
+  operationId: GET /api/A1/Fulfillment/SalesOrder
+  method: GET
+  path: /api/A1/Fulfillment/SalesOrder
+  description: GET /api/A1/Fulfillment/SalesOrder
+- name: create_idmailinterface_insertprocessingentry
+  operationId: POST /api/A1/External/IDMailInterface/InsertProcessingEntry
+  method: POST
+  path: /api/A1/External/IDMailInterface/InsertProcessingEntry
+  description: POST /api/A1/External/IDMailInterface/InsertProcessingEntry
+- name: get_npi_bin
+  operationId: GET /api/A1/Operation/NPI/Bin
+  method: GET
+  path: /api/A1/Operation/NPI/Bin
+  description: GET /api/A1/Operation/NPI/Bin
+- name: create_closeshipment_closeshipment
+  operationId: POST /api/A1/CloseShipment/CloseShipment
+  method: POST
+  path: /api/A1/CloseShipment/CloseShipment
+  description: POST /api/A1/CloseShipment/CloseShipment
+- name: get_pudolocator_pudolocation
+  operationId: GET /api/A1/v2.6/PudoLocator/PudoLocation
+  method: GET
+  path: /api/A1/v2.6/PudoLocator/PudoLocation
+  description: GET /api/A1/v2.6/PudoLocator/PudoLocation
+- name: create_puttolight_barcode
+  operationId: POST /api/A1/Operation/PutToLight/Barcode
+  method: POST
+  path: /api/A1/Operation/PutToLight/Barcode
+  description: POST /api/A1/Operation/PutToLight/Barcode
+- name: create_receptaclesorting_createreceptacle
+  operationId: POST /api/A1/v1.0/ReceptacleSorting/CreateReceptacle
+  method: POST
+  path: /api/A1/v1.0/ReceptacleSorting/CreateReceptacle
+  description: POST /api/A1/v1.0/ReceptacleSorting/CreateReceptacle
+- name: get_servicenow_account
+  operationId: GET /api/A1/v1.0/ServiceNow/Account
+  method: GET
+  path: /api/A1/v1.0/ServiceNow/Account
+  description: GET /api/A1/v1.0/ServiceNow/Account
+- name: create_shippingplatform_package
+  operationId: POST /api/A1/v1.0/ShippingPlatform/Package
+  method: POST
+  path: /api/A1/v1.0/ShippingPlatform/Package
+  description: POST /api/A1/v1.0/ShippingPlatform/Package
+- name: create_shippingplatformbulk_package
+  operationId: POST /api/A1/v1.0/ShippingPlatformBulk/Package
+  method: POST
+  path: /api/A1/v1.0/ShippingPlatformBulk/Package
+  description: POST /api/A1/v1.0/ShippingPlatformBulk/Package
+- name: get_tracking_detail
+  operationId: GET /api/A1/v1.0/Tracking/Detail
+  method: GET
+  path: /api/A1/v1.0/Tracking/Detail
+  description: GET /api/A1/v1.0/Tracking/Detail
+- name: create_dws_preprocessparcel
+  operationId: POST /api/A1/Operation/DWS/PreProcessParcel
+  method: POST
+  path: /api/A1/Operation/DWS/PreProcessParcel
+  description: POST /api/A1/Operation/DWS/PreProcessParcel
+- name: create_fulfillment_salesorder
+  operationId: POST /api/A1/Fulfillment/SalesOrder
+  method: POST
+  path: /api/A1/Fulfillment/SalesOrder
+  description: POST /api/A1/Fulfillment/SalesOrder
+- name: update_idmailinterface_closebag
+  operationId: PUT /api/A1/External/IDMailInterface/CloseBag
+  method: PUT
+  path: /api/A1/External/IDMailInterface/CloseBag
+  description: PUT /api/A1/External/IDMailInterface/CloseBag
+- name: update_npi_bin
+  operationId: PUT /api/A1/Operation/NPI/Bin
+  method: PUT
+  path: /api/A1/Operation/NPI/Bin
+  description: PUT /api/A1/Operation/NPI/Bin
+- name: create_closeshipment_closedashipment
+  operationId: POST /api/A1/CloseShipment/CloseDAShipment
+  method: POST
+  path: /api/A1/CloseShipment/CloseDAShipment
+  description: POST /api/A1/CloseShipment/CloseDAShipment
+- name: create_puttolight_barcode2
+  operationId: POST /api/A1/Operation/PutToLight/Barcode2
+  method: POST
+  path: /api/A1/Operation/PutToLight/Barcode2
+  description: POST /api/A1/Operation/PutToLight/Barcode2
+- name: get_receptaclesorting_getreceptacle
+  operationId: GET /api/A1/v1.0/ReceptacleSorting/GetReceptacle
+  method: GET
+  path: /api/A1/v1.0/ReceptacleSorting/GetReceptacle
+  description: GET /api/A1/v1.0/ReceptacleSorting/GetReceptacle
+- name: get_servicenow_contact
+  operationId: GET /api/A1/v1.0/ServiceNow/Contact
+  method: GET
+  path: /api/A1/v1.0/ServiceNow/Contact
+  description: GET /api/A1/v1.0/ServiceNow/Contact
+- name: get_shippingplatform_package
+  operationId: GET /api/A1/v1.0/ShippingPlatform/Package
+  method: GET
+  path: /api/A1/v1.0/ShippingPlatform/Package
+  description: GET /api/A1/v1.0/ShippingPlatform/Package
+- name: get_tracking_milestone
+  operationId: GET /api/A1/v1.0/Tracking/Milestone
+  method: GET
+  path: /api/A1/v1.0/Tracking/Milestone
+  description: GET /api/A1/v1.0/Tracking/Milestone
+- name: create_dws_genericpreprocessparcel
+  operationId: POST /api/A1/Operation/DWS/GenericPreProcessParcel
+  method: POST
+  path: /api/A1/Operation/DWS/GenericPreProcessParcel
+  description: POST /api/A1/Operation/DWS/GenericPreProcessParcel
+- name: update_fulfillment_voidsalesorder
+  operationId: PUT /api/A1/Fulfillment/VoidSalesOrder
+  method: PUT
+  path: /api/A1/Fulfillment/VoidSalesOrder
+  description: PUT /api/A1/Fulfillment/VoidSalesOrder
+- name: update_idmailinterface_finishrun
+  operationId: PUT /api/A1/External/IDMailInterface/FinishRun
+  method: PUT
+  path: /api/A1/External/IDMailInterface/FinishRun
+  description: PUT /api/A1/External/IDMailInterface/FinishRun
+- name: update_npi_binclose
+  operationId: PUT /api/A1/Operation/NPI/BinClose
+  method: PUT
+  path: /api/A1/Operation/NPI/BinClose
+  description: PUT /api/A1/Operation/NPI/BinClose
+- name: create_parcel_createparcel
+  operationId: POST /api/A1/v1.0/Parcel/CreateParcel
+  method: POST
+  path: /api/A1/v1.0/Parcel/CreateParcel
+  description: POST /api/A1/v1.0/Parcel/CreateParcel
+- name: delete_shippingplatform_package
+  operationId: DELETE /api/A1/v1.0/ShippingPlatform/Package
+  method: DELETE
+  path: /api/A1/v1.0/ShippingPlatform/Package
+  description: "Void package will cancel package data for previously sent request.\r"
+- name: update_dws_preprocessparcelsimulator
+  operationId: PUT /api/A1/Operation/DWS/PreProcessParcelSimulator
+  method: PUT
+  path: /api/A1/Operation/DWS/PreProcessParcelSimulator
+  description: PUT /api/A1/Operation/DWS/PreProcessParcelSimulator
+- name: get_fulfillment_inventoryadjustments
+  operationId: GET /api/A1/Fulfillment/InventoryAdjustments
+  method: GET
+  path: /api/A1/Fulfillment/InventoryAdjustments
+  description: GET /api/A1/Fulfillment/InventoryAdjustments
+- name: create_parcel_customercreateparcel
+  operationId: POST /api/A1/v1.0/Parcel/CustomerCreateParcel
+  method: POST
+  path: /api/A1/v1.0/Parcel/CustomerCreateParcel
+  description: POST /api/A1/v1.0/Parcel/CustomerCreateParcel
+- name: create_shippingplatform_closedispatch
+  operationId: POST /api/A1/v1.0/ShippingPlatform/CloseDispatch
+  method: POST
+  path: /api/A1/v1.0/ShippingPlatform/CloseDispatch
+  description: POST /api/A1/v1.0/ShippingPlatform/CloseDispatch
+- name: get_dws_packagelabel
+  operationId: GET /api/A1/Operation/DWS/PackageLabel
+  method: GET
+  path: /api/A1/Operation/DWS/PackageLabel
+  description: GET /api/A1/Operation/DWS/PackageLabel
+- name: get_fulfillment_purchaseorder
+  operationId: GET /api/A1/Fulfillment/PurchaseOrder
+  method: GET
+  path: /api/A1/Fulfillment/PurchaseOrder
+  description: GET /api/A1/Fulfillment/PurchaseOrder
+- name: create_parcel_ukcreateparcel
+  operationId: POST /api/A1/v1.0/Parcel/UKCreateParcel
+  method: POST
+  path: /api/A1/v1.0/Parcel/UKCreateParcel
+  description: POST /api/A1/v1.0/Parcel/UKCreateParcel
+- name: get_shippingplatform_shippingrate
+  operationId: GET /api/A1/v1.0/ShippingPlatform/ShippingRate
+  method: GET
+  path: /api/A1/v1.0/ShippingPlatform/ShippingRate
+  description: GET /api/A1/v1.0/ShippingPlatform/ShippingRate
+- name: get_dws_packagelabelmanageroverride
+  operationId: GET /api/A1/Operation/DWS/PackageLabelManagerOverride
+  method: GET
+  path: /api/A1/Operation/DWS/PackageLabelManagerOverride
+  description: GET /api/A1/Operation/DWS/PackageLabelManagerOverride

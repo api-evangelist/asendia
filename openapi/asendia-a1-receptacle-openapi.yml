@@ -1,0 +1,508 @@
+openapi: 3.0.1
+info:
+  title: A1 Web Services
+  description: These are all the APIs needed to handle Receptacle v1.0
+  contact:
+    name: Asendia USA Web Service Team for any questions or comments.
+    email: john.mcshane@asendia.com;chris.joiner@asendia.com;katie.vogt@asendia.com;ammi.cabrera@asendia.com
+  version: Receptacle v1.0
+paths:
+  /api/A1/v1.0/ReceptacleSorting/CreateReceptacle:
+    post:
+      tags:
+      - ReceptacleSorting
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/PostReceptacleApiModel'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostReceptacleApiModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/PostReceptacleApiModel'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/PostReceptacleApiModel'
+      responses:
+        '204':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CreateReceptacleResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateReceptacleResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CreateReceptacleResponse'
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CreateReceptacleResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateReceptacleResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CreateReceptacleResponse'
+  /api/A1/v1.0/ReceptacleSorting/GetReceptacle:
+    get:
+      tags:
+      - ReceptacleSorting
+      parameters:
+      - name: receptacle_number
+        in: query
+        schema:
+          type: string
+      - name: receptacleNumber
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GetReceptacleResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetReceptacleResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GetReceptacleResponse'
+components:
+  schemas:
+    PostReceptacleApiModel:
+      required:
+      - mdmServiceId
+      - originSender
+      - postalFormat
+      - receptacleNumber
+      - receptacleType
+      - receptacleWeight
+      type: object
+      properties:
+        receptacleNumber:
+          minLength: 0
+          type: string
+        receptacleWeight:
+          maximum: 10000000000
+          minimum: 0.01
+          type: number
+          format: double
+        originSender:
+          maxLength: 6
+          type: string
+        internalServiceNote:
+          type: string
+          nullable: true
+        mdmServiceId:
+          minLength: 0
+          type: string
+        receptacleType:
+          type: integer
+          format: int32
+        postalFormat:
+          type: string
+        itemIds:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: false
+    responseStatus:
+      type: object
+      properties:
+        responseStatusCode:
+          type: integer
+          description: This is used to display the code for the return status.
+          format: int32
+        responseStatusMessage:
+          type: string
+          description: This is used for a human readable return status message.
+          nullable: true
+      additionalProperties: false
+      description: Displays the status of the Return
+    weightTypeEnum:
+      enum:
+      - lb
+      - kg
+      type: string
+    ReceptaclePackage:
+      type: object
+      properties:
+        trackingNumberCustomer:
+          type: string
+          nullable: true
+        trackingNumber:
+          type: string
+          nullable: true
+        weight:
+          type: number
+          format: double
+        piece:
+          type: integer
+          format: int32
+        weightCode:
+          type: string
+          nullable: true
+        weightPostage:
+          type: number
+          format: double
+        weightPostageCode:
+          type: string
+          nullable: true
+        phantomWeight:
+          type: number
+          format: double
+        phantomWeightCode:
+          type: string
+          nullable: true
+        countryISO2:
+          type: string
+          nullable: true
+        countryName:
+          type: string
+          nullable: true
+        formatTypeId:
+          type: integer
+          format: int32
+        formatName:
+          type: string
+          nullable: true
+        itemCount:
+          type: integer
+          format: int32
+        value:
+          type: number
+          format: double
+        processedBy:
+          type: string
+          nullable: true
+        processedOn:
+          type: string
+          format: date-time
+        sortedBy:
+          type: string
+          nullable: true
+        sortedOn:
+          type: string
+          format: date-time
+        dataSource:
+          type: string
+          nullable: true
+        untrackedItemId:
+          type: integer
+          format: int32
+          nullable: true
+        sorting:
+          type: boolean
+          nullable: true
+        coreProductId:
+          type: integer
+          format: int32
+        revenueProtection:
+          type: boolean
+          nullable: true
+      additionalProperties: false
+    ReportData:
+      required:
+      - contentData
+      - contentSize
+      - contentTypeId
+      - formatCode
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        formatCode:
+          type: string
+        contentTypeId:
+          type: integer
+          format: int32
+        contentTypeName:
+          type: string
+          nullable: true
+        contentSize:
+          type: string
+        createdOn:
+          type: string
+          format: date-time
+          nullable: true
+        createdBy:
+          type: string
+          nullable: true
+        exportedOn:
+          type: string
+          format: date-time
+          nullable: true
+        exportedBy:
+          type: string
+          nullable: true
+        friendlyName:
+          type: string
+          nullable: true
+        contentData:
+          type: string
+        reportId:
+          type: integer
+          format: int32
+        fileName:
+          type: string
+          nullable: true
+        orientation:
+          type: string
+          nullable: true
+        fileLocationPath:
+          type: string
+          nullable: true
+        carrierLabelType:
+          type: string
+          description: A-Carrier document type when available (e.g. ACL Label.Type).
+            Used to distinguish customs documents from shipping labels.
+          nullable: true
+        isS3File:
+          type: boolean
+        numberOfCopies:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Receptacle:
+      type: object
+      properties:
+        carrierServiceDispatchId:
+          type: integer
+          format: int32
+        carrierServiceDispatchReceptacleId:
+          type: integer
+          format: int32
+        sequence:
+          type: integer
+          format: int32
+        statusId:
+          type: integer
+          format: int32
+        carrierId:
+          type: integer
+          format: int32
+        carrierName:
+          type: string
+          nullable: true
+        carrierServiceId:
+          type: integer
+          format: int32
+        carrierServiceName:
+          type: string
+          nullable: true
+        receptacleNumber:
+          type: string
+          nullable: true
+        carrierReceptacleNumber:
+          type: string
+          nullable: true
+        formatTypeId:
+          type: integer
+          format: int32
+        formatName:
+          type: string
+          nullable: true
+        receptacleFormatTypeId:
+          type: integer
+          format: int32
+        receptacleformatName:
+          type: string
+          nullable: true
+        containerTypeId:
+          type: integer
+          format: int32
+        containerTypeName:
+          type: string
+          nullable: true
+        weightCode:
+          allOf:
+          - $ref: '#/components/schemas/weightTypeEnum'
+        countryISO2:
+          type: string
+          nullable: true
+        countryOrZoneName:
+          type: string
+          nullable: true
+        foe:
+          type: string
+          nullable: true
+        priceGroup:
+          type: string
+          nullable: true
+        label:
+          type: string
+          nullable: true
+        minimumWeight:
+          type: number
+          format: double
+        maximumWeight:
+          type: number
+          format: double
+        createdOn:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+          nullable: true
+        createdWorkStation:
+          type: string
+          nullable: true
+        closedOn:
+          type: string
+          format: date-time
+        closedBy:
+          type: string
+          nullable: true
+        closedWorkstation:
+          type: string
+          nullable: true
+        receptaclePackages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReceptaclePackage'
+          nullable: true
+        receptacleLabels:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportData'
+          nullable: true
+        locationCarrierServicePermitId:
+          type: integer
+          format: int32
+        piece:
+          type: integer
+          format: int32
+        weight:
+          type: number
+          format: double
+        isEnabled:
+          type: integer
+          format: int32
+        labelQuantity:
+          type: integer
+          format: int32
+          nullable: true
+        brokerId:
+          type: integer
+          format: int32
+          nullable: true
+        brokerServiceId:
+          type: integer
+          format: int32
+          nullable: true
+        postalDispatchId:
+          type: integer
+          format: int32
+        hubTicketId:
+          type: integer
+          format: int32
+          nullable: true
+        postalDispatchesMappingId:
+          type: integer
+          format: int32
+          nullable: true
+        originImpc:
+          type: string
+          nullable: true
+        destinationImpc:
+          type: string
+          nullable: true
+        mailCategory:
+          type: string
+          nullable: true
+        mailSubclass:
+          type: string
+          nullable: true
+        postalFormat:
+          type: string
+          nullable: true
+        locationId:
+          type: integer
+          format: int32
+          nullable: true
+        dispatchNumber:
+          type: string
+          nullable: true
+        internalServiceNoteId:
+          type: integer
+          format: int32
+          nullable: true
+        flightTruckNumber:
+          type: string
+          nullable: true
+        nesDocumentStatusId:
+          type: integer
+          format: int32
+          nullable: true
+        receptacleGroup:
+          type: string
+          nullable: true
+        crmId:
+          type: string
+          nullable: true
+        receptacleTierId:
+          type: integer
+          format: int32
+          nullable: true
+        receptacleTierName:
+          type: string
+          nullable: true
+        isFinalized:
+          type: boolean
+        receptacleRouteCode:
+          type: string
+          nullable: true
+        destinationCode:
+          type: string
+          nullable: true
+        dispatchingSystem:
+          type: string
+          nullable: true
+        receptacleJobType:
+          type: integer
+          format: int32
+        dispatchMappingFormat:
+          type: string
+          nullable: true
+        sequenceNumber:
+          type: integer
+          format: int32
+        sequenceNumberDispatch:
+          type: integer
+          format: int32
+      additionalProperties: false
+    CreateReceptacleResponse:
+      type: object
+      properties:
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/responseStatus'
+          nullable: true
+        receptacle:
+          allOf:
+          - $ref: '#/components/schemas/Receptacle'
+          nullable: true
+      additionalProperties: false
+    GetReceptacleResponse:
+      type: object
+      properties:
+        receptacle:
+          allOf:
+          - $ref: '#/components/schemas/Receptacle'
+          nullable: true
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/responseStatus'
+          nullable: true
+      additionalProperties: false

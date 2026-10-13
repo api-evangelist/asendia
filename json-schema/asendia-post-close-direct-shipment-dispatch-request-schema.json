@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-post-close-direct-shipment-dispatch-request-schema.json",
+  "title": "postCloseDirectShipmentDispatchRequest",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-shippingplatform-openapi.yml#/components/schemas/postCloseDirectShipmentDispatchRequest",
+  "required": [
+    "airline",
+    "flightDate",
+    "flightNumber",
+    "mawb",
+    "portOfEntry",
+    "shipmentClose",
+    "shipmentNumber",
+    "trackingNumbers"
+  ],
+  "type": "object",
+  "properties": {
+    "accountNumber": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "trackingNumbers": {
+      "minLength": 1,
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "mawb": {
+      "maxLength": 50,
+      "minLength": 0,
+      "type": "string"
+    },
+    "airline": {
+      "maxLength": 100,
+      "minLength": 0,
+      "type": "string"
+    },
+    "flightNumber": {
+      "maxLength": 50,
+      "minLength": 0,
+      "type": "string"
+    },
+    "portOfEntry": {
+      "maxLength": 50,
+      "minLength": 0,
+      "type": "string"
+    },
+    "flightDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "shipmentNumber": {
+      "maxLength": 50,
+      "minLength": 0,
+      "type": "string"
+    },
+    "shipmentClose": {
+      "type": "string",
+      "format": "date"
+    },
+    "sendShipmentCallToCarrier": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

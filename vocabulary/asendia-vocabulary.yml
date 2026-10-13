@@ -1,0 +1,436 @@
+generated: '2026-10-13'
+method: derived
+generator: derive-vocabulary.py
+source:
+- openapi/asendia-a1-consolidation-openapi.yml
+- openapi/asendia-a1-dpd-tracking-openapi.yml
+- openapi/asendia-a1-dws-openapi.yml
+- openapi/asendia-a1-externalinvoiceimport-openapi.yml
+- openapi/asendia-a1-fulfillment-openapi.yml
+vocabulary:
+  name: Asendia Domain Vocabulary
+  description: 'Terms declared by Asendia''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-13'
+  terms:
+  - term: packageIDs
+    definition: 'Object declared by the contract with fields: packageID.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-consolidation-openapi.yml#/components/schemas/packageIDs
+  - term: ConsolidationOrdersRequest
+    definition: 'Object declared by the contract with fields: accountNumber, orderNumber, productCode, packageIDs.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-consolidation-openapi.yml#/components/schemas/ConsolidationOrdersRequest
+  - term: ConsolidationOrdersResponse
+    definition: 'Object declared by the contract with fields: messages.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-consolidation-openapi.yml#/components/schemas/ConsolidationOrdersResponse
+  - term: ResponseStatus
+    definition: Displays the status of the Return
+    tags:
+    - Object
+    source: openapi/asendia-a1-consolidation-openapi.yml#/components/schemas/ResponseStatus
+  - term: ConsolidationOrdersResponseApiResponse
+    definition: 'Object declared by the contract with fields: data, responseStatus.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-consolidation-openapi.yml#/components/schemas/ConsolidationOrdersResponseApiResponse
+  - term: Weight
+    definition: 'Object declared by the contract with fields: value, qualif.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dpd-tracking-openapi.yml#/components/schemas/Weight
+  - term: Dimensions
+    definition: 'Object declared by the contract with fields: length, width, height, qualif.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dpd-tracking-openapi.yml#/components/schemas/Dimensions
+  - term: WeightAndDimension
+    definition: 'Object declared by the contract with fields: weight, dimensions.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dpd-tracking-openapi.yml#/components/schemas/WeightAndDimension
+  - term: ParcelInfos
+    definition: 'Object declared by the contract with fields: parcelNumber, originParcelNumber, returnParcelNumber, weightAndDimension, mpsId,
+      originMpsId.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dpd-tracking-openapi.yml#/components/schemas/ParcelInfos
+  - term: ServiceCodes
+    definition: 'Object declared by the contract with fields: asCode, soCode.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dpd-tracking-openapi.yml#/components/schemas/ServiceCodes
+  - term: Destination
+    definition: 'Object declared by the contract with fields: zipCode, countryCode, destinationDepot.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dpd-tracking-openapi.yml#/components/schemas/Destination
+  - term: TourInfo
+    definition: 'Object declared by the contract with fields: area, stop, deliveryTour, runSheetNumber.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dpd-tracking-openapi.yml#/components/schemas/TourInfo
+  - term: EventLocation
+    definition: 'Object declared by the contract with fields: city, countryCode.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dpd-tracking-openapi.yml#/components/schemas/EventLocation
+  - term: Gps
+    definition: 'Object declared by the contract with fields: latitude, longitude.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dpd-tracking-openapi.yml#/components/schemas/Gps
+  - term: ReceiverAddress
+    definition: 'Object declared by the contract with fields: name, propertyNumber, street, zipCode, city.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dpd-tracking-openapi.yml#/components/schemas/ReceiverAddress
+  - term: TranscodedItem
+    definition: 'Object declared by the contract with fields: scanCode, reasonCodes, compInfos, compInfosJson.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dpd-tracking-openapi.yml#/components/schemas/TranscodedItem
+  - term: Transcodification
+    definition: 'Object declared by the contract with fields: language, transcodedItems.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dpd-tracking-openapi.yml#/components/schemas/Transcodification
+  - term: TTEventsRequest
+    definition: 'Object declared by the contract with fields: parcelInfos, statusType, serviceCodes, destination, scanCode, reasonCodes, depot,
+      statusDateTime, tourInfo, actorId, operativerId, buDateTime. (16 more)'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dpd-tracking-openapi.yml#/components/schemas/TTEventsRequest
+  - term: TTEventsResponse
+    definition: 'Object declared by the contract with fields: messages.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dpd-tracking-openapi.yml#/components/schemas/TTEventsResponse
+  - term: TTEventsResponseApiResponse
+    definition: 'Object declared by the contract with fields: data, responseStatus.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dpd-tracking-openapi.yml#/components/schemas/TTEventsResponseApiResponse
+  - term: weightUnitEnum
+    definition: 'Enumeration declared by the contract with values: Lb, Kg.'
+    tags:
+    - Enumeration
+    source: openapi/asendia-a1-dws-openapi.yml#/components/schemas/weightUnitEnum
+  - term: dimUnitEnum
+    definition: 'Enumeration declared by the contract with values: IN, CM, MM.'
+    tags:
+    - Enumeration
+    source: openapi/asendia-a1-dws-openapi.yml#/components/schemas/dimUnitEnum
+  - term: PreProcessParcelRequest
+    definition: 'Object declared by the contract with fields: trackingNumbers, processingLocation, totalPackageWeight, weightUnit, dimLength,
+      dimWidth, dimHeight, dimUnit.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dws-openapi.yml#/components/schemas/PreProcessParcelRequest
+  - term: BooleanApiResponse
+    definition: 'Object declared by the contract with fields: data, responseStatus.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dws-openapi.yml#/components/schemas/BooleanApiResponse
+  - term: GenericPreProcessParcelRequest
+    definition: 'Object declared by the contract with fields: trackingNumber, processingLocation, totalPackageWeight, weightUnit, dimLength, dimWidth,
+      dimHeight, dimUnit, machineId.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dws-openapi.yml#/components/schemas/GenericPreProcessParcelRequest
+  - term: GenericPreProcessParcelResponse
+    definition: 'Object declared by the contract with fields: success, packageId, trackingNumber, preProcessStatus, errorMessage, processingLocation.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dws-openapi.yml#/components/schemas/GenericPreProcessParcelResponse
+  - term: GenericPreProcessParcelResponseApiResponse
+    definition: 'Object declared by the contract with fields: data, responseStatus.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dws-openapi.yml#/components/schemas/GenericPreProcessParcelResponseApiResponse
+  - term: ReportData
+    definition: 'Object declared by the contract with fields: name, formatCode, contentTypeId, contentTypeName, contentSize, createdOn, createdBy,
+      exportedOn, exportedBy, friendlyName, contentData, reportId. (6 more)'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dws-openapi.yml#/components/schemas/ReportData
+  - term: ReportDataListApiResponse
+    definition: 'Object declared by the contract with fields: data, responseStatus.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dws-openapi.yml#/components/schemas/ReportDataListApiResponse
+  - term: VolumizerPreProcessParcelRequest
+    definition: 'Object declared by the contract with fields: trackingNumbers, processingLocation, totalPackageWeight, weightUnit, dimLength,
+      dimWidth, dimHeight, dimUnit, connectionId, alibiMemoryId, scaleId, processedDate. (1 more)'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dws-openapi.yml#/components/schemas/VolumizerPreProcessParcelRequest
+  - term: VolumizerPreProcessParcelResponse
+    definition: 'Object declared by the contract with fields: connectionId, preProcessStatus, errorMessage, packageId, trackingNumber.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dws-openapi.yml#/components/schemas/VolumizerPreProcessParcelResponse
+  - term: VolumizerPreProcessParcelResponseApiResponse
+    definition: 'Object declared by the contract with fields: data, responseStatus.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dws-openapi.yml#/components/schemas/VolumizerPreProcessParcelResponseApiResponse
+  - term: DWSResponseLog
+    definition: 'Object declared by the contract with fields: responseMessage, statusCode, preProcessStatus, createdOn, action.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dws-openapi.yml#/components/schemas/DWSResponseLog
+  - term: VitronicDataItem
+    definition: 'Object declared by the contract with fields: packageId, packageIssueId, trackingNumber, jobNumber, coreProductName, weight, weightWithUnit,
+      destination, status, statusName, date, scaleId. (3 more)'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dws-openapi.yml#/components/schemas/VitronicDataItem
+  - term: VitronicDataItemListApiResponse
+    definition: 'Object declared by the contract with fields: data, responseStatus.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-dws-openapi.yml#/components/schemas/VitronicDataItemListApiResponse
+  - term: InvoiceType
+    definition: 'Enumeration declared by the contract with values: Credit, Debit.'
+    tags:
+    - Enumeration
+    source: openapi/asendia-a1-externalinvoiceimport-openapi.yml#/components/schemas/InvoiceType
+  - term: WeightType
+    definition: 'Enumeration declared by the contract with values: Lbs, Kgs.'
+    tags:
+    - Enumeration
+    source: openapi/asendia-a1-externalinvoiceimport-openapi.yml#/components/schemas/WeightType
+  - term: ExternalInvoiceLines
+    definition: 'Object declared by the contract with fields: location, jobNumber, description, province, postageMaterialCode, pieces, weight,
+      weightCode, asendiaProductCode, postageTotal, taxMaterialCode, gstTotal. (3 more)'
+    tags:
+    - Object
+    source: openapi/asendia-a1-externalinvoiceimport-openapi.yml#/components/schemas/ExternalInvoiceLines
+  - term: ExternalAttachment
+    definition: 'Object declared by the contract with fields: name, fileContents, fileName.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-externalinvoiceimport-openapi.yml#/components/schemas/ExternalAttachment
+  - term: ExternalInvoice
+    definition: 'Object declared by the contract with fields: customerAccountNumber, invoiceType, invoiceNumber, invoiceDate, invoiceCurrencyIso3,
+      invoiceLines, attachments.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-externalinvoiceimport-openapi.yml#/components/schemas/ExternalInvoice
+  - term: SalesOrderItemResponse
+    definition: 'Object declared by the contract with fields: sku, lineId, lotNumbered, itemValue, itemDescription, quantity, unitWeight.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/SalesOrderItemResponse
+  - term: FulfillmentItems
+    definition: 'Object declared by the contract with fields: sku, lot, quantity, lineId.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/FulfillmentItems
+  - term: SalesOrderFulfillmentRecords
+    definition: 'Object declared by the contract with fields: fulfillmentDate, dateShipped, trackingNumber, totalPackageValue, items.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/SalesOrderFulfillmentRecords
+  - term: currencyTypeEnum
+    definition: 'Enumeration declared by the contract with values: AED, COP, HUF, MDL, RON, UYU, AFN, CRC, IDR, MGA, RSD, UZS. (152 more)'
+    tags:
+    - Enumeration
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/currencyTypeEnum
+  - term: contentTypeEnum
+    definition: 'Enumeration declared by the contract with values: M, G, D.'
+    tags:
+    - Enumeration
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/contentTypeEnum
+  - term: SaleOrderItem
+    definition: 'Object declared by the contract with fields: htsNumber, countryOfOrigin, sku, lineId, lotNumbered, itemValue, itemDescription,
+      quantity, unitWeight.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/SaleOrderItem
+  - term: ReturnAddress
+    definition: 'Object declared by the contract with fields: returnFirstName, returnLastName, returnBusinessName, returnAddressLine1, returnAddressLine2,
+      returnAddressLine3, returnCity, returnProvince, returnPostalCode, returnCountryISO2.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/ReturnAddress
+  - term: RecipientAddress
+    definition: 'Object declared by the contract with fields: recipientFirstName, recipientLastName, recipientBusinessName, recipientAddressLine1,
+      recipientAddressLine2, recipientAddressLine3, recipientCity, recipientProvince, recipientPostalCode, recipientCountryISO2.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/RecipientAddress
+  - term: ResponseSalesOrder
+    definition: 'Object declared by the contract with fields: orderStatus, items, fulfillments, accountNumber, processingLocation, productCode,
+      orderID, orderNumber, orderTotal, orderTax, orderShipping, saleDate. (4 more)'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/ResponseSalesOrder
+  - term: ResponseSalesOrderApiResponse
+    definition: 'Object declared by the contract with fields: data, responseStatus.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/ResponseSalesOrderApiResponse
+  - term: SalesOrder
+    definition: 'Object declared by the contract with fields: accountNumber, processingLocation, productCode, orderID, orderNumber, orderTotal,
+      orderTax, orderShipping, saleDate, currencyType, contentType, items. (2 more)'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/SalesOrder
+  - term: SalesOrderApiResponse
+    definition: 'Object declared by the contract with fields: data, responseStatus.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/SalesOrderApiResponse
+  - term: VoidSalesOrder
+    definition: 'Object declared by the contract with fields: orderNumber, accountNumber, processingLocation.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/VoidSalesOrder
+  - term: InventoryAdjustmentResponse
+    definition: 'Object declared by the contract with fields: adjustmentDate, reason, quantity, lotNumber, sku.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/InventoryAdjustmentResponse
+  - term: InventoryAdjustmentResponseListApiResponse
+    definition: 'Object declared by the contract with fields: data, responseStatus.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/InventoryAdjustmentResponseListApiResponse
+  - term: PurchaseOrderItemResponse
+    definition: 'Object declared by the contract with fields: htsNumber, countryOfOrigin, sku, lineId, lotNumbered, itemValue, itemDescription,
+      quantity, unitWeight.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/PurchaseOrderItemResponse
+  - term: ItemsReceived
+    definition: 'Object declared by the contract with fields: sku, lotNumber, expirationDate, quantity, lineId.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/ItemsReceived
+  - term: PurchaseOrderReceipt
+    definition: 'Object declared by the contract with fields: receiptDate, asendiaReceiptId, itemsReceived.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/PurchaseOrderReceipt
+  - term: ItemReceipt
+    definition: 'Object declared by the contract with fields: purchaseOrderId, purchaseOrderNumber, processingLocation, accountNumber, items,
+      receipts, status.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/ItemReceipt
+  - term: ItemReceiptApiResponse
+    definition: 'Object declared by the contract with fields: data, responseStatus.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/ItemReceiptApiResponse
+  - term: PurchaseOrderItem
+    definition: 'Object declared by the contract with fields: htsNumber, countryOfOrigin, leadTimeDays, personalUseExemption, orderAlertThreshold,
+      sku, lineId, lotNumbered, itemValue, itemDescription, quantity, unitWeight.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/PurchaseOrderItem
+  - term: PurchaseOrder
+    definition: 'Object declared by the contract with fields: purchaseOrderId, purchaseOrderNumber, processingLocation, accountNumber, items.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/PurchaseOrder
+  - term: StringApiResponse
+    definition: 'Object declared by the contract with fields: data, responseStatus.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/StringApiResponse
+  - term: InsertProcessingEntryRequest
+    definition: 'Object declared by the contract with fields: jobId, bagId, pieceId, bin, mailStop, sortCode, weight, height, length, thickness,
+      size, custom1. (5 more)'
+    tags:
+    - Object
+    source: openapi/asendia-a1-idmailinterface-openapi.yml#/components/schemas/InsertProcessingEntryRequest
+  - term: Int32ApiResponse
+    definition: 'Object declared by the contract with fields: data, responseStatus.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-idmailinterface-openapi.yml#/components/schemas/Int32ApiResponse
+  - term: CloseBagRequest
+    definition: 'Object declared by the contract with fields: bagId, zone, dispatcher, processingLocation.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-idmailinterface-openapi.yml#/components/schemas/CloseBagRequest
+  - term: FinishRunRequest
+    definition: 'Object declared by the contract with fields: jobId, dispatcher, processingLocation.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-idmailinterface-openapi.yml#/components/schemas/FinishRunRequest
+  - term: getBinNumberResponse
+    definition: 'Object declared by the contract with fields: bin, trackingNumber.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-npi-openapi.yml#/components/schemas/getBinNumberResponse
+  - term: getBinNumberResponseApiResponse
+    definition: 'Object declared by the contract with fields: data, responseStatus.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-npi-openapi.yml#/components/schemas/getBinNumberResponseApiResponse
+  - term: putPackageToBinRequest
+    definition: 'Object declared by the contract with fields: binNumber, processingLocation, trackingNumber, errorCode, errorDescription.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-npi-openapi.yml#/components/schemas/putPackageToBinRequest
+  - term: putBinCloseRequest
+    definition: 'Object declared by the contract with fields: binNumber, processingLocation.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-npi-openapi.yml#/components/schemas/putBinCloseRequest
+  - term: shipmentsToClose
+    definition: 'Object declared by the contract with fields: trackingNumber, packageId, orderNumber, containerNumber, dispatchNumber.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-parcel-openapi.yml#/components/schemas/shipmentsToClose
+  - term: closeShipmentRequestModel
+    definition: 'Object declared by the contract with fields: accountNumber, subAccountNumber, shippingLocation, processingPoint, isDirectAccess,
+      pickupCarrier, trackingIdentifier, transportReference, customerReferenceNumber1, customerReferenceNumber2, customerReferenceNumber3, dhlbolNumber.
+      (1 more)'
+    tags:
+    - Object
+    source: openapi/asendia-a1-parcel-openapi.yml#/components/schemas/closeShipmentRequestModel
+  - term: closeShipmentRequest
+    definition: 'Object declared by the contract with fields: closeShipmentsRequest.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-parcel-openapi.yml#/components/schemas/closeShipmentRequest
+  - term: labelTypeEnum
+    definition: Format label return in response
+    tags:
+    - Enumeration
+    source: openapi/asendia-a1-parcel-openapi.yml#/components/schemas/labelTypeEnum
+  - term: jobDocument
+    definition: 'Object declared by the contract with fields: name, type, content.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-parcel-openapi.yml#/components/schemas/jobDocument
+  - term: closeShipmentResponseModel
+    definition: 'Object declared by the contract with fields: jobNumber, jobStatus, jobCreationDate, jobProductCode, jobProductName, jobQuoteCode,
+      jobQuoteName, jobTotalWeight, jobWeightUnit, jobTotalPieces, isDirectAccess, packageUsedInAnotherJob. (1 more)'
+    tags:
+    - Object
+    source: openapi/asendia-a1-parcel-openapi.yml#/components/schemas/closeShipmentResponseModel
+  - term: responseStatus
+    definition: Displays the status of the Return
+    tags:
+    - Object
+    source: openapi/asendia-a1-parcel-openapi.yml#/components/schemas/responseStatus
+  - term: postCloseShipmentResponse
+    definition: 'Object declared by the contract with fields: closeShipment, responseStatus.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-parcel-openapi.yml#/components/schemas/postCloseShipmentResponse
+  - term: TransportData
+    definition: 'Object declared by the contract with fields: transportReference, flightNumber, etd, eta, originPort, destinationPort.'
+    tags:
+    - Object
+    source: openapi/asendia-a1-parcel-openapi.yml#/components/schemas/TransportData

@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-get-tracking-detail-response-schema.json",
+  "title": "getTrackingDetailResponse",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-tracking-openapi.yml#/components/schemas/getTrackingDetailResponse",
+  "required": [
+    "responseStatus",
+    "trackingDetail"
+  ],
+  "type": "object",
+  "properties": {
+    "trackingDetail": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/trackingDetail"
+        }
+      ]
+    },
+    "responseStatus": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/responseStatus"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "responseStatus": {
+      "type": "object",
+      "properties": {
+        "responseStatusCode": {
+          "type": "integer",
+          "description": "This is used to display the code for the return status.",
+          "format": "int32"
+        },
+        "responseStatusMessage": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "This is used for a human readable return status message."
+        }
+      },
+      "additionalProperties": false,
+      "description": "Displays the status of the Return"
+    },
+    "trackingDetail": {
+      "type": "object",
+      "properties": {
+        "trackingNumberVendor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "trackingNumberCustomer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "trackingNumberCustomerCarrierOriginal": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "customerReferenceNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "trackingProduct": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/trackingProduct"
+            }
+          ],
+          "nullable": true
+        },
+        "trackingDetailEvents": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/trackingDetailEvents"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "trackingDetailEvents": {
+      "type": "object",
+      "properties": {
+        "eventCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "eventDescription": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "eventLocationDetails": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/trackingEventLocationDetails"
+            }
+          ],
+          "nullable": true
+        },
+        "eventOn": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "eventSource": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "trackingEventLocationDetails": {
+      "type": "object",
+      "properties": {
+        "addressLine1": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "city": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "province": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "postalCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "countryIso2": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "countryName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "trackingProduct": {
+      "type": "object",
+      "properties": {
+        "productCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "productName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-vitronic-data-item-list-api-response-schema.json",
+  "title": "VitronicDataItemListApiResponse",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-dws-openapi.yml#/components/schemas/VitronicDataItemListApiResponse",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/$defs/VitronicDataItem"
+      }
+    },
+    "responseStatus": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ResponseStatus"
+        }
+      ],
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "DWSResponseLog": {
+      "type": "object",
+      "properties": {
+        "responseMessage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "statusCode": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "preProcessStatus": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "createdOn": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ResponseStatus": {
+      "type": "object",
+      "properties": {
+        "responseStatusCode": {
+          "type": "integer",
+          "description": "This is used to display the code for the return status.",
+          "format": "int32"
+        },
+        "responseStatusMessage": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "This is used for a human readable return status message."
+        }
+      },
+      "additionalProperties": false,
+      "description": "Displays the status of the Return"
+    },
+    "VitronicDataItem": {
+      "type": "object",
+      "properties": {
+        "packageId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "packageIssueId": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "trackingNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "jobNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "coreProductName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "weight": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "weightWithUnit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "destination": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "statusName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "scaleId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dwsResponseLogs": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/DWSResponseLog"
+          }
+        },
+        "alibiCaptureOn": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "trackingNumbers": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

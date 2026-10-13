@@ -1,0 +1,943 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-post-package-bulk-request-schema.json",
+  "title": "postPackageBulkRequest",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-shippingplatformbulk-openapi.yml#/components/schemas/postPackageBulkRequest",
+  "required": [
+    "accountNumber",
+    "contentType",
+    "currencyType",
+    "dispatchNumber",
+    "items",
+    "labelType",
+    "orderNumber",
+    "packageID",
+    "processingLocation",
+    "productCode",
+    "recipientAddressLine1",
+    "recipientCity",
+    "recipientCountryCode",
+    "recipientFirstName",
+    "recipientLastName",
+    "recipientPostalCode",
+    "returnAddressLine1",
+    "returnCity",
+    "returnCountryCode",
+    "returnFirstName",
+    "returnLastName",
+    "returnPostalCode",
+    "returnProvince",
+    "totalPackageValue",
+    "totalPackageWeight",
+    "weightUnit"
+  ],
+  "type": "object",
+  "properties": {
+    "processingLocation": {
+      "maxLength": 5,
+      "minLength": 3,
+      "type": "string",
+      "description": "The Asendia's location in where the physical package will be processed.\r\nPossible values: MIA, JFK, PHL, ORD, LAX, SLC, TOR, CAL, BUF, YVR, LRD, YYZ, UK"
+    },
+    "additionalShippingCode": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "accountNumber": {
+      "maxLength": 12,
+      "type": "string",
+      "description": "Asendia's account number designated for the shipper. This will be provided at account setup."
+    },
+    "subAccountNumber": {
+      "maxLength": 12,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Asendia's sub account number designated for the shipper, if applicable. This will be provided at account setup."
+    },
+    "includeRate": {
+      "type": "boolean",
+      "description": "Signifies whether or not to send back the Rate for this package.  If failLabelIfNoRate is also set to true, the label call will fail if no rates are found for the package data."
+    },
+    "failLabelIfNoRate": {
+      "type": "boolean",
+      "description": "Signifies whether the label call should fail if no rates are found for the package.  This variable is only considered when includeRate is set to true."
+    },
+    "labelType": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/labelTypeEnum"
+        }
+      ],
+      "description": "This is the preferred format for the returned label.\r\nThere might be times that the preferred type is not available, in which case it will return the type that is available,\r\nand the return type will describe the type that it is."
+    },
+    "orderNumber": {
+      "maxLength": 35,
+      "type": "string",
+      "description": "The order identifier number. This is the number representing all packages within an order."
+    },
+    "dispatchNumber": {
+      "maxLength": 100,
+      "type": "string",
+      "description": "A number assigned to any grouping of packages from a shipment. This can be leveraged for a variety of purposes:\r\n1. Use dispatchNumber of 0 for any outstanding packages. Closing the dispatch is optional.\r\n2. Use customized dispatchNumber. Optionally, you can close that dispatchNumber (at the end of the day or whenever you want to physically ship) and it will close all the packages that are part of that dispatchNumber. (Please note: that dispatchNumber can not be used again)\r\n3. Use packageid as the dispatchNumber. Optionally, you can close that dispatchNumber after receiving label and it will close out only that package."
+    },
+    "packageID": {
+      "maxLength": 35,
+      "minLength": 4,
+      "type": "string",
+      "description": "Unique identifier given to each physical package. This number cannot be reused, and will match the package label's barcode. We recommend this to be 20 characters or under alphanumeric, no spaces, special characters or hyphens."
+    },
+    "recipientTaxID": {
+      "maxLength": 25,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": ""
+    },
+    "returnFirstName": {
+      "maxLength": 50,
+      "type": "string",
+      "description": "The package sender's first name"
+    },
+    "returnLastName": {
+      "maxLength": 50,
+      "type": "string",
+      "description": "The package sender's last name"
+    },
+    "returnCompanyName": {
+      "maxLength": 50,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The package sender's company name"
+    },
+    "returnAddressLine1": {
+      "maxLength": 50,
+      "type": "string",
+      "description": "The first line of the sender's street address"
+    },
+    "returnAddressLine2": {
+      "maxLength": 50,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The second line of the sender's street address"
+    },
+    "returnAddressLine3": {
+      "maxLength": 50,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The third line of the sender's street address"
+    },
+    "returnCity": {
+      "maxLength": 50,
+      "type": "string",
+      "description": "The city of the sender's street address"
+    },
+    "returnProvince": {
+      "maxLength": 50,
+      "type": "string",
+      "description": "The state of province of the sender's street address"
+    },
+    "returnPostalCode": {
+      "maxLength": 20,
+      "type": "string",
+      "description": "The sender's postal code"
+    },
+    "returnCountryCode": {
+      "maxLength": 2,
+      "minLength": 2,
+      "type": "string",
+      "description": "The 2-character ISO country code for the sender's street address.\r\nSee for more information: http://www.iso.org/iso/country_codes"
+    },
+    "returnPhone": {
+      "maxLength": 25,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The sender's phone number",
+      "format": "tel"
+    },
+    "returnEmail": {
+      "maxLength": 50,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The sender's email address",
+      "format": "email"
+    },
+    "recipientFirstName": {
+      "maxLength": 50,
+      "type": "string",
+      "description": "The package recipient's first name"
+    },
+    "recipientLastName": {
+      "maxLength": 50,
+      "type": "string",
+      "description": "The package recipient's last name"
+    },
+    "recipientBusinessName": {
+      "maxLength": 50,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The package recipient's business name"
+    },
+    "recipientAddressLine1": {
+      "maxLength": 50,
+      "type": "string",
+      "description": "The first line of the package recipient's street address"
+    },
+    "recipientAddressLine2": {
+      "maxLength": 50,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The second line of the package recipient's street address"
+    },
+    "recipientAddressLine3": {
+      "maxLength": 50,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The third line of the package recipient's street address"
+    },
+    "recipientCity": {
+      "maxLength": 50,
+      "type": "string",
+      "description": "The city of the package recipient's street address"
+    },
+    "recipientProvince": {
+      "maxLength": 50,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The state or province of the package recipient's street address"
+    },
+    "recipientPostalCode": {
+      "maxLength": 20,
+      "type": "string",
+      "description": "The package recipient's postal code"
+    },
+    "recipientCountryCode": {
+      "maxLength": 2,
+      "minLength": 2,
+      "type": "string",
+      "description": "The 2-character ISO country code for the package receipient's street address.\r\nSee for more information: http://www.iso.org/iso/country_codes"
+    },
+    "recipientPhone": {
+      "maxLength": 25,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The package recipient's phone number",
+      "format": "tel"
+    },
+    "recipientEmail": {
+      "maxLength": 75,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The package recipient's email address",
+      "format": "email"
+    },
+    "totalPackageWeight": {
+      "minimum": 0,
+      "type": "number",
+      "description": "The package's actual weight",
+      "format": "double"
+    },
+    "weightUnit": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/weightUnitEnum"
+        }
+      ],
+      "description": "The package's unit of weight"
+    },
+    "dimLength": {
+      "type": "number",
+      "description": "The packages dimensional length",
+      "format": "double"
+    },
+    "dimWidth": {
+      "type": "number",
+      "description": "The packages dimensional width",
+      "format": "double"
+    },
+    "dimHeight": {
+      "type": "number",
+      "description": "The packages dimensional height",
+      "format": "double"
+    },
+    "dimUnit": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/dimUnitEnum"
+        }
+      ],
+      "description": "The packages dimensional unit\r\n<br>Possible Values: IN, CM (default is IN)"
+    },
+    "totalPackageValue": {
+      "type": "number",
+      "description": "The total value of the package",
+      "format": "double"
+    },
+    "currencyType": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/currencyTypeEnum"
+        }
+      ],
+      "description": "The currency for all given values related to the package and items. This is required to be USD."
+    },
+    "productCode": {
+      "maxLength": 25,
+      "type": "string",
+      "description": "The Product Codes will be provided on a per-integration basis.\r\nThis indicates the customer's preferred service or routing for the package."
+    },
+    "customerReferenceNumber1": {
+      "maxLength": 50,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "A customer reference number that can be used to identify the package. This can be set up to be used on a per-integration basis."
+    },
+    "customerReferenceNumber2": {
+      "maxLength": 50,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "A second customer reference number that can be used to identify the package. This can be set up to be used on a per-integration basis."
+    },
+    "customerReferenceNumber3": {
+      "maxLength": 50,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "A third customer reference number that can be used to identify the package. This can be set up to be used on a per-integration basis."
+    },
+    "contentType": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/contentTypeEnum"
+        }
+      ],
+      "description": "Category of what is in the package. (Most common is M):\r\n1. M = Merchandise\r\n2. G = Gift\r\n3. D = Document"
+    },
+    "packageContentDescription": {
+      "maxLength": 150,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "A short description of the category of the package's contents."
+    },
+    "vatNumber": {
+      "maxLength": 20,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "VAT Number - This field can be used for VAT Number or IOSS Number whichever applies to the destination country for this package."
+    },
+    "sellerName": {
+      "maxLength": 50,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The package seller's name"
+    },
+    "sellerAddressLine1": {
+      "maxLength": 50,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The first line of the seller's street address"
+    },
+    "sellerAddressLine2": {
+      "maxLength": 50,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The second line of the seller's street address"
+    },
+    "sellerAddressLine3": {
+      "maxLength": 50,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The third line of the seller's street address"
+    },
+    "sellerCity": {
+      "maxLength": 50,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The city of the seller's street address"
+    },
+    "sellerProvince": {
+      "maxLength": 50,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The state of province of the seller's street address"
+    },
+    "sellerPostalCode": {
+      "maxLength": 20,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The seller's postal code"
+    },
+    "sellerCountryCode": {
+      "maxLength": 2,
+      "minLength": 2,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The 2-character ISO country code for the seller's street address.\r\nSee for more information: http://www.iso.org/iso/country_codes"
+    },
+    "sellerPhone": {
+      "maxLength": 25,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The seller's phone number",
+      "format": "tel"
+    },
+    "sellerEmail": {
+      "maxLength": 50,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The seller's email address",
+      "format": "email"
+    },
+    "taxes": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/$defs/TaxType"
+      },
+      "description": "List of tax types and their values for the package. Each tax type contains a tax identifier type and its corresponding value.\r\n1. stateTaxBrl = Recipient State Tax ID (part of the Remessa Conforme program).\r\n2. federalTaxBrl = Recipient Federal Tax ID (part of the Remessa Conforme program)."
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/postPackageItemRequest"
+      },
+      "description": "An item level information about each of the individual items inside the package"
+    },
+    "shippingCost": {
+      "type": "number",
+      "description": "The shipping cost of the package",
+      "format": "double"
+    },
+    "pudoAddress": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/pudoAddress"
+        }
+      ],
+      "nullable": true
+    },
+    "checkServiceDims": {
+      "type": "boolean",
+      "description": "Optional flag to enable service dimension validation when routing lookup is performed.\r\nOnly applies when includeRate is true and productCode is not \"*\" or \"%\"."
+    },
+    "format": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "customerInvoice": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Optional base64-encoded commercial invoice PDF. When provided, stored on the package\r\nand forwarded to A-CL getLabel as carrierServiceParameters.customerInvoice."
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "TaxType": {
+      "type": "object",
+      "properties": {
+        "taxIdType": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/TaxTypeEnum"
+            }
+          ],
+          "description": "The type of tax identifier."
+        },
+        "taxTypeValue": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The value associated with the tax type."
+        }
+      },
+      "additionalProperties": false
+    },
+    "TaxTypeEnum": {
+      "enum": [
+        "stateTaxBrl",
+        "federalTaxBrl"
+      ],
+      "type": "string",
+      "description": "Enumeration of possible tax types."
+    },
+    "contentTypeEnum": {
+      "enum": [
+        "M",
+        "G",
+        "D"
+      ],
+      "type": "string"
+    },
+    "currencyTypeEnum": {
+      "enum": [
+        "AED",
+        "COP",
+        "HUF",
+        "MDL",
+        "RON",
+        "UYU",
+        "AFN",
+        "CRC",
+        "IDR",
+        "MGA",
+        "RSD",
+        "UZS",
+        "ALL",
+        "CUP",
+        "ILS",
+        "MKD",
+        "RUB",
+        "VEB",
+        "AMD",
+        "CVE",
+        "IMP",
+        "MMK",
+        "RWF",
+        "VND",
+        "ANG",
+        "CYP",
+        "INR",
+        "MNT",
+        "SAR",
+        "VUV",
+        "AOA",
+        "CZK",
+        "IQD",
+        "MOP",
+        "SBD",
+        "WST",
+        "ARS",
+        "DJF",
+        "IRR",
+        "MRO",
+        "SCR",
+        "XAF",
+        "AUD",
+        "DKK",
+        "ISK",
+        "MTL",
+        "SDD",
+        "XCD",
+        "AWG",
+        "DOP",
+        "JEP",
+        "MUR",
+        "SEK",
+        "XOF",
+        "AZN",
+        "DZD",
+        "JMD",
+        "MVR",
+        "SGD",
+        "XPF",
+        "BAM",
+        "EEK",
+        "JOD",
+        "MWK",
+        "SHP",
+        "YER",
+        "BBD",
+        "EGP",
+        "JPY",
+        "MXN",
+        "SKK",
+        "ZAR",
+        "BDT",
+        "ERN",
+        "KES",
+        "MYR",
+        "SLL",
+        "ZMK",
+        "BGN",
+        "ETB",
+        "KGS",
+        "MZM",
+        "SOS",
+        "ZWD",
+        "BHD",
+        "EUR",
+        "KHR",
+        "NAD",
+        "SRD",
+        "BIF",
+        "FJD",
+        "KMF",
+        "NGN",
+        "STD",
+        "BMD",
+        "FKP",
+        "KPW",
+        "NIO",
+        "SYP",
+        "BND",
+        "GBP",
+        "KRW",
+        "NOK",
+        "SZL",
+        "BOB",
+        "GEL",
+        "KWD",
+        "NPR",
+        "THB",
+        "BRL",
+        "GGP",
+        "KYD",
+        "NZD",
+        "TJS",
+        "BSD",
+        "GHC",
+        "KZT",
+        "OMR",
+        "TMM",
+        "BTN",
+        "GIP",
+        "LAK",
+        "PAB",
+        "TND",
+        "BWP",
+        "GMD",
+        "LBP",
+        "PEN",
+        "TOP",
+        "BYR",
+        "GNF",
+        "LKR",
+        "PGK",
+        "TRY",
+        "BZD",
+        "GTQ",
+        "LRD",
+        "PHP",
+        "TTD",
+        "CAD",
+        "GYD",
+        "LSL",
+        "PKR",
+        "TWD",
+        "CDF",
+        "HKD",
+        "LTL",
+        "PLN",
+        "TZS",
+        "CHF",
+        "HNL",
+        "LVL",
+        "PYG",
+        "UAH",
+        "CLP",
+        "HRK",
+        "LYD",
+        "QAR",
+        "UGX",
+        "CNY",
+        "HTG",
+        "MAD",
+        "RMB",
+        "USD"
+      ],
+      "type": "string"
+    },
+    "dimUnitEnum": {
+      "enum": [
+        "IN",
+        "CM",
+        "in",
+        "cm",
+        "In",
+        "Cm"
+      ],
+      "type": "string"
+    },
+    "labelTypeEnum": {
+      "enum": [
+        "PDF",
+        "PNG",
+        "ZPL",
+        "ZPL300",
+        "ANY"
+      ],
+      "type": "string",
+      "description": "Format label return in response"
+    },
+    "postPackageItemRequest": {
+      "required": [
+        "itemDescription",
+        "quantity",
+        "unitPrice"
+      ],
+      "type": "object",
+      "properties": {
+        "sku": {
+          "maxLength": 40,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The item's SKU number or other searchable product identifier. PLEASE NOTE: The SKU max field length is 40 characters but will be truncated to 20 characters upon import to Asendia Systems. This means if a SKU is 22 characters it will import into Asendia systems as 20 characters."
+        },
+        "itemDescription": {
+          "maxLength": 150,
+          "type": "string",
+          "description": "The item description that describes what the item is."
+        },
+        "unitPrice": {
+          "maximum": 10000000000,
+          "minimum": 0.01,
+          "type": "number",
+          "description": "The retail price for a single unit of the product.",
+          "format": "double"
+        },
+        "quantity": {
+          "maximum": 1000,
+          "minimum": 0,
+          "type": "integer",
+          "description": "The total quantity of the product units within the package.",
+          "format": "int32"
+        },
+        "unitWeight": {
+          "maximum": 1000,
+          "minimum": 0,
+          "type": "number",
+          "description": "The total weight for a single unit of the product, in pounds.",
+          "format": "double"
+        },
+        "countryOfOrigin": {
+          "maxLength": 2,
+          "minLength": 2,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Please note: If null is passed in, we will default the value to US.\r\nThe 2-character ISO country code in which the product was manufactured, as required by international customs specifications.\r\nSee for more information: http://www.iso.org/iso/country_codes"
+        },
+        "htsNumber": {
+          "maxLength": 20,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": " The Harmonized Tariff Schedule code required by international customs specifications.\r\nSee for more information: http://www.usitc.gov/tata/hts/index.htm"
+        },
+        "disclaim": {
+          "maxLength": 1,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Indicates that the package item requires CPSC information.\r\nValid values: Y or empty string. Required when htsNumber is on the CPSC HTS list; omit the field to skip CPSC checks for the item."
+        },
+        "disclaimReason": {
+          "maxLength": 20,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Indicates why CPSC information is required. Mandatory when disclaim = Y."
+        },
+        "intendedUseCode": {
+          "maxLength": 20,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Description category code providing additional information about the item. Mandatory when disclaim = Y."
+        },
+        "intendedUseDescription": {
+          "maxLength": 900,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Additional information used to describe the item. Mandatory when intendedUseCode = 980.000."
+        },
+        "productUrl": {
+          "maxLength": 2000,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Public URL to product information.\r\nConditionally required based on end carrier for clearance purposes.  If required, must begin with \"https://\" (case-insensitive)."
+        }
+      },
+      "additionalProperties": false
+    },
+    "pudoAddress": {
+      "type": "object",
+      "properties": {
+        "address1": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "address2": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "address3": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "city": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "state": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "zipCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "countryCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pudoId": {
+          "maxLength": 20,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "suburb": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "streetNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "latitude": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "longitude": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "radius": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "weightUnitEnum": {
+      "enum": [
+        "Lb",
+        "Lbs",
+        "Kg",
+        "Kgs",
+        "LB",
+        "LBS",
+        "KG",
+        "KGS"
+      ],
+      "type": "string"
+    }
+  }
+}

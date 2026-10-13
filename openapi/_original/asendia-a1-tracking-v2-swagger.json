@@ -1,0 +1,327 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "A1 Web Services",
+    "description": "These are all the APIs needed to handle Tracking v2.0",
+    "contact": {
+      "name": "Asendia USA Web Service Team for any questions or comments.",
+      "email": "john.mcshane@asendia.com;chris.joiner@asendia.com;katie.vogt@asendia.com;ammi.cabrera@asendia.com"
+    },
+    "version": "Tracking v2.0"
+  },
+  "paths": {
+    "/api/A1/v2.0/Tracking/Detail": {
+      "get": {
+        "tags": [
+          "Tracking"
+        ],
+        "summary": "",
+        "parameters": [
+          {
+            "name": "trackingNumberVendor",
+            "in": "query",
+            "description": "The tracking numbers belonging to the packages you're looking for details of. Accepts up to 10 numbers separated by a comma.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/trackingDetailListApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/trackingDetailListApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/trackingDetailListApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/A1/v2.0/Tracking/Milestone": {
+      "get": {
+        "tags": [
+          "Tracking"
+        ],
+        "summary": "",
+        "parameters": [
+          {
+            "name": "trackingNumberVendor",
+            "in": "query",
+            "description": "The tracking number belonging to the package you're looking for milestones of. Accepts up to 10 numbers separated by a comma.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/trackingMilestoneListApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/trackingMilestoneListApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/trackingMilestoneListApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "trackingProduct": {
+        "type": "object",
+        "properties": {
+          "productCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "productName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "trackingEventLocationDetails": {
+        "type": "object",
+        "properties": {
+          "addressLine1": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "province": {
+            "type": "string",
+            "nullable": true
+          },
+          "postalCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryIso2": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "trackingDetailEvents": {
+        "type": "object",
+        "properties": {
+          "eventCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "eventDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "eventLocationDetails": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/trackingEventLocationDetails"
+              }
+            ],
+            "nullable": true
+          },
+          "eventOn": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "eventSource": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "trackingDetail": {
+        "type": "object",
+        "properties": {
+          "trackingNumberVendor": {
+            "type": "string",
+            "nullable": true
+          },
+          "trackingNumberCustomer": {
+            "type": "string",
+            "nullable": true
+          },
+          "trackingNumberCustomerCarrierOriginal": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerReferenceNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "trackingProduct": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/trackingProduct"
+              }
+            ],
+            "nullable": true
+          },
+          "trackingDetailEvents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/trackingDetailEvents"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResponseStatus": {
+        "type": "object",
+        "properties": {
+          "responseStatusCode": {
+            "type": "integer",
+            "description": "This is used to display the code for the return status.",
+            "format": "int32"
+          },
+          "responseStatusMessage": {
+            "type": "string",
+            "description": "This is used for a human readable return status message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Displays the status of the Return"
+      },
+      "trackingDetailListApiResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/trackingDetail"
+            },
+            "nullable": true
+          },
+          "responseStatus": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ResponseStatus"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "trackingMilestoneEvents": {
+        "type": "object",
+        "properties": {
+          "eventCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "eventDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "eventLocation": {
+            "type": "string",
+            "nullable": true
+          },
+          "eventOn": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "trackingMilestone": {
+        "type": "object",
+        "properties": {
+          "trackingNumberVendor": {
+            "type": "string",
+            "nullable": true
+          },
+          "trackingNumberCustomer": {
+            "type": "string",
+            "nullable": true
+          },
+          "trackingNumberCustomerCarrierOriginal": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerReferenceNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "trackingProduct": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/trackingProduct"
+              }
+            ],
+            "nullable": true
+          },
+          "trackingMilestoneEvents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/trackingMilestoneEvents"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "trackingMilestoneListApiResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/trackingMilestone"
+            },
+            "nullable": true
+          },
+          "responseStatus": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ResponseStatus"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

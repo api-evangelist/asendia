@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-generic-pre-process-parcel-response-api-response-schema.json",
+  "title": "GenericPreProcessParcelResponseApiResponse",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-dws-openapi.yml#/components/schemas/GenericPreProcessParcelResponseApiResponse",
+  "type": "object",
+  "properties": {
+    "data": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/GenericPreProcessParcelResponse"
+        }
+      ],
+      "nullable": true
+    },
+    "responseStatus": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ResponseStatus"
+        }
+      ],
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "GenericPreProcessParcelResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "packageId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "trackingNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "preProcessStatus": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "errorMessage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "processingLocation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ResponseStatus": {
+      "type": "object",
+      "properties": {
+        "responseStatusCode": {
+          "type": "integer",
+          "description": "This is used to display the code for the return status.",
+          "format": "int32"
+        },
+        "responseStatusMessage": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "This is used for a human readable return status message."
+        }
+      },
+      "additionalProperties": false,
+      "description": "Displays the status of the Return"
+    }
+  }
+}

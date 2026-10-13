@@ -1,0 +1,569 @@
+openapi: 3.0.1
+info:
+  title: A1 Web Services
+  description: These are all the APIs needed to handle Pudo Locator v2.6
+  contact:
+    name: Asendia USA Web Service Team for any questions or comments.
+    email: john.mcshane@asendia.com;chris.joiner@asendia.com;katie.vogt@asendia.com;ammi.cabrera@asendia.com
+  version: Pudo Locator v2.6
+paths:
+  /api/A1/v2.6/PudoLocator/PudoLocation:
+    get:
+      tags:
+      - PudoLocator
+      parameters:
+      - name: accountNumber
+        in: query
+        description: Asendia's account number designated for the shipper. This will
+          be provided at account setup.
+        required: true
+        schema:
+          maxLength: 12
+          type: string
+      - name: subAccountNumber
+        in: query
+        description: Asendia's sub account number designated for the shipper, if applicable.
+          This will be provided at account setup.
+        schema:
+          maxLength: 12
+          type: string
+      - name: processingLocation
+        in: query
+        description: "The Asendia's location in where the physical package will be\
+          \ processed.\r\nPossible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC, TOR,\
+          \ CAL, BUF"
+        required: true
+        schema:
+          maxLength: 3
+          minLength: 3
+          type: string
+      - name: recipientAddressLine1
+        in: query
+        description: The first line of the package recipient's street address
+        required: true
+        schema:
+          maxLength: 50
+          type: string
+      - name: recipientAddressLine2
+        in: query
+        description: The second line of the package recipient's street address
+        schema:
+          maxLength: 50
+          type: string
+      - name: recipientAddressLine3
+        in: query
+        description: The third line of the package recipient's street address
+        schema:
+          maxLength: 50
+          type: string
+      - name: recipientCity
+        in: query
+        description: The city of the package recipient's street address
+        required: true
+        schema:
+          maxLength: 50
+          type: string
+      - name: recipientProvince
+        in: query
+        description: The state or province of the package recipient's street address
+        schema:
+          maxLength: 50
+          type: string
+      - name: recipientPostalCode
+        in: query
+        description: The package recipient's postal code
+        required: true
+        schema:
+          maxLength: 20
+          type: string
+      - name: recipientCountryCode
+        in: query
+        description: "The 2-character ISO country code for the package receipient's\
+          \ street address.\r\nSee for more information: http://www.iso.org/iso/country_codes"
+        required: true
+        schema:
+          maxLength: 2
+          minLength: 2
+          type: string
+      - name: totalPackageWeight
+        in: query
+        description: The package's actual weight
+        required: true
+        schema:
+          type: number
+          format: double
+      - name: weightUnit
+        in: query
+        description: The package's unit of weight
+        required: true
+        schema:
+          $ref: '#/components/schemas/weightUnitEnum'
+      - name: dimLength
+        in: query
+        description: The packages dimensional length
+        schema:
+          type: number
+          format: double
+      - name: dimWidth
+        in: query
+        description: The packages dimensional width
+        schema:
+          type: number
+          format: double
+      - name: dimHeight
+        in: query
+        description: The packages dimensional height
+        schema:
+          type: number
+          format: double
+      - name: dimUnit
+        in: query
+        description: The packages dimensional unit
+        schema:
+          $ref: '#/components/schemas/dimUnitEnum'
+      - name: productCode
+        in: query
+        description: "The Product Codes will be provided on a per-integration basis.\r\
+          \nThis indicates the customer’s preferred service or routing for the package.\r\
+          \n(Use * or % for all active.)"
+        required: true
+        schema:
+          maxLength: 5
+          type: string
+      - name: totalPackageValue
+        in: query
+        description: The package's value
+        schema:
+          type: number
+          format: double
+      - name: currencyType
+        in: query
+        description: The package's currency type
+        schema:
+          $ref: '#/components/schemas/currencyTypeEnum'
+      - name: radius
+        in: query
+        description: The radius in kilometers of the search (default is 2)
+        schema:
+          type: number
+          format: double
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PudoLocatorResponseApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PudoLocatorResponseApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PudoLocatorResponseApiResponse'
+components:
+  schemas:
+    weightUnitEnum:
+      enum:
+      - Lb
+      - Lbs
+      - Kg
+      - Kgs
+      - LB
+      - LBS
+      - KG
+      - KGS
+      type: string
+    dimUnitEnum:
+      enum:
+      - IN
+      - CM
+      - in
+      - cm
+      - In
+      - Cm
+      type: string
+    currencyTypeEnum:
+      enum:
+      - AED
+      - COP
+      - HUF
+      - MDL
+      - RON
+      - UYU
+      - AFN
+      - CRC
+      - IDR
+      - MGA
+      - RSD
+      - UZS
+      - ALL
+      - CUP
+      - ILS
+      - MKD
+      - RUB
+      - VEB
+      - AMD
+      - CVE
+      - IMP
+      - MMK
+      - RWF
+      - VND
+      - ANG
+      - CYP
+      - INR
+      - MNT
+      - SAR
+      - VUV
+      - AOA
+      - CZK
+      - IQD
+      - MOP
+      - SBD
+      - WST
+      - ARS
+      - DJF
+      - IRR
+      - MRO
+      - SCR
+      - XAF
+      - AUD
+      - DKK
+      - ISK
+      - MTL
+      - SDD
+      - XCD
+      - AWG
+      - DOP
+      - JEP
+      - MUR
+      - SEK
+      - XOF
+      - AZN
+      - DZD
+      - JMD
+      - MVR
+      - SGD
+      - XPF
+      - BAM
+      - EEK
+      - JOD
+      - MWK
+      - SHP
+      - YER
+      - BBD
+      - EGP
+      - JPY
+      - MXN
+      - SKK
+      - ZAR
+      - BDT
+      - ERN
+      - KES
+      - MYR
+      - SLL
+      - ZMK
+      - BGN
+      - ETB
+      - KGS
+      - MZM
+      - SOS
+      - ZWD
+      - BHD
+      - EUR
+      - KHR
+      - NAD
+      - SRD
+      - BIF
+      - FJD
+      - KMF
+      - NGN
+      - STD
+      - BMD
+      - FKP
+      - KPW
+      - NIO
+      - SYP
+      - BND
+      - GBP
+      - KRW
+      - NOK
+      - SZL
+      - BOB
+      - GEL
+      - KWD
+      - NPR
+      - THB
+      - BRL
+      - GGP
+      - KYD
+      - NZD
+      - TJS
+      - BSD
+      - GHC
+      - KZT
+      - OMR
+      - TMM
+      - BTN
+      - GIP
+      - LAK
+      - PAB
+      - TND
+      - BWP
+      - GMD
+      - LBP
+      - PEN
+      - TOP
+      - BYR
+      - GNF
+      - LKR
+      - PGK
+      - TRY
+      - BZD
+      - GTQ
+      - LRD
+      - PHP
+      - TTD
+      - CAD
+      - GYD
+      - LSL
+      - PKR
+      - TWD
+      - CDF
+      - HKD
+      - LTL
+      - PLN
+      - TZS
+      - CHF
+      - HNL
+      - LVL
+      - PYG
+      - UAH
+      - CLP
+      - HRK
+      - LYD
+      - QAR
+      - UGX
+      - CNY
+      - HTG
+      - MAD
+      - RMB
+      - USD
+      type: string
+    RequestedLocation:
+      type: object
+      properties:
+        country:
+          type: string
+          nullable: true
+        state:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        zipcode:
+          type: string
+          nullable: true
+        address1:
+          type: string
+          nullable: true
+        address2:
+          type: string
+          nullable: true
+        address3:
+          type: string
+          nullable: true
+        streetNumber:
+          type: string
+          nullable: true
+        suburb:
+          type: string
+          nullable: true
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        radius:
+          type: integer
+          format: int32
+      additionalProperties: false
+    PudoAddress:
+      type: object
+      properties:
+        countryCode:
+          type: string
+          nullable: true
+        state:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        zipcode:
+          type: string
+          nullable: true
+        address1:
+          type: string
+          nullable: true
+        address2:
+          type: string
+          nullable: true
+        address3:
+          type: string
+          nullable: true
+        suburb:
+          type: string
+          nullable: true
+        streetNumber:
+          type: string
+          nullable: true
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        radius:
+          type: number
+          format: double
+      additionalProperties: false
+    WorkHours:
+      type: object
+      properties:
+        mo:
+          type: array
+          items:
+            type: string
+          nullable: true
+        tu:
+          type: array
+          items:
+            type: string
+          nullable: true
+        we:
+          type: array
+          items:
+            type: string
+          nullable: true
+        th:
+          type: array
+          items:
+            type: string
+          nullable: true
+        fr:
+          type: array
+          items:
+            type: string
+          nullable: true
+        sa:
+          type: array
+          items:
+            type: string
+          nullable: true
+        su:
+          type: array
+          items:
+            type: string
+          nullable: true
+        closedPeriods:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: false
+    PudoPoint:
+      type: object
+      properties:
+        asendiaPudoPointId:
+          type: string
+          nullable: true
+        supplierId:
+          type: string
+          nullable: true
+        serviceCode:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        distance:
+          type: number
+          format: double
+        pudoId:
+          type: string
+          nullable: true
+        pudoAddress:
+          allOf:
+          - $ref: '#/components/schemas/PudoAddress'
+          nullable: true
+        workHours:
+          allOf:
+          - $ref: '#/components/schemas/WorkHours'
+          nullable: true
+      additionalProperties: false
+    AdditionalData:
+      type: object
+      properties:
+        key:
+          type: string
+          nullable: true
+      additionalProperties: false
+    PudoLocatorResponse:
+      type: object
+      properties:
+        requestedLocation:
+          allOf:
+          - $ref: '#/components/schemas/RequestedLocation'
+          nullable: true
+        pudoPoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/PudoPoint'
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        code:
+          type: integer
+          format: int32
+        reason:
+          type: string
+          nullable: true
+        note:
+          type: string
+          nullable: true
+        transactionKey:
+          type: string
+          nullable: true
+        additionalData:
+          allOf:
+          - $ref: '#/components/schemas/AdditionalData'
+          nullable: true
+      additionalProperties: false
+    ResponseStatus:
+      type: object
+      properties:
+        responseStatusCode:
+          type: integer
+          description: This is used to display the code for the return status.
+          format: int32
+        responseStatusMessage:
+          type: string
+          description: This is used for a human readable return status message.
+          nullable: true
+      additionalProperties: false
+      description: Displays the status of the Return
+    PudoLocatorResponseApiResponse:
+      type: object
+      properties:
+        data:
+          allOf:
+          - $ref: '#/components/schemas/PudoLocatorResponse'
+          nullable: true
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+          nullable: true
+      additionalProperties: false

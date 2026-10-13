@@ -1,0 +1,654 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-get-receptacle-response-schema.json",
+  "title": "GetReceptacleResponse",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-receptacle-openapi.yml#/components/schemas/GetReceptacleResponse",
+  "type": "object",
+  "properties": {
+    "receptacle": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Receptacle"
+        }
+      ],
+      "nullable": true
+    },
+    "responseStatus": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/responseStatus"
+        }
+      ],
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "Receptacle": {
+      "type": "object",
+      "properties": {
+        "carrierServiceDispatchId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "carrierServiceDispatchReceptacleId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sequence": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "statusId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "carrierId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "carrierName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "carrierServiceId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "carrierServiceName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "receptacleNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "carrierReceptacleNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "formatTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "formatName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "receptacleFormatTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "receptacleformatName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "containerTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "containerTypeName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "weightCode": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/weightTypeEnum"
+            }
+          ]
+        },
+        "countryISO2": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "countryOrZoneName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "foe": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "priceGroup": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "minimumWeight": {
+          "type": "number",
+          "format": "double"
+        },
+        "maximumWeight": {
+          "type": "number",
+          "format": "double"
+        },
+        "createdOn": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "createdWorkStation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "closedOn": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "closedBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "closedWorkstation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "receptaclePackages": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/ReceptaclePackage"
+          }
+        },
+        "receptacleLabels": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/ReportData"
+          }
+        },
+        "locationCarrierServicePermitId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "piece": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "weight": {
+          "type": "number",
+          "format": "double"
+        },
+        "isEnabled": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "labelQuantity": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "brokerId": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "brokerServiceId": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "postalDispatchId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "hubTicketId": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "postalDispatchesMappingId": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "originImpc": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "destinationImpc": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mailCategory": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mailSubclass": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "postalFormat": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "locationId": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "dispatchNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "internalServiceNoteId": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "flightTruckNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "nesDocumentStatusId": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "receptacleGroup": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "crmId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "receptacleTierId": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "receptacleTierName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "isFinalized": {
+          "type": "boolean"
+        },
+        "receptacleRouteCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "destinationCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dispatchingSystem": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "receptacleJobType": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "dispatchMappingFormat": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sequenceNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sequenceNumberDispatch": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ReceptaclePackage": {
+      "type": "object",
+      "properties": {
+        "trackingNumberCustomer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "trackingNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "weight": {
+          "type": "number",
+          "format": "double"
+        },
+        "piece": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "weightCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "weightPostage": {
+          "type": "number",
+          "format": "double"
+        },
+        "weightPostageCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "phantomWeight": {
+          "type": "number",
+          "format": "double"
+        },
+        "phantomWeightCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "countryISO2": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "countryName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "formatTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "formatName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "itemCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "value": {
+          "type": "number",
+          "format": "double"
+        },
+        "processedBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "processedOn": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sortedBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sortedOn": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "dataSource": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "untrackedItemId": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "sorting": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "coreProductId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "revenueProtection": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ReportData": {
+      "required": [
+        "contentData",
+        "contentSize",
+        "contentTypeId",
+        "formatCode"
+      ],
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "formatCode": {
+          "type": "string"
+        },
+        "contentTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "contentTypeName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contentSize": {
+          "type": "string"
+        },
+        "createdOn": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "createdBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "exportedOn": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "exportedBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "friendlyName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contentData": {
+          "type": "string"
+        },
+        "reportId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "fileName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "orientation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fileLocationPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "carrierLabelType": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "A-Carrier document type when available (e.g. ACL Label.Type). Used to distinguish customs documents from shipping labels."
+        },
+        "isS3File": {
+          "type": "boolean"
+        },
+        "numberOfCopies": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "additionalProperties": false
+    },
+    "responseStatus": {
+      "type": "object",
+      "properties": {
+        "responseStatusCode": {
+          "type": "integer",
+          "description": "This is used to display the code for the return status.",
+          "format": "int32"
+        },
+        "responseStatusMessage": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "This is used for a human readable return status message."
+        }
+      },
+      "additionalProperties": false,
+      "description": "Displays the status of the Return"
+    },
+    "weightTypeEnum": {
+      "enum": [
+        "lb",
+        "kg"
+      ],
+      "type": "string"
+    }
+  }
+}

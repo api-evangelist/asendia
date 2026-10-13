@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-generic-pre-process-parcel-request-schema.json",
+  "title": "GenericPreProcessParcelRequest",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-dws-openapi.yml#/components/schemas/GenericPreProcessParcelRequest",
+  "type": "object",
+  "properties": {
+    "trackingNumber": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The tracking number belonging to the parcel preprocessed with DWS\r\nOnly 1 tracking number per API request"
+    },
+    "processingLocation": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The Asendia's location where the physical package will be processed.\r\nIf null, the processing location from API account settings will be used (BR-1-3)\r\nExamples: SIN(Singapore), HON(Hong Kong), AUS(Australia) and NEW(New Zealand)."
+    },
+    "totalPackageWeight": {
+      "type": "number",
+      "description": "The parcel’s actual weight for the given weightUnit",
+      "format": "double"
+    },
+    "weightUnit": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/weightUnitEnum"
+        }
+      ],
+      "description": "The package's unit of weight"
+    },
+    "dimLength": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "The package's dimensional length",
+      "format": "double"
+    },
+    "dimWidth": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "The package's dimensional width",
+      "format": "double"
+    },
+    "dimHeight": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "The package's dimensional height",
+      "format": "double"
+    },
+    "dimUnit": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/dimUnitEnum"
+        }
+      ],
+      "description": "The package's dimensional unit.\r\nIMPORTANT (BR-1-4): For APAC DWS machines, this can be null.\r\nWhen null, dimensions are assumed to be in MM and will be automatically converted to CM by dividing by 10.",
+      "nullable": true
+    },
+    "machineId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Unique identifier for the DWS machine (BR-5-3)\r\nWill be stored as Scale ID in the system"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "dimUnitEnum": {
+      "enum": [
+        "IN",
+        "CM",
+        "MM"
+      ],
+      "type": "string"
+    },
+    "weightUnitEnum": {
+      "enum": [
+        "Lb",
+        "Kg"
+      ],
+      "type": "string"
+    }
+  }
+}

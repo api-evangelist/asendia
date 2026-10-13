@@ -1,0 +1,281 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-post-close-dashipment-response-schema.json",
+  "title": "postCloseDAShipmentResponse",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-parcel-openapi.yml#/components/schemas/postCloseDAShipmentResponse",
+  "type": "object",
+  "properties": {
+    "responseStatus": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/responseStatus"
+        }
+      ],
+      "nullable": true
+    },
+    "closeDAShipment": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/closeDAShipmentResponseModel"
+        }
+      ],
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "ReportData": {
+      "required": [
+        "contentData",
+        "contentSize",
+        "contentTypeId",
+        "formatCode"
+      ],
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "formatCode": {
+          "type": "string"
+        },
+        "contentTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "contentTypeName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contentSize": {
+          "type": "string"
+        },
+        "createdOn": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "createdBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "exportedOn": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "exportedBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "friendlyName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contentData": {
+          "type": "string"
+        },
+        "reportId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "fileName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "orientation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fileLocationPath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "carrierLabelType": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "A-Carrier document type when available (e.g. ACL Label.Type). Used to distinguish customs documents from shipping labels."
+        },
+        "isS3File": {
+          "type": "boolean"
+        },
+        "numberOfCopies": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "additionalProperties": false
+    },
+    "closeDAShipmentResponseModel": {
+      "type": "object",
+      "properties": {
+        "jobId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "jobNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "jobStatus": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "jobCreationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "jobProductCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "jobProductName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "jobQuoteCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "jobQuoteName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "jobTotalWeight": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "jobTotalPieces": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "jobWeightUnit": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/weightUnitEnum"
+            }
+          ]
+        },
+        "isDirectAccess": {
+          "type": "boolean"
+        },
+        "packageUsedInAnotherJob": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "receptacleNumbers": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "serviceDispatchNumbers": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "shipmentDispatchNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "receptacleLabels": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/ReportData"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "responseStatus": {
+      "type": "object",
+      "properties": {
+        "responseStatusCode": {
+          "type": "integer",
+          "description": "This is used to display the code for the return status.",
+          "format": "int32"
+        },
+        "responseStatusMessage": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "This is used for a human readable return status message."
+        }
+      },
+      "additionalProperties": false,
+      "description": "Displays the status of the Return"
+    },
+    "weightUnitEnum": {
+      "enum": [
+        "Lb",
+        "Lbs",
+        "Kg",
+        "Kgs",
+        "LB",
+        "LBS",
+        "KG",
+        "KGS"
+      ],
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-customer-account-list-api-response-schema.json",
+  "title": "CustomerAccountListApiResponse",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-servicenow-openapi.yml#/components/schemas/CustomerAccountListApiResponse",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/$defs/CustomerAccount"
+      }
+    },
+    "responseStatus": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ResponseStatus"
+        }
+      ],
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "CustomerAccount": {
+      "type": "object",
+      "properties": {
+        "accountCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "companyName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "division": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "parentAccount": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "salesReps": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "customerCareReps": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "a1CustomerServiceNotes": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "updatedOn": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ResponseStatus": {
+      "type": "object",
+      "properties": {
+        "responseStatusCode": {
+          "type": "integer",
+          "description": "This is used to display the code for the return status.",
+          "format": "int32"
+        },
+        "responseStatusMessage": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "This is used for a human readable return status message."
+        }
+      },
+      "additionalProperties": false,
+      "description": "Displays the status of the Return"
+    }
+  }
+}

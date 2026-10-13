@@ -1,0 +1,53 @@
+# Asendia
+
+> Asendia is a global provider of international e-commerce shipping and cross-border delivery. A joint venture between La Poste and Swiss Post, Asendia helps online retailers and brands ship parcels, manage returns, handle customs and fulfil orders across more than 200 destinations. Its e-PAQ range covers economy, tracked and premium delivery options, alongside customs clearance, global returns management and order fulfilment.
+
+Asendia operates through several regional websites that represent the same company, including asendia.com (global), asendia.co.uk (United Kingdom), asendiausa.com (United States) and asendiaoceania.com (Oceania).
+
+## Core delivery solutions
+
+- [International parcel delivery for e-commerce](https://www.asendia.com/international-parcel-delivery-ecommerce): Asendia's e-PAQ range of cross-border delivery services for online retailers.
+- [e-PAQ Standard](https://www.asendia.com/e-paq/e-paq-standard): Cost-effective international delivery for lightweight e-commerce parcels.
+- [e-PAQ Select](https://www.asendia.com/e-paq/e-paq-select): Fully tracked international delivery that balances speed and value.
+- [e-PAQ Plus](https://www.asendia.com/e-paq/e-paq-plus): Premium tracked delivery with faster transit and visibility.
+- [e-PAQ Elite](https://www.asendia.com/e-paq/e-paq-elite): Express international delivery for time-sensitive and higher-value shipments.
+- [Order fulfilment](https://www.asendia.com/order-fulfilment): Warehousing, inventory management, pick-and-pack and international distribution for online retailers.
+- [E-commerce fulfilment guide](https://www.asendia.com/asendia-insights/ecommerce-fulfilment-guide): A practical guide to international e-commerce fulfilment, from inventory and warehousing to pick-and-pack and delivery.
+- [Shipping, tracking and customs technology](https://www.asendia.com/parcel-shipping-and-tracking-platforms): Platforms and integrations for managing international shipping and parcel visibility.
+- [International parcel tracking](https://www.asendia.com/asendia-insights/what-to-look-for-from-your-international-parcel-tracking): What online retailers should look for in cross-border parcel tracking and delivery visibility.
+
+## Customs, duties and compliance
+
+- [Customs clearance for global retail](https://www.asendia.com/customs-clearance-solutions-for-global-retail): Customs data, duties and taxes, pre-clearance and payment options for cross-border e-commerce.
+- [IOSS intermediary support](https://www.asendia.com/resource/ioss-intermediary): Guidance for non-EU retailers selecting and using an IOSS intermediary.
+- [IOSS and EU VAT guide](https://www.asendia.com/all-you-need-to-know-about-ioss-and-vat-rules): How IOSS and EU VAT rules affect e-commerce sellers.
+- [EU Customs 2026 resource hub](https://www.asendia.com/eu-customs-2026-resource-hub): Current guides, questions and resources about the EU customs changes effective from July 2026.
+- [DDP and DDU delivery strategy](https://www.asendia.com/asendia-insights/beyond-ddu-and-ddp-how-to-choose-the-right-eu-delivery-strategy-under-the-new-customs-rules): How retailers can choose who pays duties and taxes and manage the customer experience.
+- [USA tariffs and e-commerce shipping](https://www.asendia.com/asendia-insights/destination-usa-how-e-paq-is-helping-international-retailers-navigate-us-tariffs): Guidance for international retailers navigating US tariffs, customs changes and cross-border delivery.
+
+## Returns
+
+- [Global e-commerce returns](https://www.asendia.com/global-returns): End-to-end international returns services for online retailers.
+
+## For smaller businesses
+
+- [International parcel delivery for small businesses](https://www.asendia.com/small-business-international-parcel-delivery-services): Cross-border shipping options for smaller e-commerce sellers.
+
+## Destinations and industries
+
+- [E-commerce delivery to the USA and Canada](https://www.asendia.com/destination/usa-and-canada): International parcel delivery, customs and returns support for retailers selling into North America.
+- [International delivery for fashion e-commerce](https://www.asendia.com/industry/fashion-apparel-sportswear-accessories): Cross-border delivery and returns solutions for fashion, apparel, sportswear and accessories retailers.
+
+## About Asendia
+
+- [About Asendia](https://www.asendia.com/about-asendia): Asendia's ownership, global network and role in cross-border e-commerce.
+- [Environmental, social and governance commitments](https://www.asendia.com/esg): Asendia's sustainability and ESG programme.
+- [Technology](https://www.asendia.com/tech-that-delivers): The technology behind Asendia's logistics services.
+- [Premium Partners](https://www.asendia.com/premium-partners): Asendia's delivery and technology partner network.
+
+## Insights and contact
+
+- [Asendia Insights](https://www.asendia.com/asendia-insights): Research, reports and expert articles on cross-border e-commerce, returns, customs and market trends.
+- [Frequently asked questions](https://www.asendia.com/contact/faq): Answers to common questions about Asendia's services.
+- [Contact Asendia](https://www.asendia.com/contact): Contact the global or regional Asendia teams.
+- [Request a parcel quote](https://www.asendia.com/contact/parcelquotes): Enquiries about international parcel delivery.

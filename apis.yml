@@ -1,23 +1,426 @@
 aid: asendia
 name: Asendia
-description: 'Asendia is a company surfaced via the API Evangelist harvest backlog (source: market-gap:shipping-logistics)
-  and added to the network as a stub for full-pipeline profiling.'
+image: https://www.asendia.com/hubfs/Website%20Optimization%20Project/Consumer%20images/Asendia%20e-paq%20services%20view.jpg
+description: Asendia is a global cross-border e-commerce shipping and international mail carrier, a joint venture between La Poste and Swiss Post. Its US arm, Asendia USA, publishes the A1 Web Services
+  as public OpenAPI 3.0 documents (parcel, shipping platform, tracking, PUDO locator, fulfillment and more) at a1api.asendiausa.com; the Asendia Sync shipping platform (asendia-sync.com) exposes an API
+  whose Swagger documentation requires authentication.
 url: https://raw.githubusercontent.com/api-evangelist/asendia/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:market-gap:shipping-logistics
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-13 (local-v5; was stub, harvest)
 specificationVersion: '0.20'
 created: '2026-10-13'
 modified: '2026-10-13'
 tags:
 - Company
-apis: []
+- Shipping
+- Logistics
+- Parcels
+- Cross-Border E-Commerce
+- Tracking
+- Postal
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/asendia-agentic-access.yml
+- type: Spectral
+  url: rules/asendia-rules.yml
+- type: JSONLD
+  url: json-ld/asendia-context.jsonld
+- type: Vocabulary
+  url: vocabulary/asendia-vocabulary.yml
+- type: DataModel
+  url: data-model/asendia-data-model.yml
+- type: Conformance
+  url: conformance/asendia-conformance.yml
+- type: LLMsTxt
+  url: llms/asendia-llms.txt
+- type: Hosts
+  url: hosts/asendia-hosts.yml
+- type: Vendors
+  url: vendors/asendia-vendors.yml
+- type: DomainSecurity
+  url: security/asendia-domain-security.yml
 - type: Website
   url: https://www.asendia.com
+- type: Documentation
+  url: https://a1api.asendiausa.com/swagger/index.html
+- type: PrivacyPolicy
+  url: https://www.asendia.com/privacy-notice
+- type: TermsOfService
+  url: https://www.asendia.com/legal-notice
+- type: Newsroom
+  url: https://www.asendia.com/media
+- type: Website
+  url: https://www.asendiausa.com/
+apis:
+- aid: asendia:a1-consolidation
+  name: Asendia A1 Consolidation API
+  description: 'Asendia USA A1 Web Services Consolidation API (1 operation(s)), published as an OpenAPI 3.0.1 document in the public Swagger UI at a1api.asendiausa.com, served by Asendia USA (contact: Asendia
+    USA Web Service Team, asendia.com addresses).'
+  humanURL: https://a1api.asendiausa.com/swagger/index.html
+  baseURL: https://a1api.asendiausa.com
+  tags:
+  - Shipping
+  - Parcels
+  - Logistics
+  properties:
+  - type: OpenAPI
+    url: openapi/asendia-a1-consolidation-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://a1api.asendiausa.com/swagger/Consolidation%20v1.0/swagger.json
+  - type: JSONSchema
+    url: json-schema/asendia-consolidation-orders-request-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-consolidation-orders-response-api-response-schema.json
+- aid: asendia:a1-dpd-tracking
+  name: Asendia A1 DPD Tracking API
+  description: 'Asendia USA A1 Web Services DPD Tracking API (1 operation(s)), published as an OpenAPI 3.0.1 document in the public Swagger UI at a1api.asendiausa.com, served by Asendia USA (contact: Asendia
+    USA Web Service Team, asendia.com addresses).'
+  humanURL: https://a1api.asendiausa.com/swagger/index.html
+  baseURL: https://a1api.asendiausa.com
+  tags:
+  - Shipping
+  - Parcels
+  - Logistics
+  properties:
+  - type: OpenAPI
+    url: openapi/asendia-a1-dpd-tracking-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://a1api.asendiausa.com/swagger/DPD%20Tracking%20v1.0/swagger.json
+  - type: JSONSchema
+    url: json-schema/asendia-ttevents-request-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-ttevents-response-api-response-schema.json
+- aid: asendia:a1-dws
+  name: Asendia A1 DWS API
+  description: 'Asendia USA A1 Web Services DWS API (8 operation(s)), published as an OpenAPI 3.0.1 document in the public Swagger UI at a1api.asendiausa.com, served by Asendia USA (contact: Asendia USA
+    Web Service Team, asendia.com addresses).'
+  humanURL: https://a1api.asendiausa.com/swagger/index.html
+  baseURL: https://a1api.asendiausa.com
+  tags:
+  - Shipping
+  - Parcels
+  - Logistics
+  properties:
+  - type: OpenAPI
+    url: openapi/asendia-a1-dws-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://a1api.asendiausa.com/swagger/DWS%20v1.0/swagger.json
+  - type: JSONSchema
+    url: json-schema/asendia-volumizer-pre-process-parcel-request-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-generic-pre-process-parcel-request-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-pre-process-parcel-request-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-volumizer-pre-process-parcel-response-api-response-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-generic-pre-process-parcel-response-api-response-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-vitronic-data-item-list-api-response-schema.json
+- aid: asendia:a1-externalinvoiceimport
+  name: Asendia A1 External Invoice Import API
+  description: 'Asendia USA A1 Web Services External Invoice Import API (1 operation(s)), published as an OpenAPI 3.0.1 document in the public Swagger UI at a1api.asendiausa.com, served by Asendia USA (contact:
+    Asendia USA Web Service Team, asendia.com addresses).'
+  humanURL: https://a1api.asendiausa.com/swagger/index.html
+  baseURL: https://a1api.asendiausa.com
+  tags:
+  - Shipping
+  - Parcels
+  - Logistics
+  properties:
+  - type: OpenAPI
+    url: openapi/asendia-a1-externalinvoiceimport-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://a1api.asendiausa.com/swagger/ExternalInvoiceImport%20v1.0/swagger.json
+  - type: JSONSchema
+    url: json-schema/asendia-external-invoice-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-boolean-api-response-schema.json
+- aid: asendia:a1-fulfillment
+  name: Asendia A1 Fulfillment API
+  description: 'Asendia USA A1 Web Services Fulfillment API (6 operation(s)), published as an OpenAPI 3.0.1 document in the public Swagger UI at a1api.asendiausa.com, served by Asendia USA (contact: Asendia
+    USA Web Service Team, asendia.com addresses).'
+  humanURL: https://a1api.asendiausa.com/swagger/index.html
+  baseURL: https://a1api.asendiausa.com
+  tags:
+  - Shipping
+  - Parcels
+  - Logistics
+  properties:
+  - type: OpenAPI
+    url: openapi/asendia-a1-fulfillment-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://a1api.asendiausa.com/swagger/Fulfillment%20v1.0/swagger.json
+  - type: JSONSchema
+    url: json-schema/asendia-sales-order-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-purchase-order-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-void-sales-order-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-inventory-adjustment-response-list-api-response-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-response-sales-order-api-response-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-item-receipt-api-response-schema.json
+- aid: asendia:a1-idmailinterface
+  name: Asendia A1 IDMail Interface API
+  description: 'Asendia USA A1 Web Services IDMail Interface API (3 operation(s)), published as an OpenAPI 3.0.1 document in the public Swagger UI at a1api.asendiausa.com, served by Asendia USA (contact:
+    Asendia USA Web Service Team, asendia.com addresses).'
+  humanURL: https://a1api.asendiausa.com/swagger/index.html
+  baseURL: https://a1api.asendiausa.com
+  tags:
+  - Shipping
+  - Parcels
+  - Logistics
+  properties:
+  - type: OpenAPI
+    url: openapi/asendia-a1-idmailinterface-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://a1api.asendiausa.com/swagger/IDMailInterface/swagger.json
+  - type: JSONSchema
+    url: json-schema/asendia-insert-processing-entry-request-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-close-bag-request-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-finish-run-request-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-int32-api-response-schema.json
+- aid: asendia:a1-npi
+  name: Asendia A1 NPI API
+  description: 'Asendia USA A1 Web Services NPI API (3 operation(s)), published as an OpenAPI 3.0.1 document in the public Swagger UI at a1api.asendiausa.com, served by Asendia USA (contact: Asendia USA
+    Web Service Team, asendia.com addresses).'
+  humanURL: https://a1api.asendiausa.com/swagger/index.html
+  baseURL: https://a1api.asendiausa.com
+  tags:
+  - Shipping
+  - Parcels
+  - Logistics
+  properties:
+  - type: OpenAPI
+    url: openapi/asendia-a1-npi-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://a1api.asendiausa.com/swagger/NPI%20v1.0/swagger.json
+  - type: JSONSchema
+    url: json-schema/asendia-put-package-to-bin-request-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-put-bin-close-request-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-get-bin-number-response-api-response-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-boolean-api-response-schema.json
+- aid: asendia:a1-parcel
+  name: Asendia A1 Parcel API
+  description: 'Asendia USA A1 Web Services Parcel API (7 operation(s)), published as an OpenAPI 3.0.1 document in the public Swagger UI at a1api.asendiausa.com, served by Asendia USA (contact: Asendia
+    USA Web Service Team, asendia.com addresses).'
+  humanURL: https://a1api.asendiausa.com/swagger/index.html
+  baseURL: https://a1api.asendiausa.com
+  tags:
+  - Shipping
+  - Parcels
+  - Logistics
+  properties:
+  - type: OpenAPI
+    url: openapi/asendia-a1-parcel-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://a1api.asendiausa.com/swagger/Parcel%20v1.0/swagger.json
+  - type: JSONSchema
+    url: json-schema/asendia-post-parcel-response-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-response-status-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-delete-parcel-request-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-post-close-dashipment-response-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-post-close-shipment-response-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-close-shipment-request-schema.json
+- aid: asendia:a1-pudo-locator
+  name: Asendia A1 PUDO Locator API
+  description: 'Asendia USA A1 Web Services PUDO Locator API (1 operation(s)), published as an OpenAPI 3.0.1 document in the public Swagger UI at a1api.asendiausa.com, served by Asendia USA (contact: Asendia
+    USA Web Service Team, asendia.com addresses).'
+  humanURL: https://a1api.asendiausa.com/swagger/index.html
+  baseURL: https://a1api.asendiausa.com
+  tags:
+  - Shipping
+  - Parcels
+  - Logistics
+  properties:
+  - type: OpenAPI
+    url: openapi/asendia-a1-pudo-locator-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://a1api.asendiausa.com/swagger/Pudo%20Locator%20v2.6/swagger.json
+  - type: JSONSchema
+    url: json-schema/asendia-pudo-locator-response-api-response-schema.json
+- aid: asendia:a1-put-to-light
+  name: Asendia A1 Put To Light API
+  description: 'Asendia USA A1 Web Services Put To Light API (2 operation(s)), published as an OpenAPI 3.0.1 document in the public Swagger UI at a1api.asendiausa.com, served by Asendia USA (contact: Asendia
+    USA Web Service Team, asendia.com addresses).'
+  humanURL: https://a1api.asendiausa.com/swagger/index.html
+  baseURL: https://a1api.asendiausa.com
+  tags:
+  - Shipping
+  - Parcels
+  - Logistics
+  properties:
+  - type: OpenAPI
+    url: openapi/asendia-a1-put-to-light-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://a1api.asendiausa.com/swagger/Put%20To%20Light%20v1.0/swagger.json
+  - type: JSONSchema
+    url: json-schema/asendia-barcode-scan-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-string-api-response-schema.json
+- aid: asendia:a1-receptacle
+  name: Asendia A1 Receptacle API
+  description: 'Asendia USA A1 Web Services Receptacle API (2 operation(s)), published as an OpenAPI 3.0.1 document in the public Swagger UI at a1api.asendiausa.com, served by Asendia USA (contact: Asendia
+    USA Web Service Team, asendia.com addresses).'
+  humanURL: https://a1api.asendiausa.com/swagger/index.html
+  baseURL: https://a1api.asendiausa.com
+  tags:
+  - Shipping
+  - Parcels
+  - Logistics
+  properties:
+  - type: OpenAPI
+    url: openapi/asendia-a1-receptacle-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://a1api.asendiausa.com/swagger/Receptacle%20v1.0/swagger.json
+  - type: JSONSchema
+    url: json-schema/asendia-post-receptacle-api-model-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-create-receptacle-response-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-get-receptacle-response-schema.json
+- aid: asendia:a1-servicenow
+  name: Asendia A1 ServiceNow API
+  description: 'Asendia USA A1 Web Services ServiceNow API (2 operation(s)), published as an OpenAPI 3.0.1 document in the public Swagger UI at a1api.asendiausa.com, served by Asendia USA (contact: Asendia
+    USA Web Service Team, asendia.com addresses).'
+  humanURL: https://a1api.asendiausa.com/swagger/index.html
+  baseURL: https://a1api.asendiausa.com
+  tags:
+  - Shipping
+  - Parcels
+  - Logistics
+  properties:
+  - type: OpenAPI
+    url: openapi/asendia-a1-servicenow-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://a1api.asendiausa.com/swagger/ServiceNow%20v1.0/swagger.json
+  - type: JSONSchema
+    url: json-schema/asendia-customer-account-list-api-response-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-customer-contact-list-api-response-schema.json
+- aid: asendia:a1-shippingplatform
+  name: Asendia A1 Shipping Platform API
+  description: 'Asendia USA A1 Web Services Shipping Platform API (8 operation(s)), published as an OpenAPI 3.0.1 document in the public Swagger UI at a1api.asendiausa.com, served by Asendia USA (contact:
+    Asendia USA Web Service Team, asendia.com addresses).'
+  humanURL: https://a1api.asendiausa.com/swagger/index.html
+  baseURL: https://a1api.asendiausa.com
+  tags:
+  - Shipping
+  - Parcels
+  - Logistics
+  properties:
+  - type: OpenAPI
+    url: openapi/asendia-a1-shippingplatform-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://a1api.asendiausa.com/swagger/ShippingPlatform%20v1.0/swagger.json
+  - type: JSONSchema
+    url: json-schema/asendia-post-package-request-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-post-pre-alert-request-with-receptacle-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-post-pre-alert-request-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-post-close-direct-shipment-dispatch-request-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-post-close-dispatch-request-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-post-package-response-schema.json
+- aid: asendia:a1-shippingplatformbulk
+  name: Asendia A1 Shipping Platform Bulk API
+  description: 'Asendia USA A1 Web Services Shipping Platform Bulk API (1 operation(s)), published as an OpenAPI 3.0.1 document in the public Swagger UI at a1api.asendiausa.com, served by Asendia USA (contact:
+    Asendia USA Web Service Team, asendia.com addresses).'
+  humanURL: https://a1api.asendiausa.com/swagger/index.html
+  baseURL: https://a1api.asendiausa.com
+  tags:
+  - Shipping
+  - Parcels
+  - Logistics
+  properties:
+  - type: OpenAPI
+    url: openapi/asendia-a1-shippingplatformbulk-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://a1api.asendiausa.com/swagger/ShippingPlatformBulk%20v1.0/swagger.json
+  - type: JSONSchema
+    url: json-schema/asendia-post-package-bulk-request-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-post-package-response-schema.json
+- aid: asendia:a1-tracking
+  name: Asendia A1 Tracking v1 API
+  description: 'Asendia USA A1 Web Services Tracking v1 API (2 operation(s)), published as an OpenAPI 3.0.1 document in the public Swagger UI at a1api.asendiausa.com, served by Asendia USA (contact: Asendia
+    USA Web Service Team, asendia.com addresses).'
+  humanURL: https://a1api.asendiausa.com/swagger/index.html
+  baseURL: https://a1api.asendiausa.com
+  tags:
+  - Shipping
+  - Parcels
+  - Logistics
+  properties:
+  - type: OpenAPI
+    url: openapi/asendia-a1-tracking-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://a1api.asendiausa.com/swagger/Tracking%20v1.0/swagger.json
+  - type: JSONSchema
+    url: json-schema/asendia-get-tracking-milestone-response-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-get-tracking-detail-response-schema.json
+- aid: asendia:a1-tracking-v2
+  name: Asendia A1 Tracking v2 API
+  description: 'Asendia USA A1 Web Services Tracking v2 API (2 operation(s)), published as an OpenAPI 3.0.1 document in the public Swagger UI at a1api.asendiausa.com, served by Asendia USA (contact: Asendia
+    USA Web Service Team, asendia.com addresses).'
+  humanURL: https://a1api.asendiausa.com/swagger/index.html
+  baseURL: https://a1api.asendiausa.com
+  tags:
+  - Shipping
+  - Parcels
+  - Logistics
+  properties:
+  - type: OpenAPI
+    url: openapi/asendia-a1-tracking-v2-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://a1api.asendiausa.com/swagger/Tracking%20v2.0/swagger.json
+  - type: JSONSchema
+    url: json-schema/asendia-tracking-milestone-list-api-response-schema.json
+  - type: JSONSchema
+    url: json-schema/asendia-tracking-detail-list-api-response-schema.json
+x-enrichment:
+  status: enriched
+  pass: local-v5
+  date: '2026-10-13'
+  artifacts_added: 16

@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-tracking-milestone-list-api-response-schema.json",
+  "title": "trackingMilestoneListApiResponse",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-tracking-v2-openapi.yml#/components/schemas/trackingMilestoneListApiResponse",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/$defs/trackingMilestone"
+      }
+    },
+    "responseStatus": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ResponseStatus"
+        }
+      ],
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "ResponseStatus": {
+      "type": "object",
+      "properties": {
+        "responseStatusCode": {
+          "type": "integer",
+          "description": "This is used to display the code for the return status.",
+          "format": "int32"
+        },
+        "responseStatusMessage": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "This is used for a human readable return status message."
+        }
+      },
+      "additionalProperties": false,
+      "description": "Displays the status of the Return"
+    },
+    "trackingMilestone": {
+      "type": "object",
+      "properties": {
+        "trackingNumberVendor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "trackingNumberCustomer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "trackingNumberCustomerCarrierOriginal": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "customerReferenceNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "trackingProduct": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/trackingProduct"
+            }
+          ],
+          "nullable": true
+        },
+        "trackingMilestoneEvents": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/trackingMilestoneEvents"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "trackingMilestoneEvents": {
+      "type": "object",
+      "properties": {
+        "eventCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "eventDescription": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "eventLocation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "eventOn": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    },
+    "trackingProduct": {
+      "type": "object",
+      "properties": {
+        "productCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "productName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

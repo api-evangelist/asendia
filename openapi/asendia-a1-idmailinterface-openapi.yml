@@ -1,0 +1,260 @@
+openapi: 3.0.1
+info:
+  title: A1 Web Services
+  description: These are all the APIs needed to handle IDMailInterface
+  contact:
+    name: Asendia USA Web Service Team for any questions or comments.
+    email: john.mcshane@asendia.com;chris.joiner@asendia.com;katie.vogt@asendia.com;ammi.cabrera@asendia.com
+  version: IDMailInterface
+paths:
+  /api/A1/External/IDMailInterface/InsertProcessingEntry:
+    post:
+      tags:
+      - IDMailInterface
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/InsertProcessingEntryRequest'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/InsertProcessingEntryRequest'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/InsertProcessingEntryRequest'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/InsertProcessingEntryRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Int32ApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Int32ApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Int32ApiResponse'
+  /api/A1/External/IDMailInterface/CloseBag:
+    put:
+      tags:
+      - IDMailInterface
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/CloseBagRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloseBagRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CloseBagRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CloseBagRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Int32ApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Int32ApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Int32ApiResponse'
+  /api/A1/External/IDMailInterface/FinishRun:
+    put:
+      tags:
+      - IDMailInterface
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/FinishRunRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FinishRunRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/FinishRunRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/FinishRunRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Int32ApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Int32ApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Int32ApiResponse'
+components:
+  schemas:
+    InsertProcessingEntryRequest:
+      required:
+      - bagId
+      - bin
+      - custom1
+      - height
+      - indicia
+      - jobId
+      - length
+      - machineID
+      - mailStop
+      - pieceId
+      - processingLocation
+      - size
+      - sortCode
+      - thickness
+      - weight
+      - worldWare
+      - zone
+      type: object
+      properties:
+        jobId:
+          maxLength: 30
+          type: string
+        bagId:
+          maxLength: 20
+          type: string
+        pieceId:
+          maxLength: 20
+          type: string
+        bin:
+          maxLength: 20
+          type: string
+        mailStop:
+          maxLength: 50
+          type: string
+        sortCode:
+          maxLength: 11
+          type: string
+        weight:
+          minimum: 0
+          type: number
+          format: double
+        height:
+          minimum: 0
+          type: number
+          format: double
+        length:
+          minimum: 0
+          type: number
+          format: double
+        thickness:
+          minimum: 0
+          type: number
+          format: double
+        size:
+          maxLength: 2
+          type: string
+        custom1:
+          maxLength: 40
+          type: string
+        zone:
+          maxLength: 3
+          type: string
+        indicia:
+          maxLength: 10
+          type: string
+        machineID:
+          maxLength: 20
+          type: string
+        worldWare:
+          maxLength: 20
+          type: string
+        processingLocation:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: "The Asendia's location in where the mail is processed.\r\n\
+            Possible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC, TOR, CAL"
+      additionalProperties: false
+    ResponseStatus:
+      type: object
+      properties:
+        responseStatusCode:
+          type: integer
+          description: This is used to display the code for the return status.
+          format: int32
+        responseStatusMessage:
+          type: string
+          description: This is used for a human readable return status message.
+          nullable: true
+      additionalProperties: false
+      description: Displays the status of the Return
+    Int32ApiResponse:
+      type: object
+      properties:
+        data:
+          type: integer
+          format: int32
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+          nullable: true
+      additionalProperties: false
+    CloseBagRequest:
+      required:
+      - bagId
+      - dispatcher
+      - processingLocation
+      - zone
+      type: object
+      properties:
+        bagId:
+          maxLength: 20
+          type: string
+        zone:
+          maxLength: 3
+          type: string
+        dispatcher:
+          maxLength: 20
+          type: string
+        processingLocation:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: "The Asendia's location in where the mail is processed.\r\n\
+            Possible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC, TOR, CAL"
+      additionalProperties: false
+    FinishRunRequest:
+      required:
+      - dispatcher
+      - jobId
+      - processingLocation
+      type: object
+      properties:
+        jobId:
+          maxLength: 30
+          type: string
+        dispatcher:
+          maxLength: 20
+          type: string
+        processingLocation:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: "The Asendia's location in where the mail is processed.\r\n\
+            Possible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC, TOR, CAL"
+      additionalProperties: false

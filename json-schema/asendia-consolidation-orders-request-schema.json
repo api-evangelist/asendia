@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-consolidation-orders-request-schema.json",
+  "title": "ConsolidationOrdersRequest",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-consolidation-openapi.yml#/components/schemas/ConsolidationOrdersRequest",
+  "required": [
+    "accountNumber",
+    "orderNumber",
+    "packageIDs",
+    "productCode"
+  ],
+  "type": "object",
+  "properties": {
+    "accountNumber": {
+      "maxLength": 12,
+      "type": "string",
+      "description": "Asendia's account number designated for the shipper. This will be provided at account setup."
+    },
+    "orderNumber": {
+      "maxLength": 35,
+      "type": "string",
+      "description": "The order identifier number. This is the number representing all packages within an order."
+    },
+    "productCode": {
+      "maxLength": 5,
+      "type": "string",
+      "description": "The Product Codes will be provided on a per-integration basis.\r\nThis indicates the customer’s preferred service or routing for the package."
+    },
+    "packageIDs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/packageIDs"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "packageIDs": {
+      "required": [
+        "packageID"
+      ],
+      "type": "object",
+      "properties": {
+        "packageID": {
+          "maxLength": 35,
+          "minLength": 4,
+          "type": "string",
+          "description": "Unique identifier given to each physical package. This number cannot be reused, and will match the package label's barcode. We recommend this to be 20 characters or under alphanumeric, no spaces, special characters or hyphens."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

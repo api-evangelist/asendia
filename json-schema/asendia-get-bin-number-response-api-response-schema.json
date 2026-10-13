@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-get-bin-number-response-api-response-schema.json",
+  "title": "getBinNumberResponseApiResponse",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-npi-openapi.yml#/components/schemas/getBinNumberResponseApiResponse",
+  "type": "object",
+  "properties": {
+    "data": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/getBinNumberResponse"
+        }
+      ],
+      "nullable": true
+    },
+    "responseStatus": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ResponseStatus"
+        }
+      ],
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "ResponseStatus": {
+      "type": "object",
+      "properties": {
+        "responseStatusCode": {
+          "type": "integer",
+          "description": "This is used to display the code for the return status.",
+          "format": "int32"
+        },
+        "responseStatusMessage": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "This is used for a human readable return status message."
+        }
+      },
+      "additionalProperties": false,
+      "description": "Displays the status of the Return"
+    },
+    "getBinNumberResponse": {
+      "required": [
+        "bin",
+        "trackingNumber"
+      ],
+      "type": "object",
+      "properties": {
+        "bin": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of assigned bins"
+        },
+        "trackingNumber": {
+          "type": "string",
+          "description": "Tracking number found"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

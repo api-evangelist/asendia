@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-purchase-order-schema.json",
+  "title": "PurchaseOrder",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/PurchaseOrder",
+  "required": [
+    "accountNumber",
+    "items",
+    "processingLocation",
+    "purchaseOrderId",
+    "purchaseOrderNumber"
+  ],
+  "type": "object",
+  "properties": {
+    "purchaseOrderId": {
+      "type": "integer",
+      "description": "Unique Customer Id for the  Purchase Order",
+      "format": "int32"
+    },
+    "purchaseOrderNumber": {
+      "minLength": 3,
+      "type": "string",
+      "description": "Actual Document Number"
+    },
+    "processingLocation": {
+      "maxLength": 3,
+      "minLength": 3,
+      "type": "string",
+      "description": "The Asendia's location in where the physical package will be processed.\r\nPossible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC, TOR, CAL"
+    },
+    "accountNumber": {
+      "maxLength": 12,
+      "minLength": 5,
+      "type": "string",
+      "description": "Asendia's account number designated for the shipper. This will be provided at account setup."
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PurchaseOrderItem"
+      },
+      "description": "Item to be received"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "PurchaseOrderItem": {
+      "required": [
+        "itemDescription",
+        "itemValue",
+        "leadTimeDays",
+        "lineId",
+        "lotNumbered",
+        "quantity",
+        "sku"
+      ],
+      "type": "object",
+      "properties": {
+        "htsNumber": {
+          "maxLength": 20,
+          "minLength": 3,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": " The Harmonized Tariff Schedule code required by international customs specifications.\r\nSee for more information: http://www.usitc.gov/tata/hts/index.htm"
+        },
+        "countryOfOrigin": {
+          "maxLength": 2,
+          "minLength": 2,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The 2-character ISO country code in which the product was manufactured, as required by international customs specifications.\r\nSee for more information: http://www.iso.org/iso/country_codes"
+        },
+        "leadTimeDays": {
+          "type": "integer",
+          "description": "The Number of days before an item can no longer be shipped",
+          "format": "int32"
+        },
+        "personalUseExemption": {
+          "maximum": 1000000,
+          "minimum": -1,
+          "type": "integer",
+          "description": "Personal Use Exemption amount. This will set a max sales order quantity for the SKU.\r\nValues greater than 0 will enable the Personal Use Exemption and become the new exemption value.\r\nValue of 0 will apply no changes.\r\nValue of -1 will disable the Personal Use Exemption for the SKU if one exists.",
+          "format": "int32"
+        },
+        "orderAlertThreshold": {
+          "maximum": 1000000,
+          "minimum": -1,
+          "type": "integer",
+          "description": "If SKU quantity drops below this amount, an alert will be triggered.\r\nValues greater than 0 will enable the Order Alert Threshold and become the new threshold value.\r\nValue of 0 will apply no changes.\r\nValue of -1 will disable all future threshold alerts for the SKU.",
+          "format": "int32"
+        },
+        "sku": {
+          "minLength": 3,
+          "type": "string",
+          "description": "SKU of item"
+        },
+        "lineId": {
+          "type": "integer",
+          "description": "Customer reference",
+          "format": "int32"
+        },
+        "lotNumbered": {
+          "type": "boolean",
+          "description": "Identifier for SKU to track expiration date"
+        },
+        "itemValue": {
+          "type": "number",
+          "description": "Rate of the item for the customer",
+          "format": "double"
+        },
+        "itemDescription": {
+          "maxLength": 150,
+          "minLength": 3,
+          "type": "string",
+          "description": "The item description that describes what the item is."
+        },
+        "quantity": {
+          "maximum": 1000000,
+          "minimum": 1,
+          "type": "integer",
+          "description": "The total quantity of the product units within the package.",
+          "format": "int32"
+        },
+        "unitWeight": {
+          "maximum": 1000,
+          "minimum": 0,
+          "type": "number",
+          "description": "The total weight for a single unit of the product, in pounds.",
+          "format": "double"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-close-shipment-request-schema.json",
+  "title": "closeShipmentRequest",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-parcel-openapi.yml#/components/schemas/closeShipmentRequest",
+  "type": "object",
+  "properties": {
+    "closeShipmentsRequest": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/closeShipmentRequestModel"
+        }
+      ],
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "closeShipmentRequestModel": {
+      "required": [
+        "accountNumber",
+        "pickupCarrier"
+      ],
+      "type": "object",
+      "properties": {
+        "accountNumber": {
+          "maxLength": 12,
+          "type": "string",
+          "description": "Asendia's account number designated for the shipper. This will be provided at account setup."
+        },
+        "subAccountNumber": {
+          "maxLength": 12,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Asendia's sub account number designated for the shipper, if applicable. This will be provided at account setup."
+        },
+        "shippingLocation": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The location customer is shipping from: either customer drops off parcels from this shipping location to Asendia processing location or Asendia picks up parcels at this designated shipping location\r\nFor each customer each location has a unique code and one of them is set as default location.\r\nFor the default location, DEFAULT value can be used instead of location code which makes setup easier for customers with a unique location.\r\nIf customer has several locations, field must be populated with the code of the location provided during onboarding phase."
+        },
+        "processingPoint": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "isDirectAccess": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "pickupCarrier": {
+          "type": "string",
+          "description": "The Asendia's location in where the physical package will be processed.\r\nEquivalent of \"Pickup Carrier\" field from Job creation but using codes rather than free text.\r\n- if customer drops himself shipments to processsing location, then pickupCarrier=CUSTDROPOFF (*)\r\n- if a pickup is requested, then pickupCarrier=ASPICKUP (*)\r\n- if Direct Access, then pickupCarrier=DIRECTA\r\n- if other carrier is concerned, use related code"
+        },
+        "trackingIdentifier": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Can be used in case of customer drop-off if a carrier is used for transport and provides a tracking number/identifier. Customer and Asendia can accordinglyu track shipment from customer location to Asendia processing location"
+        },
+        "transportReference": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Used for Direct Access to capture transport or shipping reference such as MAWB number"
+        },
+        "customerReferenceNumber1": {
+          "maxLength": 50,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Users have the option of entering notes for their own purposes in these three fields.  Any notes entered will display on the shipping control document (SCD), reports, and invoices."
+        },
+        "customerReferenceNumber2": {
+          "maxLength": 50,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Users have the option of entering notes for their own purposes in these three fields.  Any notes entered will display on the shipping control document (SCD), reports, and invoices."
+        },
+        "customerReferenceNumber3": {
+          "maxLength": 50,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Users have the option of entering notes for their own purposes in these three fields.  Any notes entered will display on the shipping control document (SCD), reports, and invoices."
+        },
+        "dhlbolNumber": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": ""
+        },
+        "shipmentsToClose": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/shipmentsToClose"
+          },
+          "description": "See shipmentsToClose object\r\nArray - list of parcels or orders or receptacles/containers or dispatches to be closed\r\nMust contain at least one number\r\nEach shipment can be identified using one of the following number types:\r\n- trackingNumber of a Parcel (retrieved from Create Parcel) if you want to close parcels one by one\r\n- or orderNumber (provided by customer in Create Parcel) if you want to close parcels using their order numbers - if several parcels have the same order number, they will all be closed except if a parcel was closed before\r\n- or containerNumber (provided by Create Container) if you want to close all parcels within a bag\r\n- or dispatchNumber (provided by customer in Create Parcel) if you want to close all parcels nested in the same customer dispatch\r\nImportant: don't mix number types in the same request so don't provid a mix of tracking numbers and order numbers. Provide only tracking numbers or only order numbers or only dispatch numbers or only container numbers"
+        }
+      },
+      "additionalProperties": false
+    },
+    "shipmentsToClose": {
+      "type": "object",
+      "properties": {
+        "trackingNumber": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "trackingNumber of a Parcel (retrieved from Create Parcel)"
+        },
+        "packageId": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "packageId"
+        },
+        "orderNumber": {
+          "maxLength": 50,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "orderNumber (provided by customer in Create Parcel)\r\nIf several parcels have the same order number, they will all be closed except if a parcel was closed before"
+        },
+        "containerNumber": {
+          "maxLength": 50,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "containerNumber (provided by Create Container)\r\nYou must provide at least one number and number types cannot be mixed: only trackingNumbers, or only orderNumbers, or only dispatchNumbers, or only containerNumbers"
+        },
+        "dispatchNumber": {
+          "maxLength": 100,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "dispatchNumber (provided by customer in Create Parcel)\r\nYou must provide at least one number and number types cannot be mixed: only trackingNumbers, or only orderNumbers, or only dispatchNumbers, or only containerNumbers"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

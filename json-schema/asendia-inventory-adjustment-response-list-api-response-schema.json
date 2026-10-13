@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-inventory-adjustment-response-list-api-response-schema.json",
+  "title": "InventoryAdjustmentResponseListApiResponse",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/InventoryAdjustmentResponseListApiResponse",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/$defs/InventoryAdjustmentResponse"
+      }
+    },
+    "responseStatus": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ResponseStatus"
+        }
+      ],
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "InventoryAdjustmentResponse": {
+      "type": "object",
+      "properties": {
+        "adjustmentDate": {
+          "type": "string",
+          "description": "The Date of the adjustment",
+          "format": "date-time"
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Reason of adjustment (Example: Damaged Food)"
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "The number of a particular item that was adjusted",
+          "format": "int32"
+        },
+        "lotNumber": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The Lot corresponding to the Item"
+        },
+        "sku": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The sku of the item"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ResponseStatus": {
+      "type": "object",
+      "properties": {
+        "responseStatusCode": {
+          "type": "integer",
+          "description": "This is used to display the code for the return status.",
+          "format": "int32"
+        },
+        "responseStatusMessage": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "This is used for a human readable return status message."
+        }
+      },
+      "additionalProperties": false,
+      "description": "Displays the status of the Return"
+    }
+  }
+}

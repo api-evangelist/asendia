@@ -1,0 +1,16 @@
+generated: '2026-10-13'
+method: none
+source:
+- https://zapier.com/apps/asendia/integrations
+- https://n8n.io/integrations/asendia/
+- https://composio.dev/toolkits/asendia
+- https://monid.ai/tools/asendia
+checked:
+- https://composio.dev/toolkits/asendia
+- https://monid.ai/tools/asendia
+- https://n8n.io/integrations/asendia/
+- https://zapier.com/apps/asendia/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []

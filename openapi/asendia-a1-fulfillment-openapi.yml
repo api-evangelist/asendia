@@ -1,0 +1,1253 @@
+openapi: 3.0.1
+info:
+  title: A1 Web Services
+  description: These are all the APIs needed to handle Fulfillment v1.0
+  contact:
+    name: Asendia USA Web Service Team for any questions or comments.
+    email: john.mcshane@asendia.com;chris.joiner@asendia.com;katie.vogt@asendia.com;ammi.cabrera@asendia.com
+  version: Fulfillment v1.0
+paths:
+  /api/A1/Fulfillment/SalesOrder:
+    get:
+      tags:
+      - Fulfillment
+      parameters:
+      - name: orderNumber
+        in: query
+        description: Actual Document Number
+        required: true
+        schema:
+          minLength: 3
+          type: string
+      - name: accountNumber
+        in: query
+        description: Asendia's account number designated for the shipper. This will
+          be provided at account setup.
+        required: true
+        schema:
+          maxLength: 12
+          minLength: 5
+          type: string
+      - name: processingLocation
+        in: query
+        description: "The Asendia's location in where the physical package will be\
+          \ processed.\r\nPossible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC, TOR,\
+          \ CAL"
+        required: true
+        schema:
+          maxLength: 3
+          minLength: 3
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResponseSalesOrderApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseSalesOrderApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResponseSalesOrderApiResponse'
+    post:
+      tags:
+      - Fulfillment
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/SalesOrder'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalesOrder'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SalesOrder'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SalesOrder'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/SalesOrderApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SalesOrderApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/SalesOrderApiResponse'
+  /api/A1/Fulfillment/VoidSalesOrder:
+    put:
+      tags:
+      - Fulfillment
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/VoidSalesOrder'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoidSalesOrder'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/VoidSalesOrder'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/VoidSalesOrder'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+  /api/A1/Fulfillment/InventoryAdjustments:
+    get:
+      tags:
+      - Fulfillment
+      parameters:
+      - name: startDate
+        in: query
+        description: The Date to begin search
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: endDate
+        in: query
+        description: The Date to end search
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: accountNumber
+        in: query
+        description: Asendia's account number designated for the shipper. This will
+          be provided at account setup.
+        required: true
+        schema:
+          maxLength: 12
+          minLength: 5
+          type: string
+      - name: processingLocation
+        in: query
+        description: "The Asendia's location in where the physical package will be\
+          \ processed.\r\nPossible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC, TOR,\
+          \ CAL"
+        required: true
+        schema:
+          maxLength: 3
+          minLength: 3
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InventoryAdjustmentResponseListApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InventoryAdjustmentResponseListApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InventoryAdjustmentResponseListApiResponse'
+  /api/A1/Fulfillment/PurchaseOrder:
+    get:
+      tags:
+      - Fulfillment
+      parameters:
+      - name: purchaseOrderNumber
+        in: query
+        description: Actual Document Number
+        required: true
+        schema:
+          minLength: 3
+          type: string
+      - name: accountNumber
+        in: query
+        description: Asendia's account number designated for the shipper. This will
+          be provided at account setup.
+        required: true
+        schema:
+          maxLength: 12
+          minLength: 5
+          type: string
+      - name: processingLocation
+        in: query
+        description: "The Asendia's location in where the physical package will be\
+          \ processed.\r\nPossible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC, TOR,\
+          \ CAL"
+        required: true
+        schema:
+          maxLength: 3
+          minLength: 3
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ItemReceiptApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemReceiptApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ItemReceiptApiResponse'
+    post:
+      tags:
+      - Fulfillment
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/PurchaseOrder'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PurchaseOrder'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/PurchaseOrder'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/PurchaseOrder'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringApiResponse'
+components:
+  schemas:
+    SalesOrderItemResponse:
+      required:
+      - itemDescription
+      - itemValue
+      - lineId
+      - lotNumbered
+      - quantity
+      - sku
+      type: object
+      properties:
+        sku:
+          minLength: 3
+          type: string
+          description: SKU of item
+        lineId:
+          type: integer
+          description: Customer reference
+          format: int32
+        lotNumbered:
+          type: boolean
+          description: Identifier for SKU to track expiration date
+        itemValue:
+          type: number
+          description: Rate of the item for the customer
+          format: double
+        itemDescription:
+          maxLength: 150
+          minLength: 3
+          type: string
+          description: The item description that describes what the item is.
+        quantity:
+          maximum: 1000000
+          minimum: 1
+          type: integer
+          description: The total quantity of the product units within the package.
+          format: int32
+        unitWeight:
+          maximum: 1000
+          minimum: 0
+          type: number
+          description: The total weight for a single unit of the product, in pounds.
+          format: double
+      additionalProperties: false
+    FulfillmentItems:
+      type: object
+      properties:
+        sku:
+          type: string
+          description: SKU of item
+          nullable: true
+        lot:
+          type: string
+          description: the lot of the item
+          nullable: true
+        quantity:
+          type: integer
+          description: the quantity of the items
+          format: int32
+        lineId:
+          type: integer
+          description: The line Id of the item
+          format: int32
+      additionalProperties: false
+    SalesOrderFulfillmentRecords:
+      type: object
+      properties:
+        fulfillmentDate:
+          type: string
+          description: The Date of the records
+          format: date-time
+        dateShipped:
+          type: string
+          description: The Date when it was shipped
+          format: date-time
+        trackingNumber:
+          type: string
+          description: The Tracking number of the fulfillment
+          nullable: true
+        totalPackageValue:
+          type: number
+          description: The total package value of the fulfillment
+          format: double
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/FulfillmentItems'
+          description: The items in the fulfillment
+          nullable: true
+      additionalProperties: false
+    currencyTypeEnum:
+      enum:
+      - AED
+      - COP
+      - HUF
+      - MDL
+      - RON
+      - UYU
+      - AFN
+      - CRC
+      - IDR
+      - MGA
+      - RSD
+      - UZS
+      - ALL
+      - CUP
+      - ILS
+      - MKD
+      - RUB
+      - VEB
+      - AMD
+      - CVE
+      - IMP
+      - MMK
+      - RWF
+      - VND
+      - ANG
+      - CYP
+      - INR
+      - MNT
+      - SAR
+      - VUV
+      - AOA
+      - CZK
+      - IQD
+      - MOP
+      - SBD
+      - WST
+      - ARS
+      - DJF
+      - IRR
+      - MRO
+      - SCR
+      - XAF
+      - AUD
+      - DKK
+      - ISK
+      - MTL
+      - SDD
+      - XCD
+      - AWG
+      - DOP
+      - JEP
+      - MUR
+      - SEK
+      - XOF
+      - AZN
+      - DZD
+      - JMD
+      - MVR
+      - SGD
+      - XPF
+      - BAM
+      - EEK
+      - JOD
+      - MWK
+      - SHP
+      - YER
+      - BBD
+      - EGP
+      - JPY
+      - MXN
+      - SKK
+      - ZAR
+      - BDT
+      - ERN
+      - KES
+      - MYR
+      - SLL
+      - ZMK
+      - BGN
+      - ETB
+      - KGS
+      - MZM
+      - SOS
+      - ZWD
+      - BHD
+      - EUR
+      - KHR
+      - NAD
+      - SRD
+      - BIF
+      - FJD
+      - KMF
+      - NGN
+      - STD
+      - BMD
+      - FKP
+      - KPW
+      - NIO
+      - SYP
+      - BND
+      - GBP
+      - KRW
+      - NOK
+      - SZL
+      - BOB
+      - GEL
+      - KWD
+      - NPR
+      - THB
+      - BRL
+      - GGP
+      - KYD
+      - NZD
+      - TJS
+      - BSD
+      - GHC
+      - KZT
+      - OMR
+      - TMM
+      - BTN
+      - GIP
+      - LAK
+      - PAB
+      - TND
+      - BWP
+      - GMD
+      - LBP
+      - PEN
+      - TOP
+      - BYR
+      - GNF
+      - LKR
+      - PGK
+      - TRY
+      - BZD
+      - GTQ
+      - LRD
+      - PHP
+      - TTD
+      - CAD
+      - GYD
+      - LSL
+      - PKR
+      - TWD
+      - CDF
+      - HKD
+      - LTL
+      - PLN
+      - TZS
+      - CHF
+      - HNL
+      - LVL
+      - PYG
+      - UAH
+      - CLP
+      - HRK
+      - LYD
+      - QAR
+      - UGX
+      - CNY
+      - HTG
+      - MAD
+      - RMB
+      - USD
+      type: string
+    contentTypeEnum:
+      enum:
+      - M
+      - G
+      - D
+      type: string
+    SaleOrderItem:
+      required:
+      - itemDescription
+      - itemValue
+      - lineId
+      - lotNumbered
+      - quantity
+      - sku
+      type: object
+      properties:
+        htsNumber:
+          maxLength: 20
+          minLength: 3
+          type: string
+          description: " The Harmonized Tariff Schedule code required by international\
+            \ customs specifications.\r\nSee for more information: http://www.usitc.gov/tata/hts/index.htm"
+          nullable: true
+        countryOfOrigin:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: "The 2-character ISO country code in which the product was\
+            \ manufactured, as required by international customs specifications.\r\
+            \nSee for more information: http://www.iso.org/iso/country_codes"
+          nullable: true
+        sku:
+          minLength: 3
+          type: string
+          description: SKU of item
+        lineId:
+          type: integer
+          description: Customer reference
+          format: int32
+        lotNumbered:
+          type: boolean
+          description: Identifier for SKU to track expiration date
+        itemValue:
+          type: number
+          description: Rate of the item for the customer
+          format: double
+        itemDescription:
+          maxLength: 150
+          minLength: 3
+          type: string
+          description: The item description that describes what the item is.
+        quantity:
+          maximum: 1000000
+          minimum: 1
+          type: integer
+          description: The total quantity of the product units within the package.
+          format: int32
+        unitWeight:
+          maximum: 1000
+          minimum: 0
+          type: number
+          description: The total weight for a single unit of the product, in pounds.
+          format: double
+      additionalProperties: false
+    ReturnAddress:
+      required:
+      - returnAddressLine1
+      - returnCity
+      - returnCountryISO2
+      - returnFirstName
+      - returnLastName
+      - returnPostalCode
+      - returnProvince
+      type: object
+      properties:
+        returnFirstName:
+          maxLength: 50
+          minLength: 3
+          type: string
+          description: The package's sender's first name
+        returnLastName:
+          maxLength: 50
+          minLength: 3
+          type: string
+          description: The package's sender's last name
+        returnBusinessName:
+          type: string
+          description: The package's sender's business name
+          nullable: true
+        returnAddressLine1:
+          maxLength: 50
+          minLength: 3
+          type: string
+          description: The first line of the sender's street address
+        returnAddressLine2:
+          type: string
+          description: The second line of the sender's street address
+          nullable: true
+        returnAddressLine3:
+          type: string
+          description: The third line of the sender's street address
+          nullable: true
+        returnCity:
+          maxLength: 50
+          minLength: 2
+          type: string
+          description: The City of sender's address
+        returnProvince:
+          maxLength: 50
+          type: string
+          description: The state of province of the sender's street address
+        returnPostalCode:
+          maxLength: 20
+          minLength: 3
+          type: string
+          description: The sender's postal code
+        returnCountryISO2:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: "The 2-character ISO country code for the sender's street address.\r\
+            \nSee for more information: http://www.iso.org/iso/country_codes"
+      additionalProperties: false
+    RecipientAddress:
+      required:
+      - recipientAddressLine1
+      - recipientCity
+      - recipientCountryISO2
+      - recipientFirstName
+      - recipientLastName
+      - recipientPostalCode
+      - recipientProvince
+      type: object
+      properties:
+        recipientFirstName:
+          maxLength: 50
+          minLength: 3
+          type: string
+          description: The package recipient's first name
+        recipientLastName:
+          maxLength: 50
+          minLength: 3
+          type: string
+          description: The package recipient's last name
+        recipientBusinessName:
+          type: string
+          description: The package recipient's business name
+          nullable: true
+        recipientAddressLine1:
+          maxLength: 50
+          minLength: 3
+          type: string
+          description: The first line of the package recipient's street address
+        recipientAddressLine2:
+          type: string
+          description: The second line of the package recipient's street address
+          nullable: true
+        recipientAddressLine3:
+          type: string
+          description: The third line of the package recipient's street address
+          nullable: true
+        recipientCity:
+          maxLength: 50
+          minLength: 3
+          type: string
+          description: The City of the package recipient's address
+        recipientProvince:
+          maxLength: 20
+          type: string
+          description: The state or province of the package recipient's street address
+        recipientPostalCode:
+          maxLength: 20
+          type: string
+          description: The package recipient's postal code
+        recipientCountryISO2:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: "The 2-character ISO country code for the package receipient's\
+            \ street address.\r\nSee for more information: http://www.iso.org/iso/country_codes"
+      additionalProperties: false
+    ResponseSalesOrder:
+      required:
+      - accountNumber
+      - contentType
+      - currencyType
+      - items
+      - orderID
+      - orderNumber
+      - orderShipping
+      - orderTax
+      - orderTotal
+      - processingLocation
+      - productCode
+      - recipientAddress
+      - returnAddress
+      - saleDate
+      type: object
+      properties:
+        orderStatus:
+          type: string
+          description: The Status of the order
+          nullable: true
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SaleOrderItem'
+          description: Item to be received
+        fulfillments:
+          type: array
+          items:
+            $ref: '#/components/schemas/SalesOrderFulfillmentRecords'
+          description: The records of the sale order
+          nullable: true
+        accountNumber:
+          maxLength: 12
+          minLength: 5
+          type: string
+          description: Asendia's account number designated for the shipper. This will
+            be provided at account setup.
+        processingLocation:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: "The Asendia's location in where the physical package will\
+            \ be processed.\r\nPossible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC,\
+            \ TOR, CAL"
+        productCode:
+          type: string
+          description: "The Product Codes will be provided on a per-integration basis.\r\
+            \nThis indicates the customer’s preferred service or routing for the package."
+        orderID:
+          type: integer
+          description: Asendia's Customer internal reference for an order number
+          format: int32
+        orderNumber:
+          maxLength: 20
+          minLength: 5
+          type: string
+          description: Recipient Order Number
+        orderTotal:
+          type: number
+          description: Total of the complete order
+          format: double
+        orderTax:
+          type: number
+          description: Total tax charged for this order
+          format: double
+        orderShipping:
+          type: number
+          description: The amount charged for shipping
+          format: double
+        saleDate:
+          type: string
+          description: Date Recipient Purchased the Item
+          format: date-time
+        currencyType:
+          allOf:
+          - $ref: '#/components/schemas/currencyTypeEnum'
+          description: The currency for all given values related to the package and
+            items. This is required to be USD.
+        contentType:
+          allOf:
+          - $ref: '#/components/schemas/contentTypeEnum'
+          description: "Category of what is in the package. (Most common is M):\r\n\
+            1. M = Merchandise\r\n2. G = Gift\r\n3. D = Document\r\nGift cannot be\
+            \ used when using Swiss Post or La Poste Asendia Services\r\nWhen in doubt\
+            \ use M"
+        returnAddress:
+          allOf:
+          - $ref: '#/components/schemas/ReturnAddress'
+          description: Return Address Information
+        recipientAddress:
+          allOf:
+          - $ref: '#/components/schemas/RecipientAddress'
+          description: Recipient Address Information
+      additionalProperties: false
+    ResponseStatus:
+      type: object
+      properties:
+        responseStatusCode:
+          type: integer
+          description: This is used to display the code for the return status.
+          format: int32
+        responseStatusMessage:
+          type: string
+          description: This is used for a human readable return status message.
+          nullable: true
+      additionalProperties: false
+      description: Displays the status of the Return
+    ResponseSalesOrderApiResponse:
+      type: object
+      properties:
+        data:
+          allOf:
+          - $ref: '#/components/schemas/ResponseSalesOrder'
+          nullable: true
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+          nullable: true
+      additionalProperties: false
+    SalesOrder:
+      required:
+      - accountNumber
+      - contentType
+      - currencyType
+      - items
+      - orderID
+      - orderNumber
+      - orderShipping
+      - orderTax
+      - orderTotal
+      - processingLocation
+      - productCode
+      - recipientAddress
+      - returnAddress
+      - saleDate
+      type: object
+      properties:
+        accountNumber:
+          maxLength: 12
+          minLength: 5
+          type: string
+          description: Asendia's account number designated for the shipper. This will
+            be provided at account setup.
+        processingLocation:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: "The Asendia's location in where the physical package will\
+            \ be processed.\r\nPossible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC,\
+            \ TOR, CAL"
+        productCode:
+          type: string
+          description: "The Product Codes will be provided on a per-integration basis.\r\
+            \nThis indicates the customer’s preferred service or routing for the package."
+        orderID:
+          type: integer
+          description: Asendia's Customer internal reference for an order number
+          format: int32
+        orderNumber:
+          maxLength: 20
+          minLength: 5
+          type: string
+          description: Recipient Order Number
+        orderTotal:
+          type: number
+          description: Total of the complete order
+          format: double
+        orderTax:
+          type: number
+          description: Total tax charged for this order
+          format: double
+        orderShipping:
+          type: number
+          description: The amount charged for shipping
+          format: double
+        saleDate:
+          type: string
+          description: Date Recipient Purchased the Item
+          format: date-time
+        currencyType:
+          allOf:
+          - $ref: '#/components/schemas/currencyTypeEnum'
+          description: The currency for all given values related to the package and
+            items. This is required to be USD.
+        contentType:
+          allOf:
+          - $ref: '#/components/schemas/contentTypeEnum'
+          description: "Category of what is in the package. (Most common is M):\r\n\
+            1. M = Merchandise\r\n2. G = Gift\r\n3. D = Document\r\nGift cannot be\
+            \ used when using Swiss Post or La Poste Asendia Services\r\nWhen in doubt\
+            \ use M"
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SaleOrderItem'
+          description: An item level information about each of the individual items
+            inside the package
+        returnAddress:
+          allOf:
+          - $ref: '#/components/schemas/ReturnAddress'
+          description: Return Address Information
+        recipientAddress:
+          allOf:
+          - $ref: '#/components/schemas/RecipientAddress'
+          description: Recipient Address Information
+      additionalProperties: false
+    SalesOrderApiResponse:
+      type: object
+      properties:
+        data:
+          allOf:
+          - $ref: '#/components/schemas/SalesOrder'
+          nullable: true
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+          nullable: true
+      additionalProperties: false
+    VoidSalesOrder:
+      required:
+      - accountNumber
+      - orderNumber
+      - processingLocation
+      type: object
+      properties:
+        orderNumber:
+          minLength: 5
+          type: string
+          description: The Order Number of the Sales Order
+        accountNumber:
+          maxLength: 12
+          minLength: 5
+          type: string
+          description: Asendia's account number designated for the shipper. This will
+            be provided at account setup.
+        processingLocation:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: "The Asendia's location in where the physical package will\
+            \ be processed.\r\nPossible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC,\
+            \ TOR, CAL"
+      additionalProperties: false
+    BooleanApiResponse:
+      type: object
+      properties:
+        data:
+          type: boolean
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+          nullable: true
+      additionalProperties: false
+    InventoryAdjustmentResponse:
+      type: object
+      properties:
+        adjustmentDate:
+          type: string
+          description: The Date of the adjustment
+          format: date-time
+        reason:
+          type: string
+          description: 'Reason of adjustment (Example: Damaged Food)'
+          nullable: true
+        quantity:
+          type: integer
+          description: The number of a particular item that was adjusted
+          format: int32
+        lotNumber:
+          type: string
+          description: The Lot corresponding to the Item
+          nullable: true
+        sku:
+          type: string
+          description: The sku of the item
+          nullable: true
+      additionalProperties: false
+    InventoryAdjustmentResponseListApiResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/InventoryAdjustmentResponse'
+          nullable: true
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+          nullable: true
+      additionalProperties: false
+    PurchaseOrderItemResponse:
+      required:
+      - itemDescription
+      - itemValue
+      - lineId
+      - lotNumbered
+      - quantity
+      - sku
+      type: object
+      properties:
+        htsNumber:
+          maxLength: 20
+          minLength: 3
+          type: string
+          description: " The Harmonized Tariff Schedule code required by international\
+            \ customs specifications.\r\nSee for more information: http://www.usitc.gov/tata/hts/index.htm"
+          nullable: true
+        countryOfOrigin:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: "The 2-character ISO country code in which the product was\
+            \ manufactured, as required by international customs specifications.\r\
+            \nSee for more information: http://www.iso.org/iso/country_codes"
+          nullable: true
+        sku:
+          minLength: 3
+          type: string
+          description: SKU of item
+        lineId:
+          type: integer
+          description: Customer reference
+          format: int32
+        lotNumbered:
+          type: boolean
+          description: Identifier for SKU to track expiration date
+        itemValue:
+          type: number
+          description: Rate of the item for the customer
+          format: double
+        itemDescription:
+          maxLength: 150
+          minLength: 3
+          type: string
+          description: The item description that describes what the item is.
+        quantity:
+          maximum: 1000000
+          minimum: 1
+          type: integer
+          description: The total quantity of the product units within the package.
+          format: int32
+        unitWeight:
+          maximum: 1000
+          minimum: 0
+          type: number
+          description: The total weight for a single unit of the product, in pounds.
+          format: double
+      additionalProperties: false
+    ItemsReceived:
+      type: object
+      properties:
+        sku:
+          type: string
+          description: SKU of item
+          nullable: true
+        lotNumber:
+          type: string
+          description: Lot number of the item
+          nullable: true
+        expirationDate:
+          type: string
+          description: Expiration Date of item
+          format: date-time
+          nullable: true
+        quantity:
+          type: integer
+          description: Quantity of items received
+          format: int32
+        lineId:
+          type: integer
+          description: Line Id of item
+          format: int32
+      additionalProperties: false
+    PurchaseOrderReceipt:
+      type: object
+      properties:
+        receiptDate:
+          type: string
+          description: Date of receipt
+          format: date-time
+          nullable: true
+        asendiaReceiptId:
+          type: integer
+          description: Asendia Item receipt
+          format: int32
+        itemsReceived:
+          type: array
+          items:
+            $ref: '#/components/schemas/ItemsReceived'
+          description: Items that were received
+          nullable: true
+      additionalProperties: false
+    ItemReceipt:
+      type: object
+      properties:
+        purchaseOrderId:
+          type: integer
+          description: Purchase Order Unique ID
+          format: int32
+        purchaseOrderNumber:
+          minLength: 3
+          type: string
+          description: Actual Document Number
+          nullable: true
+        processingLocation:
+          type: string
+          description: "The Asendia's location in where the physical package will\
+            \ be processed.\r\nPossible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC,\
+            \ TOR, CAL"
+          nullable: true
+        accountNumber:
+          type: string
+          description: Asendia's account number designated for the shipper. This will
+            be provided at account setup.
+          nullable: true
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PurchaseOrderItemResponse'
+          description: Item to be received
+          nullable: true
+        receipts:
+          type: array
+          items:
+            $ref: '#/components/schemas/PurchaseOrderReceipt'
+          description: Receipt date associated with the purchase order
+          nullable: true
+        status:
+          type: string
+          description: The status of the Purchase order
+          nullable: true
+      additionalProperties: false
+    ItemReceiptApiResponse:
+      type: object
+      properties:
+        data:
+          allOf:
+          - $ref: '#/components/schemas/ItemReceipt'
+          nullable: true
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+          nullable: true
+      additionalProperties: false
+    PurchaseOrderItem:
+      required:
+      - itemDescription
+      - itemValue
+      - leadTimeDays
+      - lineId
+      - lotNumbered
+      - quantity
+      - sku
+      type: object
+      properties:
+        htsNumber:
+          maxLength: 20
+          minLength: 3
+          type: string
+          description: " The Harmonized Tariff Schedule code required by international\
+            \ customs specifications.\r\nSee for more information: http://www.usitc.gov/tata/hts/index.htm"
+          nullable: true
+        countryOfOrigin:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: "The 2-character ISO country code in which the product was\
+            \ manufactured, as required by international customs specifications.\r\
+            \nSee for more information: http://www.iso.org/iso/country_codes"
+          nullable: true
+        leadTimeDays:
+          type: integer
+          description: The Number of days before an item can no longer be shipped
+          format: int32
+        personalUseExemption:
+          maximum: 1000000
+          minimum: -1
+          type: integer
+          description: "Personal Use Exemption amount. This will set a max sales order\
+            \ quantity for the SKU.\r\nValues greater than 0 will enable the Personal\
+            \ Use Exemption and become the new exemption value.\r\nValue of 0 will\
+            \ apply no changes.\r\nValue of -1 will disable the Personal Use Exemption\
+            \ for the SKU if one exists."
+          format: int32
+        orderAlertThreshold:
+          maximum: 1000000
+          minimum: -1
+          type: integer
+          description: "If SKU quantity drops below this amount, an alert will be\
+            \ triggered.\r\nValues greater than 0 will enable the Order Alert Threshold\
+            \ and become the new threshold value.\r\nValue of 0 will apply no changes.\r\
+            \nValue of -1 will disable all future threshold alerts for the SKU."
+          format: int32
+        sku:
+          minLength: 3
+          type: string
+          description: SKU of item
+        lineId:
+          type: integer
+          description: Customer reference
+          format: int32
+        lotNumbered:
+          type: boolean
+          description: Identifier for SKU to track expiration date
+        itemValue:
+          type: number
+          description: Rate of the item for the customer
+          format: double
+        itemDescription:
+          maxLength: 150
+          minLength: 3
+          type: string
+          description: The item description that describes what the item is.
+        quantity:
+          maximum: 1000000
+          minimum: 1
+          type: integer
+          description: The total quantity of the product units within the package.
+          format: int32
+        unitWeight:
+          maximum: 1000
+          minimum: 0
+          type: number
+          description: The total weight for a single unit of the product, in pounds.
+          format: double
+      additionalProperties: false
+    PurchaseOrder:
+      required:
+      - accountNumber
+      - items
+      - processingLocation
+      - purchaseOrderId
+      - purchaseOrderNumber
+      type: object
+      properties:
+        purchaseOrderId:
+          type: integer
+          description: Unique Customer Id for the  Purchase Order
+          format: int32
+        purchaseOrderNumber:
+          minLength: 3
+          type: string
+          description: Actual Document Number
+        processingLocation:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: "The Asendia's location in where the physical package will\
+            \ be processed.\r\nPossible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC,\
+            \ TOR, CAL"
+        accountNumber:
+          maxLength: 12
+          minLength: 5
+          type: string
+          description: Asendia's account number designated for the shipper. This will
+            be provided at account setup.
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PurchaseOrderItem'
+          description: Item to be received
+      additionalProperties: false
+    StringApiResponse:
+      type: object
+      properties:
+        data:
+          type: string
+          nullable: true
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+          nullable: true
+      additionalProperties: false

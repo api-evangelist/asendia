@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-insert-processing-entry-request-schema.json",
+  "title": "InsertProcessingEntryRequest",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-idmailinterface-openapi.yml#/components/schemas/InsertProcessingEntryRequest",
+  "required": [
+    "bagId",
+    "bin",
+    "custom1",
+    "height",
+    "indicia",
+    "jobId",
+    "length",
+    "machineID",
+    "mailStop",
+    "pieceId",
+    "processingLocation",
+    "size",
+    "sortCode",
+    "thickness",
+    "weight",
+    "worldWare",
+    "zone"
+  ],
+  "type": "object",
+  "properties": {
+    "jobId": {
+      "maxLength": 30,
+      "type": "string"
+    },
+    "bagId": {
+      "maxLength": 20,
+      "type": "string"
+    },
+    "pieceId": {
+      "maxLength": 20,
+      "type": "string"
+    },
+    "bin": {
+      "maxLength": 20,
+      "type": "string"
+    },
+    "mailStop": {
+      "maxLength": 50,
+      "type": "string"
+    },
+    "sortCode": {
+      "maxLength": 11,
+      "type": "string"
+    },
+    "weight": {
+      "minimum": 0,
+      "type": "number",
+      "format": "double"
+    },
+    "height": {
+      "minimum": 0,
+      "type": "number",
+      "format": "double"
+    },
+    "length": {
+      "minimum": 0,
+      "type": "number",
+      "format": "double"
+    },
+    "thickness": {
+      "minimum": 0,
+      "type": "number",
+      "format": "double"
+    },
+    "size": {
+      "maxLength": 2,
+      "type": "string"
+    },
+    "custom1": {
+      "maxLength": 40,
+      "type": "string"
+    },
+    "zone": {
+      "maxLength": 3,
+      "type": "string"
+    },
+    "indicia": {
+      "maxLength": 10,
+      "type": "string"
+    },
+    "machineID": {
+      "maxLength": 20,
+      "type": "string"
+    },
+    "worldWare": {
+      "maxLength": 20,
+      "type": "string"
+    },
+    "processingLocation": {
+      "maxLength": 3,
+      "minLength": 3,
+      "type": "string",
+      "description": "The Asendia's location in where the mail is processed.\r\nPossible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC, TOR, CAL"
+    }
+  },
+  "additionalProperties": false
+}

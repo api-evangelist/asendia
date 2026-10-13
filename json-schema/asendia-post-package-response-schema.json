@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-post-package-response-schema.json",
+  "title": "postPackageResponse",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-shippingplatform-openapi.yml#/components/schemas/postPackageResponse",
+  "type": "object",
+  "properties": {
+    "shippingRates": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/$defs/shippingRate"
+      },
+      "description": "Shipping rate property will only appear if \"includeRate\" is set to true in the request."
+    },
+    "packageLabel": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/packageLabel"
+        }
+      ],
+      "nullable": true
+    },
+    "responseStatus": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ResponseStatus"
+        }
+      ],
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "HttpStatusCode": {
+      "enum": [
+        "Continue",
+        "SwitchingProtocols",
+        "Processing",
+        "EarlyHints",
+        "OK",
+        "Created",
+        "Accepted",
+        "NonAuthoritativeInformation",
+        "NoContent",
+        "ResetContent",
+        "PartialContent",
+        "MultiStatus",
+        "AlreadyReported",
+        "IMUsed",
+        "MultipleChoices",
+        "Ambiguous",
+        "MovedPermanently",
+        "Moved",
+        "Found",
+        "Redirect",
+        "SeeOther",
+        "RedirectMethod",
+        "NotModified",
+        "UseProxy",
+        "Unused",
+        "TemporaryRedirect",
+        "RedirectKeepVerb",
+        "PermanentRedirect",
+        "BadRequest",
+        "Unauthorized",
+        "PaymentRequired",
+        "Forbidden",
+        "NotFound",
+        "MethodNotAllowed",
+        "NotAcceptable",
+        "ProxyAuthenticationRequired",
+        "RequestTimeout",
+        "Conflict",
+        "Gone",
+        "LengthRequired",
+        "PreconditionFailed",
+        "RequestEntityTooLarge",
+        "RequestUriTooLong",
+        "UnsupportedMediaType",
+        "RequestedRangeNotSatisfiable",
+        "ExpectationFailed",
+        "MisdirectedRequest",
+        "UnprocessableEntity",
+        "Locked",
+        "FailedDependency",
+        "UpgradeRequired",
+        "PreconditionRequired",
+        "TooManyRequests",
+        "RequestHeaderFieldsTooLarge",
+        "UnavailableForLegalReasons",
+        "InternalServerError",
+        "NotImplemented",
+        "BadGateway",
+        "ServiceUnavailable",
+        "GatewayTimeout",
+        "HttpVersionNotSupported",
+        "VariantAlsoNegotiates",
+        "InsufficientStorage",
+        "LoopDetected",
+        "NotExtended",
+        "NetworkAuthenticationRequired"
+      ],
+      "type": "string"
+    },
+    "ResponseStatus": {
+      "type": "object",
+      "properties": {
+        "responseStatusCode": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/HttpStatusCode"
+            }
+          ]
+        },
+        "responseStatusMessage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "label": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "content": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "packageLabel": {
+      "type": "object",
+      "properties": {
+        "packageId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "trackingNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "labels": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/label"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "shippingRate": {
+      "type": "object",
+      "properties": {
+        "productCode": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Service Type codes will be provided on a per-integration basis. This indicates the customer’s preferred service or routing for the package."
+        },
+        "rate": {
+          "type": "number",
+          "description": "Total rate for this package in USD.",
+          "format": "double"
+        },
+        "currencyType": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The currency for all given values related to the package and items. This is required to be USD."
+        },
+        "quoteCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "systemMessage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

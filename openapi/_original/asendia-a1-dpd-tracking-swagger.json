@@ -1,0 +1,565 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "A1 Web Services",
+    "description": "These are all the APIs needed to handle DPD Tracking v1.0",
+    "contact": {
+      "name": "Asendia USA Web Service Team for any questions or comments.",
+      "email": "john.mcshane@asendia.com;chris.joiner@asendia.com;katie.vogt@asendia.com;ammi.cabrera@asendia.com"
+    },
+    "version": "DPD Tracking v1.0"
+  },
+  "paths": {
+    "/api/A1/v1.0/DPDTracking/TTEvents": {
+      "post": {
+        "tags": [
+          "DPDTracking"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TTEventsRequest"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TTEventsRequest"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TTEventsRequest"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TTEventsRequest"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TTEventsResponseApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TTEventsResponseApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TTEventsResponseApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Weight": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "qualif": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Dimensions": {
+        "type": "object",
+        "properties": {
+          "length": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "width": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "height": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "qualif": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WeightAndDimension": {
+        "type": "object",
+        "properties": {
+          "weight": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Weight"
+              }
+            ],
+            "nullable": true
+          },
+          "dimensions": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Dimensions"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ParcelInfos": {
+        "type": "object",
+        "properties": {
+          "parcelNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "originParcelNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "returnParcelNumber": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "weightAndDimension": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/WeightAndDimension"
+              }
+            ],
+            "nullable": true
+          },
+          "mpsId": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "originMpsId": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ServiceCodes": {
+        "type": "object",
+        "properties": {
+          "asCode": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "soCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Destination": {
+        "type": "object",
+        "properties": {
+          "zipCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "destinationDepot": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TourInfo": {
+        "type": "object",
+        "properties": {
+          "area": {
+            "type": "string",
+            "nullable": true
+          },
+          "stop": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "deliveryTour": {
+            "type": "string",
+            "nullable": true
+          },
+          "runSheetNumber": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EventLocation": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "countryCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Gps": {
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReceiverAddress": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "propertyNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "street": {
+            "type": "string",
+            "nullable": true
+          },
+          "zipCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TranscodedItem": {
+        "type": "object",
+        "properties": {
+          "scanCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "reasonCodes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "compInfos": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "nullable": true
+          },
+          "compInfosJson": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Transcodification": {
+        "type": "object",
+        "properties": {
+          "language": {
+            "type": "string",
+            "nullable": true
+          },
+          "transcodedItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TranscodedItem"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TTEventsRequest": {
+        "type": "object",
+        "properties": {
+          "parcelInfos": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ParcelInfos"
+              }
+            ],
+            "nullable": true
+          },
+          "statusType": {
+            "type": "string",
+            "nullable": true
+          },
+          "serviceCodes": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ServiceCodes"
+              }
+            ],
+            "nullable": true
+          },
+          "destination": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Destination"
+              }
+            ],
+            "nullable": true
+          },
+          "scanCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "reasonCodes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "depot": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusDateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "tourInfo": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TourInfo"
+              }
+            ],
+            "nullable": true
+          },
+          "actorId": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "operativerId": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "buDateTime": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "dueDateTime": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "pickupOrderNumber": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "scanGenerated": {
+            "type": "boolean"
+          },
+          "compInfos": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "nullable": true
+          },
+          "agent": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "container": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "currentContainer": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "externalRef": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "eventLocation": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EventLocation"
+              }
+            ],
+            "nullable": true
+          },
+          "timeSlot": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "gps": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Gps"
+              }
+            ],
+            "nullable": true
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "nullable": true
+          },
+          "notifications": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "nullable": true
+          },
+          "receiverAddress": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ReceiverAddress"
+              }
+            ],
+            "nullable": true
+          },
+          "thirdPartyAddress": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "transcodifications": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Transcodification"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TTEventsResponse": {
+        "type": "object",
+        "properties": {
+          "messages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResponseStatus": {
+        "type": "object",
+        "properties": {
+          "responseStatusCode": {
+            "type": "integer",
+            "description": "This is used to display the code for the return status.",
+            "format": "int32"
+          },
+          "responseStatusMessage": {
+            "type": "string",
+            "description": "This is used for a human readable return status message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Displays the status of the Return"
+      },
+      "TTEventsResponseApiResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TTEventsResponse"
+              }
+            ],
+            "nullable": true
+          },
+          "responseStatus": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ResponseStatus"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

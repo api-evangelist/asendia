@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-volumizer-pre-process-parcel-request-schema.json",
+  "title": "VolumizerPreProcessParcelRequest",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-dws-openapi.yml#/components/schemas/VolumizerPreProcessParcelRequest",
+  "required": [
+    "dimUnit",
+    "processingLocation",
+    "totalPackageWeight",
+    "trackingNumbers",
+    "weightUnit"
+  ],
+  "type": "object",
+  "properties": {
+    "trackingNumbers": {
+      "type": "string",
+      "description": "The tracking numbers belonging to the packages you're looking for details of. Accepts up to 10 numbers separated by a comma."
+    },
+    "processingLocation": {
+      "type": "string",
+      "description": "The Asendia's location in where the physical package will be processed.\r\nPossible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC, TOR, CAL"
+    },
+    "totalPackageWeight": {
+      "type": "number",
+      "description": "The package's actual weight",
+      "format": "double"
+    },
+    "weightUnit": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/weightUnitEnum"
+        }
+      ],
+      "description": "The package's unit of weight"
+    },
+    "dimLength": {
+      "type": "number",
+      "description": "The packages dimensional length",
+      "format": "double"
+    },
+    "dimWidth": {
+      "type": "number",
+      "description": "The packages dimensional width",
+      "format": "double"
+    },
+    "dimHeight": {
+      "type": "number",
+      "description": "The packages dimensional height",
+      "format": "double"
+    },
+    "dimUnit": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/dimUnitEnum"
+        }
+      ],
+      "description": "The packages dimensional unit"
+    },
+    "connectionId": {
+      "maxLength": 30,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Connection ID"
+    },
+    "alibiMemoryId": {
+      "maxLength": 9,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Alibi Memory ID"
+    },
+    "scaleId": {
+      "maxLength": 30,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Must be named \"Volumizer\""
+    },
+    "processedDate": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Date of weighing at scan 1"
+    },
+    "processedTime": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Time of weighing at scan 1"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "dimUnitEnum": {
+      "enum": [
+        "IN",
+        "CM",
+        "MM"
+      ],
+      "type": "string"
+    },
+    "weightUnitEnum": {
+      "enum": [
+        "Lb",
+        "Kg"
+      ],
+      "type": "string"
+    }
+  }
+}

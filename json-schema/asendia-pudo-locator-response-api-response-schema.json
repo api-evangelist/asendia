@@ -1,0 +1,399 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-pudo-locator-response-api-response-schema.json",
+  "title": "PudoLocatorResponseApiResponse",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-pudo-locator-openapi.yml#/components/schemas/PudoLocatorResponseApiResponse",
+  "type": "object",
+  "properties": {
+    "data": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/PudoLocatorResponse"
+        }
+      ],
+      "nullable": true
+    },
+    "responseStatus": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ResponseStatus"
+        }
+      ],
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "AdditionalData": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "PudoAddress": {
+      "type": "object",
+      "properties": {
+        "countryCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "state": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "city": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "zipcode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "address1": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "address2": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "address3": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "suburb": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "streetNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "radius": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "additionalProperties": false
+    },
+    "PudoLocatorResponse": {
+      "type": "object",
+      "properties": {
+        "requestedLocation": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/RequestedLocation"
+            }
+          ],
+          "nullable": true
+        },
+        "pudoPoints": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/PudoPoint"
+          }
+        },
+        "status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "transactionKey": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "additionalData": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/AdditionalData"
+            }
+          ],
+          "nullable": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "PudoPoint": {
+      "type": "object",
+      "properties": {
+        "asendiaPudoPointId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "supplierId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "serviceCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "distance": {
+          "type": "number",
+          "format": "double"
+        },
+        "pudoId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pudoAddress": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/PudoAddress"
+            }
+          ],
+          "nullable": true
+        },
+        "workHours": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/WorkHours"
+            }
+          ],
+          "nullable": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "RequestedLocation": {
+      "type": "object",
+      "properties": {
+        "country": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "state": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "city": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "zipcode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "address1": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "address2": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "address3": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "streetNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "suburb": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "radius": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ResponseStatus": {
+      "type": "object",
+      "properties": {
+        "responseStatusCode": {
+          "type": "integer",
+          "description": "This is used to display the code for the return status.",
+          "format": "int32"
+        },
+        "responseStatusMessage": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "This is used for a human readable return status message."
+        }
+      },
+      "additionalProperties": false,
+      "description": "Displays the status of the Return"
+    },
+    "WorkHours": {
+      "type": "object",
+      "properties": {
+        "mo": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "tu": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "we": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "th": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "fr": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "sa": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "su": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "closedPeriods": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

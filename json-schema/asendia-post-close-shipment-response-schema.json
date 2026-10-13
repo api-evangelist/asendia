@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-post-close-shipment-response-schema.json",
+  "title": "postCloseShipmentResponse",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-parcel-openapi.yml#/components/schemas/postCloseShipmentResponse",
+  "type": "object",
+  "properties": {
+    "closeShipment": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/closeShipmentResponseModel"
+        }
+      ],
+      "nullable": true
+    },
+    "responseStatus": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/responseStatus"
+        }
+      ],
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "closeShipmentResponseModel": {
+      "type": "object",
+      "properties": {
+        "jobNumber": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Job number automatically assigned by A1"
+        },
+        "jobStatus": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Job status. \"Not received\" if job is properly created (and is not direct access), \"Not received\" if created successfully but pickup mising, \"Error-not created\" or similar if request failed and job is not created. Or \"Closed\" for direct access"
+        },
+        "jobCreationDate": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "jobProductCode": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "job Product Code calculated by A1 according to parcels' Product Codes in the job"
+        },
+        "jobProductName": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "job Product name related to Product Code"
+        },
+        "jobQuoteCode": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "job Quote Code calculated by A1 according to parcels' Quote Codes in the job"
+        },
+        "jobQuoteName": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "job Quote name related to Quote Code"
+        },
+        "jobTotalWeight": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "job Weight Unit calculated by A1 according to sum of parcelWeights of parcels in the job",
+          "format": "double"
+        },
+        "jobWeightUnit": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/weightUnitEnum"
+            }
+          ],
+          "description": "job weight unit (Lb or Kg) - same as weightUnit from parcels contained in the job.\r\nPossible values: [ Lb, Kg ]"
+        },
+        "jobTotalPieces": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "job Total Pieces calculated by A1 according to number or parcels in the job",
+          "format": "int32"
+        },
+        "isDirectAccess": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "packageUsedInAnotherJob": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "jobDocuments": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/jobDocument"
+          },
+          "description": "See jobDocuments object. Array can contain multiple entries.\r\nContains delivery note (SCD) and possibly some manifests in case of Direct Access"
+        }
+      },
+      "additionalProperties": false
+    },
+    "jobDocument": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": ""
+        },
+        "type": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/labelTypeEnum"
+            }
+          ],
+          "description": "Possible values: [ PDF, PNG, ZPL, ANY ]"
+        },
+        "content": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "labelTypeEnum": {
+      "enum": [
+        "PDF",
+        "PNG",
+        "ZPL",
+        "ZPL300",
+        "ANY"
+      ],
+      "type": "string",
+      "description": "Format label return in response"
+    },
+    "responseStatus": {
+      "type": "object",
+      "properties": {
+        "responseStatusCode": {
+          "type": "integer",
+          "description": "This is used to display the code for the return status.",
+          "format": "int32"
+        },
+        "responseStatusMessage": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "This is used for a human readable return status message."
+        }
+      },
+      "additionalProperties": false,
+      "description": "Displays the status of the Return"
+    },
+    "weightUnitEnum": {
+      "enum": [
+        "Lb",
+        "Lbs",
+        "Kg",
+        "Kgs",
+        "LB",
+        "LBS",
+        "KG",
+        "KGS"
+      ],
+      "type": "string"
+    }
+  }
+}

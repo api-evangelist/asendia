@@ -1,0 +1,248 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-item-receipt-api-response-schema.json",
+  "title": "ItemReceiptApiResponse",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-fulfillment-openapi.yml#/components/schemas/ItemReceiptApiResponse",
+  "type": "object",
+  "properties": {
+    "data": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ItemReceipt"
+        }
+      ],
+      "nullable": true
+    },
+    "responseStatus": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ResponseStatus"
+        }
+      ],
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "ItemReceipt": {
+      "type": "object",
+      "properties": {
+        "purchaseOrderId": {
+          "type": "integer",
+          "description": "Purchase Order Unique ID",
+          "format": "int32"
+        },
+        "purchaseOrderNumber": {
+          "minLength": 3,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Actual Document Number"
+        },
+        "processingLocation": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The Asendia's location in where the physical package will be processed.\r\nPossible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC, TOR, CAL"
+        },
+        "accountNumber": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Asendia's account number designated for the shipper. This will be provided at account setup."
+        },
+        "items": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/PurchaseOrderItemResponse"
+          },
+          "description": "Item to be received"
+        },
+        "receipts": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/PurchaseOrderReceipt"
+          },
+          "description": "Receipt date associated with the purchase order"
+        },
+        "status": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The status of the Purchase order"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ItemsReceived": {
+      "type": "object",
+      "properties": {
+        "sku": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "SKU of item"
+        },
+        "lotNumber": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Lot number of the item"
+        },
+        "expirationDate": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Expiration Date of item",
+          "format": "date-time"
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "Quantity of items received",
+          "format": "int32"
+        },
+        "lineId": {
+          "type": "integer",
+          "description": "Line Id of item",
+          "format": "int32"
+        }
+      },
+      "additionalProperties": false
+    },
+    "PurchaseOrderItemResponse": {
+      "required": [
+        "itemDescription",
+        "itemValue",
+        "lineId",
+        "lotNumbered",
+        "quantity",
+        "sku"
+      ],
+      "type": "object",
+      "properties": {
+        "htsNumber": {
+          "maxLength": 20,
+          "minLength": 3,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": " The Harmonized Tariff Schedule code required by international customs specifications.\r\nSee for more information: http://www.usitc.gov/tata/hts/index.htm"
+        },
+        "countryOfOrigin": {
+          "maxLength": 2,
+          "minLength": 2,
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The 2-character ISO country code in which the product was manufactured, as required by international customs specifications.\r\nSee for more information: http://www.iso.org/iso/country_codes"
+        },
+        "sku": {
+          "minLength": 3,
+          "type": "string",
+          "description": "SKU of item"
+        },
+        "lineId": {
+          "type": "integer",
+          "description": "Customer reference",
+          "format": "int32"
+        },
+        "lotNumbered": {
+          "type": "boolean",
+          "description": "Identifier for SKU to track expiration date"
+        },
+        "itemValue": {
+          "type": "number",
+          "description": "Rate of the item for the customer",
+          "format": "double"
+        },
+        "itemDescription": {
+          "maxLength": 150,
+          "minLength": 3,
+          "type": "string",
+          "description": "The item description that describes what the item is."
+        },
+        "quantity": {
+          "maximum": 1000000,
+          "minimum": 1,
+          "type": "integer",
+          "description": "The total quantity of the product units within the package.",
+          "format": "int32"
+        },
+        "unitWeight": {
+          "maximum": 1000,
+          "minimum": 0,
+          "type": "number",
+          "description": "The total weight for a single unit of the product, in pounds.",
+          "format": "double"
+        }
+      },
+      "additionalProperties": false
+    },
+    "PurchaseOrderReceipt": {
+      "type": "object",
+      "properties": {
+        "receiptDate": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Date of receipt",
+          "format": "date-time"
+        },
+        "asendiaReceiptId": {
+          "type": "integer",
+          "description": "Asendia Item receipt",
+          "format": "int32"
+        },
+        "itemsReceived": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/ItemsReceived"
+          },
+          "description": "Items that were received"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ResponseStatus": {
+      "type": "object",
+      "properties": {
+        "responseStatusCode": {
+          "type": "integer",
+          "description": "This is used to display the code for the return status.",
+          "format": "int32"
+        },
+        "responseStatusMessage": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "This is used for a human readable return status message."
+        }
+      },
+      "additionalProperties": false,
+      "description": "Displays the status of the Return"
+    }
+  }
+}

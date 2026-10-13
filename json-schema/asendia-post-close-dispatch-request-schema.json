@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-post-close-dispatch-request-schema.json",
+  "title": "postCloseDispatchRequest",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-shippingplatform-openapi.yml#/components/schemas/postCloseDispatchRequest",
+  "required": [
+    "accountNumber",
+    "dispatchNumber"
+  ],
+  "type": "object",
+  "properties": {
+    "accountNumber": {
+      "maxLength": 12,
+      "type": "string",
+      "description": "Asendia's account number designated for the shipper. This will be provided at account setup."
+    },
+    "subAccountNumber": {
+      "maxLength": 12,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Asendia's sub account number designated for the shipper, if applicable. This will be provided at account setup."
+    },
+    "dispatchNumber": {
+      "maxLength": 100,
+      "minLength": 0,
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of Dispatch Numbers to Close."
+    }
+  },
+  "additionalProperties": false
+}

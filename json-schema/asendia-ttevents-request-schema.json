@@ -1,0 +1,543 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/asendia/main/json-schema/asendia-ttevents-request-schema.json",
+  "title": "TTEventsRequest",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/asendia-a1-dpd-tracking-openapi.yml#/components/schemas/TTEventsRequest",
+  "type": "object",
+  "properties": {
+    "parcelInfos": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ParcelInfos"
+        }
+      ],
+      "nullable": true
+    },
+    "statusType": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "serviceCodes": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ServiceCodes"
+        }
+      ],
+      "nullable": true
+    },
+    "destination": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Destination"
+        }
+      ],
+      "nullable": true
+    },
+    "scanCode": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reasonCodes": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "depot": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "statusDateTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tourInfo": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/TourInfo"
+        }
+      ],
+      "nullable": true
+    },
+    "actorId": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "operativerId": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "buDateTime": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "dueDateTime": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "pickupOrderNumber": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "scanGenerated": {
+      "type": "boolean"
+    },
+    "compInfos": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "additionalProperties": false
+      }
+    },
+    "agent": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "container": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "currentContainer": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "externalRef": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "eventLocation": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EventLocation"
+        }
+      ],
+      "nullable": true
+    },
+    "timeSlot": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "gps": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Gps"
+        }
+      ],
+      "nullable": true
+    },
+    "images": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "additionalProperties": false
+      }
+    },
+    "notifications": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "additionalProperties": false
+      }
+    },
+    "receiverAddress": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/ReceiverAddress"
+        }
+      ],
+      "nullable": true
+    },
+    "thirdPartyAddress": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "transcodifications": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/$defs/Transcodification"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "Destination": {
+      "type": "object",
+      "properties": {
+        "zipCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "countryCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "destinationDepot": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Dimensions": {
+      "type": "object",
+      "properties": {
+        "length": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false
+        },
+        "width": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false
+        },
+        "height": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false
+        },
+        "qualif": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "EventLocation": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false
+        },
+        "countryCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Gps": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ParcelInfos": {
+      "type": "object",
+      "properties": {
+        "parcelNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "originParcelNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "returnParcelNumber": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false
+        },
+        "weightAndDimension": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/WeightAndDimension"
+            }
+          ],
+          "nullable": true
+        },
+        "mpsId": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false
+        },
+        "originMpsId": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "ReceiverAddress": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "propertyNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "street": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "zipCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "city": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ServiceCodes": {
+      "type": "object",
+      "properties": {
+        "asCode": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false
+        },
+        "soCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "TourInfo": {
+      "type": "object",
+      "properties": {
+        "area": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "stop": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false
+        },
+        "deliveryTour": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "runSheetNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "TranscodedItem": {
+      "type": "object",
+      "properties": {
+        "scanCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reasonCodes": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "compInfos": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "compInfosJson": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Transcodification": {
+      "type": "object",
+      "properties": {
+        "language": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "transcodedItems": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/TranscodedItem"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "Weight": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "qualif": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "WeightAndDimension": {
+      "type": "object",
+      "properties": {
+        "weight": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/Weight"
+            }
+          ],
+          "nullable": true
+        },
+        "dimensions": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/Dimensions"
+            }
+          ],
+          "nullable": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
