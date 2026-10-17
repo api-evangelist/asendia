@@ -1,38 +1,15 @@
+# x-archived-from: asendia-a1-tracking-openapi.yml
+# x-archived-on: 2026-10-16
 openapi: 3.0.1
 info:
   title: A1 Web Services
-  description: These are all the APIs needed to handle Tracking v2.0
+  description: These are all the APIs needed to handle Tracking v1.0
   contact:
     name: Asendia USA Web Service Team for any questions or comments.
     email: john.mcshane@asendia.com;chris.joiner@asendia.com;katie.vogt@asendia.com;ammi.cabrera@asendia.com
-  version: Tracking v2.0
+  version: Tracking v1.0
 paths:
-  /api/A1/v2.0/Tracking/Detail:
-    get:
-      tags:
-      - Tracking
-      summary: ''
-      parameters:
-      - name: trackingNumberVendor
-        in: query
-        description: The tracking numbers belonging to the packages you're looking
-          for details of. Accepts up to 10 numbers separated by a comma.
-        schema:
-          type: string
-      responses:
-        '200':
-          description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/trackingDetailListApiResponse'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/trackingDetailListApiResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/trackingDetailListApiResponse'
-  /api/A1/v2.0/Tracking/Milestone:
+  /api/A1/v1.0/Tracking/Detail:
     get:
       tags:
       - Tracking
@@ -41,7 +18,7 @@ paths:
       - name: trackingNumberVendor
         in: query
         description: The tracking number belonging to the package you're looking for
-          milestones of. Accepts up to 10 numbers separated by a comma.
+          details of.
         schema:
           type: string
       responses:
@@ -50,13 +27,38 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/trackingMilestoneListApiResponse'
+                $ref: '#/components/schemas/getTrackingDetailResponse'
             application/json:
               schema:
-                $ref: '#/components/schemas/trackingMilestoneListApiResponse'
+                $ref: '#/components/schemas/getTrackingDetailResponse'
             text/json:
               schema:
-                $ref: '#/components/schemas/trackingMilestoneListApiResponse'
+                $ref: '#/components/schemas/getTrackingDetailResponse'
+  /api/A1/v1.0/Tracking/Milestone:
+    get:
+      tags:
+      - Tracking
+      summary: ''
+      parameters:
+      - name: trackingNumberVendor
+        in: query
+        description: The tracking number belonging to the package you're looking for
+          milestones of.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/getTrackingMilestoneResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTrackingMilestoneResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/getTrackingMilestoneResponse'
 components:
   schemas:
     trackingProduct:
@@ -136,7 +138,7 @@ components:
             $ref: '#/components/schemas/trackingDetailEvents'
           nullable: true
       additionalProperties: false
-    ResponseStatus:
+    responseStatus:
       type: object
       properties:
         responseStatusCode:
@@ -149,18 +151,18 @@ components:
           nullable: true
       additionalProperties: false
       description: Displays the status of the Return
-    trackingDetailListApiResponse:
+    getTrackingDetailResponse:
+      required:
+      - responseStatus
+      - trackingDetail
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/trackingDetail'
-          nullable: true
+        trackingDetail:
+          allOf:
+          - $ref: '#/components/schemas/trackingDetail'
         responseStatus:
           allOf:
-          - $ref: '#/components/schemas/ResponseStatus'
-          nullable: true
+          - $ref: '#/components/schemas/responseStatus'
       additionalProperties: false
     trackingMilestoneEvents:
       type: object
@@ -203,16 +205,16 @@ components:
             $ref: '#/components/schemas/trackingMilestoneEvents'
           nullable: true
       additionalProperties: false
-    trackingMilestoneListApiResponse:
+    getTrackingMilestoneResponse:
+      required:
+      - responseStatus
+      - trackingMilestone
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/trackingMilestone'
-          nullable: true
+        trackingMilestone:
+          allOf:
+          - $ref: '#/components/schemas/trackingMilestone'
         responseStatus:
           allOf:
-          - $ref: '#/components/schemas/ResponseStatus'
-          nullable: true
+          - $ref: '#/components/schemas/responseStatus'
       additionalProperties: false

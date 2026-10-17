@@ -1,0 +1,239 @@
+openapi: 3.2.0
+info:
+  title: Asendia External Invoice Import API
+  version: ExternalInvoiceImport v1.0
+  contact:
+    name: Asendia USA Web Service Team for any questions or comments.
+    email: john.mcshane@asendia.com;chris.joiner@asendia.com;katie.vogt@asendia.com;ammi.cabrera@asendia.com
+  description: 'Operations tagged ExternalInvoiceImport across 2 of this provider''s published API definitions: asendia-a1-externalinvoiceimport-swagger.json, asendia-a1-externalinvoiceimport-openapi.yml. Each path carries the servers of the definition it was published in.'
+tags:
+- name: ExternalInvoiceImport
+paths:
+  /api/A1/v1.0/ExternalInvoiceImport/Invoice:
+    post:
+      tags:
+      - ExternalInvoiceImport
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ExternalInvoice'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExternalInvoice'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ExternalInvoice'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ExternalInvoice'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+      summary: Create api a1 external invoice import invoice
+      x-summary-source: derived
+      operationId: postApiA1V10ExternalInvoiceImportInvoice
+      x-operation-id-source: derived
+components:
+  schemas:
+    ExternalInvoice:
+      required:
+      - customerAccountNumber
+      - invoiceCurrencyIso3
+      - invoiceDate
+      - invoiceLines
+      - invoiceNumber
+      - invoiceType
+      type: object
+      properties:
+        customerAccountNumber:
+          type: string
+          description: The Asendia customer account number of the customer that this invoice applies to.
+        invoiceType:
+          allOf:
+          - $ref: '#/components/schemas/InvoiceType'
+          description: The type of invoice.  Possible values are "Credit" or "Debit".
+        invoiceNumber:
+          type: string
+          description: Unique invoice number.  This is the number that will appear on the customer invoice for reference.
+        invoiceDate:
+          type: string
+          description: Date of the invoice. This is the date that will appear on the invoice.  Format should be standard date in the MM/dd/yyyy format.
+          format: date-time
+        invoiceCurrencyIso3:
+          type: string
+          description: Currency Iso3 of the invoice.  All charged will be assumed to be in this currency.  Invoice will also be generated in this currency.
+        invoiceLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExternalInvoiceLines'
+          description: Individual line items that will appear on the invoice.  Tax charges will be broken out as sub line items.
+        attachments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ExternalAttachment'
+          description: File attachments that will be added to the invoice.  Attachments will also be delivered to the customer.
+      additionalProperties: false
+    InvoiceType:
+      enum:
+      - Credit
+      - Debit
+      type: string
+    ExternalInvoiceLines:
+      required:
+      - asendiaProductCode
+      - description
+      - jobNumber
+      - postageMaterialCode
+      - postageTotal
+      type: object
+      properties:
+        location:
+          type:
+          - string
+          - 'null'
+          description: Three character location code of the Asendia facility tied to the charges. Valid locations provided by Asendia.
+        jobNumber:
+          type: string
+          description: Job number associated with the charges.  Charges will be grouped by job number on the invoice.
+        description:
+          type: string
+          description: Description of charges that will appear on the invoice.
+        province:
+          type:
+          - string
+          - 'null'
+          description: Province/State that the charges apply to.
+        postageMaterialCode:
+          type: string
+          description: Material code associated with postage charges.  Must be a valid material code provided by Asendia
+        pieces:
+          maximum: 2147483647
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+          description: Number of pieces/parcels associated with the line item if applicable.
+          format: int32
+        weight:
+          maximum: 79228162514264337593543950335
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          description: Weight of pieces/parcels associated with the line item if applicable.
+          format: double
+        weightCode:
+          allOf:
+          - $ref: '#/components/schemas/WeightType'
+          description: Weight code of line item weight. Possible values are "Lbs" and "Kgs". Defaulted to "Lbs" if not provided.
+        asendiaProductCode:
+          type: string
+          description: Asendia product code associated with the charges.  Must be a valid product code provided by Asendia.
+        postageTotal:
+          maximum: 79228162514264337593543950335
+          minimum: 0
+          type: number
+          description: All charges associated with the line item excluding Canadian tax amounts. Canadian charges must be broken out separately.
+          format: double
+        taxMaterialCode:
+          type:
+          - string
+          - 'null'
+          description: 'Material code associated with Canadian tax charges.  Must be a valid material code provided by Asendia.
+
+            **Conditionally required if tax amounts are provided**'
+        gstTotal:
+          maximum: 79228162514264337593543950335
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          description: GST Tax charge associated with the line. If not provided will be excluded from the invoice line on the invoice.
+          format: double
+        hstTotal:
+          maximum: 79228162514264337593543950335
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          description: HST Tax charge associated with the line. If not provided will be excluded from the invoice line on the invoice.
+          format: double
+        pstTotal:
+          maximum: 79228162514264337593543950335
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          description: PST Tax charge associated with the line. If not provided will be excluded from the invoice line on the invoice.
+          format: double
+        qstTotal:
+          maximum: 79228162514264337593543950335
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          description: QST Tax charge associated with the line. If not provided will be excluded from the invoice line on the invoice.
+          format: double
+      additionalProperties: false
+    ExternalAttachment:
+      required:
+      - fileContents
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+          description: Friendly name of the attachment.  Will display internally.
+        fileContents:
+          type: string
+          description: Base 64 encoded contents of the file. If not base 64 encoded the contents will not display properly internally or when sending to customer.
+        fileName:
+          type:
+          - string
+          - 'null'
+          description: Name of the file that will be attached to the file.  Name must include extension such as ".csv" or ".pdf" or it will not display properly internally or when sending to customer.
+      additionalProperties: false
+    BooleanApiResponse:
+      type: object
+      properties:
+        data:
+          type: boolean
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+      additionalProperties: false
+    ResponseStatus:
+      type: object
+      properties:
+        responseStatusCode:
+          type: integer
+          description: This is used to display the code for the return status.
+          format: int32
+        responseStatusMessage:
+          type:
+          - string
+          - 'null'
+          description: This is used for a human readable return status message.
+      additionalProperties: false
+      description: Displays the status of the Return
+    WeightType:
+      enum:
+      - Lbs
+      - Kgs
+      type: string
+x-refined-from:
+- asendia-a1-externalinvoiceimport-swagger.json
+- asendia-a1-externalinvoiceimport-openapi.yml

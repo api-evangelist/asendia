@@ -1,0 +1,611 @@
+openapi: 3.2.0
+info:
+  title: Asendia Pudo Locator API
+  version: Pudo Locator v2.6
+  contact:
+    name: Asendia USA Web Service Team for any questions or comments.
+    email: john.mcshane@asendia.com;chris.joiner@asendia.com;katie.vogt@asendia.com;ammi.cabrera@asendia.com
+  description: 'Operations tagged PudoLocator across 2 of this provider''s published API definitions: asendia-a1-pudo-locator-swagger.json, asendia-a1-pudo-locator-openapi.yml. Each path carries the servers of the definition it was published in.'
+tags:
+- name: PudoLocator
+paths:
+  /api/A1/v2.6/PudoLocator/PudoLocation:
+    get:
+      tags:
+      - PudoLocator
+      parameters:
+      - name: accountNumber
+        in: query
+        description: Asendia's account number designated for the shipper. This will be provided at account setup.
+        required: true
+        schema:
+          maxLength: 12
+          type: string
+      - name: subAccountNumber
+        in: query
+        description: Asendia's sub account number designated for the shipper, if applicable. This will be provided at account setup.
+        schema:
+          maxLength: 12
+          type: string
+      - name: processingLocation
+        in: query
+        description: 'The Asendia''s location in where the physical package will be processed.
+
+          Possible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC, TOR, CAL, BUF'
+        required: true
+        schema:
+          maxLength: 3
+          minLength: 3
+          type: string
+      - name: recipientAddressLine1
+        in: query
+        description: The first line of the package recipient's street address
+        required: true
+        schema:
+          maxLength: 50
+          type: string
+      - name: recipientAddressLine2
+        in: query
+        description: The second line of the package recipient's street address
+        schema:
+          maxLength: 50
+          type: string
+      - name: recipientAddressLine3
+        in: query
+        description: The third line of the package recipient's street address
+        schema:
+          maxLength: 50
+          type: string
+      - name: recipientCity
+        in: query
+        description: The city of the package recipient's street address
+        required: true
+        schema:
+          maxLength: 50
+          type: string
+      - name: recipientProvince
+        in: query
+        description: The state or province of the package recipient's street address
+        schema:
+          maxLength: 50
+          type: string
+      - name: recipientPostalCode
+        in: query
+        description: The package recipient's postal code
+        required: true
+        schema:
+          maxLength: 20
+          type: string
+      - name: recipientCountryCode
+        in: query
+        description: 'The 2-character ISO country code for the package receipient''s street address.
+
+          See for more information: http://www.iso.org/iso/country_codes'
+        required: true
+        schema:
+          maxLength: 2
+          minLength: 2
+          type: string
+      - name: totalPackageWeight
+        in: query
+        description: The package's actual weight
+        required: true
+        schema:
+          type: number
+          format: double
+      - name: weightUnit
+        in: query
+        description: The package's unit of weight
+        required: true
+        schema:
+          $ref: '#/components/schemas/weightUnitEnum'
+      - name: dimLength
+        in: query
+        description: The packages dimensional length
+        schema:
+          type: number
+          format: double
+      - name: dimWidth
+        in: query
+        description: The packages dimensional width
+        schema:
+          type: number
+          format: double
+      - name: dimHeight
+        in: query
+        description: The packages dimensional height
+        schema:
+          type: number
+          format: double
+      - name: dimUnit
+        in: query
+        description: The packages dimensional unit
+        schema:
+          $ref: '#/components/schemas/dimUnitEnum'
+      - name: productCode
+        in: query
+        description: 'The Product Codes will be provided on a per-integration basis.
+
+          This indicates the customer’s preferred service or routing for the package.
+
+          (Use * or % for all active.)'
+        required: true
+        schema:
+          maxLength: 5
+          type: string
+      - name: totalPackageValue
+        in: query
+        description: The package's value
+        schema:
+          type: number
+          format: double
+      - name: currencyType
+        in: query
+        description: The package's currency type
+        schema:
+          $ref: '#/components/schemas/currencyTypeEnum'
+      - name: radius
+        in: query
+        description: The radius in kilometers of the search (default is 2)
+        schema:
+          type: number
+          format: double
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PudoLocatorResponseApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PudoLocatorResponseApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PudoLocatorResponseApiResponse'
+      summary: Get api a1 pudo locator pudo location
+      x-summary-source: derived
+      operationId: getApiA1V26PudoLocatorPudoLocation
+      x-operation-id-source: derived
+components:
+  schemas:
+    PudoAddress:
+      type: object
+      properties:
+        countryCode:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        zipcode:
+          type:
+          - string
+          - 'null'
+        address1:
+          type:
+          - string
+          - 'null'
+        address2:
+          type:
+          - string
+          - 'null'
+        address3:
+          type:
+          - string
+          - 'null'
+        suburb:
+          type:
+          - string
+          - 'null'
+        streetNumber:
+          type:
+          - string
+          - 'null'
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        radius:
+          type: number
+          format: double
+      additionalProperties: false
+    WorkHours:
+      type: object
+      properties:
+        mo:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        tu:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        we:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        th:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        fr:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        sa:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        su:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        closedPeriods:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    dimUnitEnum:
+      enum:
+      - IN
+      - CM
+      - in
+      - cm
+      - In
+      - Cm
+      type: string
+    RequestedLocation:
+      type: object
+      properties:
+        country:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        zipcode:
+          type:
+          - string
+          - 'null'
+        address1:
+          type:
+          - string
+          - 'null'
+        address2:
+          type:
+          - string
+          - 'null'
+        address3:
+          type:
+          - string
+          - 'null'
+        streetNumber:
+          type:
+          - string
+          - 'null'
+        suburb:
+          type:
+          - string
+          - 'null'
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        radius:
+          type: integer
+          format: int32
+      additionalProperties: false
+    AdditionalData:
+      type: object
+      properties:
+        key:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    weightUnitEnum:
+      enum:
+      - Lb
+      - Lbs
+      - Kg
+      - Kgs
+      - LB
+      - LBS
+      - KG
+      - KGS
+      type: string
+    currencyTypeEnum:
+      enum:
+      - AED
+      - COP
+      - HUF
+      - MDL
+      - RON
+      - UYU
+      - AFN
+      - CRC
+      - IDR
+      - MGA
+      - RSD
+      - UZS
+      - ALL
+      - CUP
+      - ILS
+      - MKD
+      - RUB
+      - VEB
+      - AMD
+      - CVE
+      - IMP
+      - MMK
+      - RWF
+      - VND
+      - ANG
+      - CYP
+      - INR
+      - MNT
+      - SAR
+      - VUV
+      - AOA
+      - CZK
+      - IQD
+      - MOP
+      - SBD
+      - WST
+      - ARS
+      - DJF
+      - IRR
+      - MRO
+      - SCR
+      - XAF
+      - AUD
+      - DKK
+      - ISK
+      - MTL
+      - SDD
+      - XCD
+      - AWG
+      - DOP
+      - JEP
+      - MUR
+      - SEK
+      - XOF
+      - AZN
+      - DZD
+      - JMD
+      - MVR
+      - SGD
+      - XPF
+      - BAM
+      - EEK
+      - JOD
+      - MWK
+      - SHP
+      - YER
+      - BBD
+      - EGP
+      - JPY
+      - MXN
+      - SKK
+      - ZAR
+      - BDT
+      - ERN
+      - KES
+      - MYR
+      - SLL
+      - ZMK
+      - BGN
+      - ETB
+      - KGS
+      - MZM
+      - SOS
+      - ZWD
+      - BHD
+      - EUR
+      - KHR
+      - NAD
+      - SRD
+      - BIF
+      - FJD
+      - KMF
+      - NGN
+      - STD
+      - BMD
+      - FKP
+      - KPW
+      - NIO
+      - SYP
+      - BND
+      - GBP
+      - KRW
+      - NOK
+      - SZL
+      - BOB
+      - GEL
+      - KWD
+      - NPR
+      - THB
+      - BRL
+      - GGP
+      - KYD
+      - NZD
+      - TJS
+      - BSD
+      - GHC
+      - KZT
+      - OMR
+      - TMM
+      - BTN
+      - GIP
+      - LAK
+      - PAB
+      - TND
+      - BWP
+      - GMD
+      - LBP
+      - PEN
+      - TOP
+      - BYR
+      - GNF
+      - LKR
+      - PGK
+      - TRY
+      - BZD
+      - GTQ
+      - LRD
+      - PHP
+      - TTD
+      - CAD
+      - GYD
+      - LSL
+      - PKR
+      - TWD
+      - CDF
+      - HKD
+      - LTL
+      - PLN
+      - TZS
+      - CHF
+      - HNL
+      - LVL
+      - PYG
+      - UAH
+      - CLP
+      - HRK
+      - LYD
+      - QAR
+      - UGX
+      - CNY
+      - HTG
+      - MAD
+      - RMB
+      - USD
+      type: string
+    PudoLocatorResponseApiResponse:
+      type: object
+      properties:
+        data:
+          allOf:
+          - $ref: '#/components/schemas/PudoLocatorResponse'
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+      additionalProperties: false
+    ResponseStatus:
+      type: object
+      properties:
+        responseStatusCode:
+          type: integer
+          description: This is used to display the code for the return status.
+          format: int32
+        responseStatusMessage:
+          type:
+          - string
+          - 'null'
+          description: This is used for a human readable return status message.
+      additionalProperties: false
+      description: Displays the status of the Return
+    PudoPoint:
+      type: object
+      properties:
+        asendiaPudoPointId:
+          type:
+          - string
+          - 'null'
+        supplierId:
+          type:
+          - string
+          - 'null'
+        serviceCode:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        distance:
+          type: number
+          format: double
+        pudoId:
+          type:
+          - string
+          - 'null'
+        pudoAddress:
+          allOf:
+          - $ref: '#/components/schemas/PudoAddress'
+        workHours:
+          allOf:
+          - $ref: '#/components/schemas/WorkHours'
+      additionalProperties: false
+    PudoLocatorResponse:
+      type: object
+      properties:
+        requestedLocation:
+          allOf:
+          - $ref: '#/components/schemas/RequestedLocation'
+        pudoPoints:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PudoPoint'
+        status:
+          type:
+          - string
+          - 'null'
+        code:
+          type: integer
+          format: int32
+        reason:
+          type:
+          - string
+          - 'null'
+        note:
+          type:
+          - string
+          - 'null'
+        transactionKey:
+          type:
+          - string
+          - 'null'
+        additionalData:
+          allOf:
+          - $ref: '#/components/schemas/AdditionalData'
+      additionalProperties: false
+x-refined-from:
+- asendia-a1-pudo-locator-swagger.json
+- asendia-a1-pudo-locator-openapi.yml

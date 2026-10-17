@@ -1,0 +1,731 @@
+openapi: 3.2.0
+info:
+  title: Asendia DWS API
+  version: DWS v1.0
+  contact:
+    name: Asendia USA Web Service Team for any questions or comments.
+    email: john.mcshane@asendia.com;chris.joiner@asendia.com;katie.vogt@asendia.com;ammi.cabrera@asendia.com
+  description: 'Operations tagged DWS across 2 of this provider''s published API definitions: asendia-a1-dws-swagger.json, asendia-a1-dws-openapi.yml. Each path carries the servers of the definition it was published in.'
+tags:
+- name: DWS
+paths:
+  /api/A1/Operation/DWS/PreProcessParcel2:
+    post:
+      tags:
+      - DWS
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/PreProcessParcelRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PreProcessParcelRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/PreProcessParcelRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/PreProcessParcelRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+      summary: Create api a1 operation dws pre process parcel2
+      x-summary-source: derived
+      operationId: postApiA1OperationDWSPreProcessParcel2
+      x-operation-id-source: derived
+  /api/A1/Operation/DWS/PreProcessParcel:
+    post:
+      tags:
+      - DWS
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/PreProcessParcelRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PreProcessParcelRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/PreProcessParcelRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/PreProcessParcelRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+      summary: Create api a1 operation dws pre process parcel
+      x-summary-source: derived
+      operationId: postApiA1OperationDWSPreProcessParcel
+      x-operation-id-source: derived
+  /api/A1/Operation/DWS/GenericPreProcessParcel:
+    post:
+      tags:
+      - DWS
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/GenericPreProcessParcelRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericPreProcessParcelRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GenericPreProcessParcelRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GenericPreProcessParcelRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GenericPreProcessParcelResponseApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericPreProcessParcelResponseApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GenericPreProcessParcelResponseApiResponse'
+      summary: Create api a1 operation dws generic pre process parcel
+      x-summary-source: derived
+      operationId: postApiA1OperationDWSGenericPreProcessParcel
+      x-operation-id-source: derived
+  /api/A1/Operation/DWS/PreProcessParcelSimulator:
+    put:
+      tags:
+      - DWS
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/PreProcessParcelRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PreProcessParcelRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/PreProcessParcelRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/PreProcessParcelRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+      summary: Replace api a1 operation dws pre process parcel simulator
+      x-summary-source: derived
+      operationId: putApiA1OperationDWSPreProcessParcelSimulator
+      x-operation-id-source: derived
+  /api/A1/Operation/DWS/PackageLabel:
+    get:
+      tags:
+      - DWS
+      parameters:
+      - name: trackingNumberCustomer
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportDataListApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportDataListApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportDataListApiResponse'
+      summary: Get api a1 operation dws package label
+      x-summary-source: derived
+      operationId: getApiA1OperationDWSPackageLabel
+      x-operation-id-source: derived
+  /api/A1/Operation/DWS/PackageLabelManagerOverride:
+    get:
+      tags:
+      - DWS
+      parameters:
+      - name: trackingNumberCustomer
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportDataListApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportDataListApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportDataListApiResponse'
+      summary: Get api a1 operation dws package label manager override
+      x-summary-source: derived
+      operationId: getApiA1OperationDWSPackageLabelManagerOverride
+      x-operation-id-source: derived
+  /api/A1/Operation/DWS/VolumizerPreProcessParcel:
+    post:
+      tags:
+      - DWS
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/VolumizerPreProcessParcelRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VolumizerPreProcessParcelRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/VolumizerPreProcessParcelRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/VolumizerPreProcessParcelRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/VolumizerPreProcessParcelResponseApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VolumizerPreProcessParcelResponseApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/VolumizerPreProcessParcelResponseApiResponse'
+      summary: Create api a1 operation dws volumizer pre process parcel
+      x-summary-source: derived
+      operationId: postApiA1OperationDWSVolumizerPreProcessParcel
+      x-operation-id-source: derived
+  /api/A1/Operation/DWS/VitronicDashboardItems:
+    get:
+      tags:
+      - DWS
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/VitronicDataItemListApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VitronicDataItemListApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/VitronicDataItemListApiResponse'
+      summary: Get api a1 operation dws vitronic dashboard items
+      x-summary-source: derived
+      operationId: getApiA1OperationDWSVitronicDashboardItems
+      x-operation-id-source: derived
+components:
+  schemas:
+    VolumizerPreProcessParcelResponseApiResponse:
+      type: object
+      properties:
+        data:
+          allOf:
+          - $ref: '#/components/schemas/VolumizerPreProcessParcelResponse'
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+      additionalProperties: false
+    PreProcessParcelRequest:
+      required:
+      - dimUnit
+      - processingLocation
+      - totalPackageWeight
+      - trackingNumbers
+      - weightUnit
+      type: object
+      properties:
+        trackingNumbers:
+          type: string
+          description: The tracking numbers belonging to the packages you're looking for details of. Accepts up to 10 numbers separated by a comma.
+        processingLocation:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: 'The Asendia''s location in where the physical package will be processed.
+
+            Possible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC, TOR, CAL'
+        totalPackageWeight:
+          type: number
+          description: The package's actual weight
+          format: double
+        weightUnit:
+          allOf:
+          - $ref: '#/components/schemas/weightUnitEnum'
+          description: The package's unit of weight
+        dimLength:
+          type: number
+          description: The packages dimensional length
+          format: double
+        dimWidth:
+          type: number
+          description: The packages dimensional width
+          format: double
+        dimHeight:
+          type: number
+          description: The packages dimensional height
+          format: double
+        dimUnit:
+          allOf:
+          - $ref: '#/components/schemas/dimUnitEnum'
+          description: The packages dimensional unit
+      additionalProperties: false
+    ReportData:
+      required:
+      - contentData
+      - contentSize
+      - contentTypeId
+      - formatCode
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        formatCode:
+          type: string
+        contentTypeId:
+          type: integer
+          format: int32
+        contentTypeName:
+          type:
+          - string
+          - 'null'
+        contentSize:
+          type: string
+        createdOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        createdBy:
+          type:
+          - string
+          - 'null'
+        exportedOn:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        exportedBy:
+          type:
+          - string
+          - 'null'
+        friendlyName:
+          type:
+          - string
+          - 'null'
+        contentData:
+          type: string
+        reportId:
+          type: integer
+          format: int32
+        fileName:
+          type:
+          - string
+          - 'null'
+        orientation:
+          type:
+          - string
+          - 'null'
+        fileLocationPath:
+          type:
+          - string
+          - 'null'
+        carrierLabelType:
+          type:
+          - string
+          - 'null'
+          description: A-Carrier document type when available (e.g. ACL Label.Type). Used to distinguish customs documents from shipping labels.
+        isS3File:
+          type: boolean
+        numberOfCopies:
+          type: integer
+          format: int32
+      additionalProperties: false
+    dimUnitEnum:
+      enum:
+      - IN
+      - CM
+      - MM
+      type: string
+    VitronicDataItem:
+      type: object
+      properties:
+        packageId:
+          type: integer
+          format: int32
+        packageIssueId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        trackingNumber:
+          type:
+          - string
+          - 'null'
+        jobNumber:
+          type:
+          - string
+          - 'null'
+        coreProductName:
+          type:
+          - string
+          - 'null'
+        weight:
+          type:
+          - number
+          - 'null'
+          format: double
+        weightWithUnit:
+          type:
+          - string
+          - 'null'
+        destination:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        statusName:
+          type:
+          - string
+          - 'null'
+        date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        scaleId:
+          type:
+          - string
+          - 'null'
+        dwsResponseLogs:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DWSResponseLog'
+        alibiCaptureOn:
+          type:
+          - string
+          - 'null'
+        trackingNumbers:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    GenericPreProcessParcelResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        packageId:
+          type: integer
+          format: int32
+        trackingNumber:
+          type:
+          - string
+          - 'null'
+        preProcessStatus:
+          type:
+          - string
+          - 'null'
+        errorMessage:
+          type:
+          - string
+          - 'null'
+        processingLocation:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    weightUnitEnum:
+      enum:
+      - Lb
+      - Kg
+      type: string
+    DWSResponseLog:
+      type: object
+      properties:
+        responseMessage:
+          type:
+          - string
+          - 'null'
+        statusCode:
+          type: integer
+          format: int32
+        preProcessStatus:
+          type:
+          - string
+          - 'null'
+        createdOn:
+          type: string
+          format: date-time
+        action:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ResponseStatus:
+      type: object
+      properties:
+        responseStatusCode:
+          type: integer
+          description: This is used to display the code for the return status.
+          format: int32
+        responseStatusMessage:
+          type:
+          - string
+          - 'null'
+          description: This is used for a human readable return status message.
+      additionalProperties: false
+      description: Displays the status of the Return
+    VitronicDataItemListApiResponse:
+      type: object
+      properties:
+        data:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/VitronicDataItem'
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+      additionalProperties: false
+    GenericPreProcessParcelRequest:
+      type: object
+      properties:
+        trackingNumber:
+          type:
+          - string
+          - 'null'
+          description: 'The tracking number belonging to the parcel preprocessed with DWS
+
+            Only 1 tracking number per API request'
+        processingLocation:
+          type:
+          - string
+          - 'null'
+          description: 'The Asendia''s location where the physical package will be processed.
+
+            If null, the processing location from API account settings will be used (BR-1-3)
+
+            Examples: SIN(Singapore), HON(Hong Kong), AUS(Australia) and NEW(New Zealand).'
+        totalPackageWeight:
+          type: number
+          description: The parcel’s actual weight for the given weightUnit
+          format: double
+        weightUnit:
+          allOf:
+          - $ref: '#/components/schemas/weightUnitEnum'
+          description: The package's unit of weight
+        dimLength:
+          type:
+          - number
+          - 'null'
+          description: The package's dimensional length
+          format: double
+        dimWidth:
+          type:
+          - number
+          - 'null'
+          description: The package's dimensional width
+          format: double
+        dimHeight:
+          type:
+          - number
+          - 'null'
+          description: The package's dimensional height
+          format: double
+        dimUnit:
+          allOf:
+          - $ref: '#/components/schemas/dimUnitEnum'
+          description: 'The package''s dimensional unit.
+
+            IMPORTANT (BR-1-4): For APAC DWS machines, this can be null.
+
+            When null, dimensions are assumed to be in MM and will be automatically converted to CM by dividing by 10.'
+        machineId:
+          type:
+          - string
+          - 'null'
+          description: 'Unique identifier for the DWS machine (BR-5-3)
+
+            Will be stored as Scale ID in the system'
+      additionalProperties: false
+    VolumizerPreProcessParcelRequest:
+      required:
+      - dimUnit
+      - processingLocation
+      - totalPackageWeight
+      - trackingNumbers
+      - weightUnit
+      type: object
+      properties:
+        trackingNumbers:
+          type: string
+          description: The tracking numbers belonging to the packages you're looking for details of. Accepts up to 10 numbers separated by a comma.
+        processingLocation:
+          type: string
+          description: 'The Asendia''s location in where the physical package will be processed.
+
+            Possible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC, TOR, CAL'
+        totalPackageWeight:
+          type: number
+          description: The package's actual weight
+          format: double
+        weightUnit:
+          allOf:
+          - $ref: '#/components/schemas/weightUnitEnum'
+          description: The package's unit of weight
+        dimLength:
+          type: number
+          description: The packages dimensional length
+          format: double
+        dimWidth:
+          type: number
+          description: The packages dimensional width
+          format: double
+        dimHeight:
+          type: number
+          description: The packages dimensional height
+          format: double
+        dimUnit:
+          allOf:
+          - $ref: '#/components/schemas/dimUnitEnum'
+          description: The packages dimensional unit
+        connectionId:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+          description: Connection ID
+        alibiMemoryId:
+          maxLength: 9
+          type:
+          - string
+          - 'null'
+          description: Alibi Memory ID
+        scaleId:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+          description: Must be named "Volumizer"
+        processedDate:
+          type:
+          - string
+          - 'null'
+          description: Date of weighing at scan 1
+        processedTime:
+          type:
+          - string
+          - 'null'
+          description: Time of weighing at scan 1
+      additionalProperties: false
+    BooleanApiResponse:
+      type: object
+      properties:
+        data:
+          type: boolean
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+      additionalProperties: false
+    VolumizerPreProcessParcelResponse:
+      type: object
+      properties:
+        connectionId:
+          type:
+          - string
+          - 'null'
+        preProcessStatus:
+          type:
+          - string
+          - 'null'
+        errorMessage:
+          type:
+          - string
+          - 'null'
+        packageId:
+          type: integer
+          format: int32
+        trackingNumber:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ReportDataListApiResponse:
+      type: object
+      properties:
+        data:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ReportData'
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+      additionalProperties: false
+    GenericPreProcessParcelResponseApiResponse:
+      type: object
+      properties:
+        data:
+          allOf:
+          - $ref: '#/components/schemas/GenericPreProcessParcelResponse'
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+      additionalProperties: false
+x-refined-from:
+- asendia-a1-dws-swagger.json
+- asendia-a1-dws-openapi.yml

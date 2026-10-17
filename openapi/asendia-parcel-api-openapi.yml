@@ -1,0 +1,2842 @@
+openapi: 3.2.0
+info:
+  title: Asendia Parcel API
+  version: Parcel v1.0
+  contact:
+    name: Asendia USA Web Service Team for any questions or comments.
+    email: john.mcshane@asendia.com;chris.joiner@asendia.com;katie.vogt@asendia.com;ammi.cabrera@asendia.com
+  description: 'Operations tagged Parcel across 2 of this provider''s published API definitions: asendia-a1-parcel-swagger.json, asendia-a1-parcel-openapi.yml. Each path carries the servers of the definition it was published in.'
+tags:
+- name: Parcel
+paths:
+  /api/A1/v1.0/Parcel/CreateParcel:
+    post:
+      tags:
+      - Parcel
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/postParcelRequestModel'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postParcelRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/postParcelRequestModel'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/postParcelRequestModel'
+      responses:
+        '204':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/postParcelResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postParcelResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/postParcelResponse'
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/postParcelResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postParcelResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/postParcelResponse'
+      summary: Create api a1 parcel create parcel
+      x-summary-source: derived
+      operationId: postApiA1V10ParcelCreateParcel
+      x-operation-id-source: derived
+  /api/A1/v1.0/Parcel/CustomerCreateParcel:
+    post:
+      tags:
+      - Parcel
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/postCustomerParcelRequestModel'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postCustomerParcelRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/postCustomerParcelRequestModel'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/postCustomerParcelRequestModel'
+      responses:
+        '204':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/postParcelResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postParcelResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/postParcelResponse'
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/postParcelResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postParcelResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/postParcelResponse'
+      summary: Create api a1 parcel customer create parcel
+      x-summary-source: derived
+      operationId: postApiA1V10ParcelCustomerCreateParcel
+      x-operation-id-source: derived
+  /api/A1/v1.0/Parcel/UKCreateParcel:
+    post:
+      tags:
+      - Parcel
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/postUKParcelRequestModel'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postUKParcelRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/postUKParcelRequestModel'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/postUKParcelRequestModel'
+      responses:
+        '200':
+          description: Success
+      summary: Create api a1 parcel uk create parcel
+      x-summary-source: derived
+      operationId: postApiA1V10ParcelUKCreateParcel
+      x-operation-id-source: derived
+    put:
+      tags:
+      - Parcel
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/postUKParcelRequestModel'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postUKParcelRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/postUKParcelRequestModel'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/postUKParcelRequestModel'
+      responses:
+        '200':
+          description: Success
+      summary: Replace api a1 parcel uk create parcel
+      x-summary-source: derived
+      operationId: putApiA1V10ParcelUKCreateParcel
+      x-operation-id-source: derived
+  /api/A1/v1.0/Parcel/DeleteParcel:
+    put:
+      tags:
+      - Parcel
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/deleteParcelRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/deleteParcelRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/deleteParcelRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/deleteParcelRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/responseStatus'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/responseStatus'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/responseStatus'
+      summary: Replace api a1 parcel delete parcel
+      x-summary-source: derived
+      operationId: putApiA1V10ParcelDeleteParcel
+      x-operation-id-source: derived
+components:
+  schemas:
+    deleteParcelRequest:
+      required:
+      - accountNumber
+      type: object
+      properties:
+        accountNumber:
+          maxLength: 12
+          type: string
+        subAccountNumber:
+          maxLength: 12
+          type:
+          - string
+          - 'null'
+        parcel:
+          allOf:
+          - $ref: '#/components/schemas/parcel'
+      additionalProperties: false
+    ukRecipientModel:
+      required:
+      - recipientCountryCode
+      type: object
+      properties:
+        recipientFirstName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel recipient's first name
+        recipientLastName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel recipient's last name
+        recipientBusinessName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel recipient's business name
+        recipientAddressLine1:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The first line of the parcel recipient's street address
+        recipientAddressLine2:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The second line of the parcel recipient's street address
+        recipientAddressLine3:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The third line of the parcel recipient's street address
+        recipientHouseNumber:
+          maxLength: 10
+          type:
+          - string
+          - 'null'
+          description: The parcel recipient's house number
+        recipientCity:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The city of the package recipient's street address
+        recipientProvince:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The state or province of the package recipient's street address
+        recipientPostalCode:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel recipient's postal code
+        recipientCountryCode:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: 'The 2-character ISO country code for the parcel recipient''s street address. See for more information: http://www.iso.org/iso/country_codes'
+        recipientEmail:
+          maxLength: 75
+          type:
+          - string
+          - 'null'
+          description: The parcel recipient's email address
+          format: email
+        recipientPhoneNumber:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+          description: The parcel recipient's phone number
+        recipientMobileNumber:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+          description: The parcel recipient's mobile phone number
+        recipientIdentificationNumber:
+          type:
+          - string
+          - 'null'
+          description: The parcel recipient's identification number. Type is provided in recipientIdentificationType
+        recipientIdentificationType:
+          type:
+          - string
+          - 'null'
+          description: 'Recipient ID type (number must be provided in field recipientIdentificationNumber) :
+
+            <br> PASSP - Passport <br> IDCARD - National Identity Card <br> DRIVL - Driver License <br> CHUID - Swiss UID <br> ABN - ABN (Australian Business Number) '
+        recipientTaxID:
+          type:
+          - string
+          - 'null'
+          description: "Recipient Tax/VAT number in the destination country.\n <br> Ch VAT (VAT number in Switzerland) <br> CPF (individual tax id in Brazil) <br> CNPJ (business tax ID in Brazil) "
+        recipientEORI:
+          maxLength: 15
+          type:
+          - string
+          - 'null'
+          description: Recipient's EORI number (when recipient is a company)
+        recipientAEO:
+          type:
+          - string
+          - 'null'
+          description: The recipient's AEO (Authorised Economic Operator) number (when recipient is a company)
+        recipientLatitude:
+          pattern: ^(0|-?\d{0,9}(\.\d{0,6})?)$
+          type:
+          - number
+          - 'null'
+          description: Latitude coordinates of the delivery address
+          format: double
+        recipientLongitude:
+          pattern: ^(0|-?\d{0,9}(\.\d{0,6})?)$
+          type:
+          - number
+          - 'null'
+          description: Longitude coordinates of the delivery address
+          format: double
+        recipientPudoId:
+          type:
+          - string
+          - 'null'
+          description: PUDO Identifier for parcels delivered to a PickUp/DropOff point
+        w3w:
+          pattern: ^(?i:[a-z]{1,16}(?:\.[a-z]{1,16}){2})$
+          type:
+          - string
+          - 'null'
+          description: What 3 Words
+      additionalProperties: false
+    postParcelResponse:
+      type: object
+      properties:
+        shippingRates:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/shippingRate'
+        parcelLabels:
+          allOf:
+          - $ref: '#/components/schemas/parcelPackageLabel'
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/responseStatus'
+        parcelStatus:
+          type:
+          - string
+          - 'null'
+        parcelCode:
+          type:
+          - string
+          - 'null'
+        parcelInbound:
+          type:
+          - string
+          - 'null'
+        parcelOutbound:
+          type:
+          - string
+          - 'null'
+        parcelRouteCode:
+          type:
+          - string
+          - 'null'
+        accountNumber:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    articlesModel:
+      type: object
+      properties:
+        sku:
+          maxLength: 40
+          type:
+          - string
+          - 'null'
+          description: 'The item''s SKU number or other searchable product identifier. PLEASE NOTE: The SKU max field length is 40 characters but will be truncated to 20 characters upon import to Asendia Systems. This means if a SKU is 22 characters it will import into Asendia systems as 20 characters.'
+          example: BLUW12345678
+        articleDescription:
+          maxLength: 150
+          type:
+          - string
+          - 'null'
+          description: The item description that describes what the item is.
+          example: Blue watch
+        articleDescriptionCn:
+          maxLength: 150
+          type:
+          - string
+          - 'null'
+          description: Chinese description of the article
+          example: 中文货品
+        unitValue:
+          maximum: 10000000000
+          minimum: 0.01
+          type:
+          - number
+          - 'null'
+          description: The retail price for a single unit of the product.
+          format: double
+          example: 10
+        quantity:
+          maximum: 1000
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+          description: The total quantity of the product units within the package.
+          format: int32
+          example: 1
+        unitWeight:
+          maximum: 1000
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          description: The total weight for a single unit of the product Related unit (Kg or Lb) is defined in field "weightUnit"
+          format: double
+          example: 0.1
+        countryOfOrigin:
+          maxLength: 2
+          type:
+          - string
+          - 'null'
+          description: 'The 2-character ISO country code in which the product was manufactured, as required by international customs specifications. See for more information: http://www.iso.org/iso/country_codes'
+          example: DE
+        harmonizedCode:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+          description: The harmonized code required by international customs specifications. HS code or HST code ; depends on final carrier and customs requirements
+          example: '910310'
+        originPostalCode:
+          type:
+          - string
+          - 'null'
+          description: The postal code within the country where the product was manufactured. Can be requested if countryOfOrigin = CN and destination county = US
+        originManufacturer:
+          type:
+          - string
+          - 'null'
+          description: The name of the product manufacturer. Can be requested if countryOfOrigin = CN and destination county = US
+        destinationTariffCode:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+          description: Destination tariff code used for import clearance purposes. VAT codes for VAT exemptions or reduced VAT can be filled here
+          example: 'Exemption codes examples (IE destination):
+
+            <br>6VTF = Reduced VAT Rate <br>6VTT = Second Reduced VAT Rate <br>6VTA = Agricultural VAT Rate <br>6VTZ = Zero VAT Rate '
+        productURL:
+          maxLength: 255
+          type:
+          - string
+          - 'null'
+          description: Direct link to the product page
+          example: https://www.acme.com/SKU
+        composition:
+          type:
+          - string
+          - 'null'
+          description: 'Example: 100% polyurethane, Cotton, aluminium'
+          example: 100% polyurethane, Cotton, aluminium
+        tradeItemNumber:
+          type:
+          - string
+          - 'null'
+          description: 'GTIN (Global Trade Item Number) or the article or ISBN (International Standard Book Number) for Books
+
+            <br> GTIN: can be EAN (European Article Number) also called GTIN-13 or UPC (Universal Product Code) also called GTIN-12 and used in USA and Canada '
+        tradeItemNumberType:
+          allOf:
+          - $ref: '#/components/schemas/tradeItemNumberTypeEnum'
+          description: 'Type of trade item number. Possible value are: EAN, UPC, JAN or ISBN'
+        fdaPriorNotice:
+          maxLength: 12
+          minLength: 12
+          type:
+          - string
+          - 'null'
+          description: FDA (US Food and Drug Administration) Prior Notice number (12c) A Prior Notice declaration must be done for each food or beverage article to the USA.
+        hasBattery:
+          type:
+          - boolean
+          - 'null'
+          description: 'Parcel contains batterie True/False
+
+            <br>Possible Values: true, false (default value if null)'
+          example: false
+        dgnFlag:
+          type:
+          - boolean
+          - 'null'
+          description: 'Dangerous Goods (DGN) flag true/false
+
+            <br>Possible Values: true, false (default value if null)'
+          example: true
+        dgnCategory:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+          description: Dangerous goods category
+          example: Oxidizing substances
+        dgnUnNumber:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+          description: Unique reference for dangerous goods
+          example: UN 1993
+        dgnPInumber:
+          maxLength: 6
+          type:
+          - string
+          - 'null'
+          description: Packing Instruction Number used by Ops
+          example: PI 966
+        dgnEccn:
+          maxLength: 35
+          type:
+          - string
+          - 'null'
+          description: Export control classification number
+          example: 9E003
+        volatileOrganicCompoundInGrams:
+          maximum: 2147483647
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+          description: Weight in grams of Volatile Organic Components (VOC) in the item. Optional field.
+          format: int32
+          example: 150
+        dds:
+          maxLength: 14
+          minLength: 14
+          type:
+          - string
+          - 'null'
+          description: EU DDS Reference number
+          example: ''
+        certifierId:
+          maxLength: 255
+          type:
+          - string
+          - 'null'
+          description: US Customs
+          example: ''
+        productId:
+          maxLength: 255
+          type:
+          - string
+          - 'null'
+          description: US Customs
+          example: ''
+        certificateVersionId:
+          maxLength: 255
+          type:
+          - string
+          - 'null'
+          description: US Customs
+          example: ''
+      additionalProperties: false
+    parcelPackageLabel:
+      type: object
+      properties:
+        ashid:
+          type:
+          - string
+          - 'null'
+          description: Asendia Unique Identifier. Applicable when a identifier number range has been pre-assigned to a customer. AHSID allocated to an order parcel can be used to track the parcel. ASHID is printed on label when possible
+        barcodeReference:
+          type:
+          - string
+          - 'null'
+          description: Value you get when you scan main barcode on final mile label. For some final labels, barcode can be slightly different from tracking number. It is mandatory to provide value to allow 3rd party systems to scan label properly
+        packageId:
+          type:
+          - string
+          - 'null'
+        trackingNumber:
+          type:
+          - string
+          - 'null'
+        labels:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/label'
+      additionalProperties: false
+    ukReturnsModel:
+      type: object
+      properties:
+        returnsName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: Name of the person or company where  parcels are returned to, usually to handle undeliverables
+        returnsAddressLine1:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The first line of the returns street address
+        returnsAddressLine2:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The second line of the returns street address
+        returnsAddressLine3:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The third line of the returns street address
+        returnsCity:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The city where the parcel is returned to
+        returnsProvince:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The state or province where the parcel is returned to
+        returnsPostalCode:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+          description: The package recipient's postal code
+        returnsCountryCode:
+          maxLength: 2
+          minLength: 2
+          type:
+          - string
+          - 'null'
+          description: The 2-character ISO country code for the country where the parcel is returned to http://www.iso.org/iso/country_codes
+      additionalProperties: false
+    sellerModel:
+      type: object
+      properties:
+        sellerFirstName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel seller's first name
+        sellerLastName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel seller's last name
+        sellerBusinessName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel seller's company name
+        sellerAddressLine1:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The first line of the seller's street address
+        sellerAddressLine2:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The second line of the seller's street address
+        sellerAddressLine3:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The third line of the seller's street address
+        sellerCity:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The city of the seller's street address
+        sellerProvince:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The state or province of the seller's street address
+        sellerPostalCode:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+          description: The seller's postal code
+        sellerCountryCode:
+          maxLength: 2
+          minLength: 2
+          type:
+          - string
+          - 'null'
+          description: 'The 2-character ISO country code for the seller''s street address. See for more information: http://www.iso.org/iso/country_codes'
+        sellerPhoneNumber:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+          description: The seller's phone number
+        sellerMobileNumber:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+          description: The seller's mobile phone number
+        sellerEmail:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The seller's email address
+        sellerEORI:
+          maxLength: 17
+          type:
+          - string
+          - 'null'
+          description: The seller's EORI (Economic Operator Registration and Identification) number
+        sellerIOSS:
+          type:
+          - string
+          - 'null'
+          description: The seller's IOSS (Import One Stop Shop) number
+        sellerTaxID:
+          type:
+          - string
+          - 'null'
+          description: The seller's Tax ID, VAT or GST number in destination country
+          example: 222.259.895 or 222259895 for Switzerland
+        sellerOriginTaxID:
+          type:
+          - string
+          - 'null'
+          description: The seller's Tax ID, VAT or GST number in country of origin
+        sellerAEO:
+          type:
+          - string
+          - 'null'
+          description: The seller's AEO (Authorised Economic Operator) number
+        sellerIdentificationNumber:
+          type:
+          - string
+          - 'null'
+          description: 'The seller''s company/business registration number in the destination country
+
+            <br>Ex: Swiss UID
+
+            Used to capture sender ABN/ARN in Australia'
+          example: CHE-116.281.710 or CHE116281710
+      additionalProperties: false
+    returnsModel:
+      type: object
+      properties:
+        returnsName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: Name of the person or company where  parcels are returned to, usually to handle undeliverables
+        returnsAddressLine1:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The first line of the returns street address
+        returnsAddressLine2:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The second line of the returns street address
+        returnsAddressLine3:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The third line of the returns street address
+        returnsCity:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The city where the parcel is returned to
+        returnsProvince:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The state or province where the parcel is returned to
+        returnsPostalCode:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+          description: The package recipient's postal code
+        returnsCountryCode:
+          maxLength: 2
+          minLength: 2
+          type:
+          - string
+          - 'null'
+          description: The 2-character ISO country code for the country where the parcel is returned to http://www.iso.org/iso/country_codes
+      additionalProperties: false
+    postCustomerParcelRequestModel:
+      type: object
+      properties:
+        createParcelRequest:
+          allOf:
+          - $ref: '#/components/schemas/customerParcelRequestModel'
+      additionalProperties: false
+    ukFeesModel:
+      type: object
+      properties:
+        feeAmount:
+          pattern: ^(0|-?\d{0,7}(\.\d{0,2})?)$
+          type:
+          - number
+          - 'null'
+          description: Fee amount for the selected type (see feeType). Related currency is defined in feeCurrencyCode Multiple entries are possible
+          format: double
+          example: 50
+        feeType:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+          description: 'Fee type. Multiple entries are possible. Possible types are:
+
+            <br>Possible Values: COD, FreightFee, AdminFee,ShippingCost, InsuranceAmount, VATamount, TobaccoTax, AlcoholTax, OtherExciseTax, CustomsDuties'
+          example: ShippingCost
+        feeCurrencyCode:
+          maxLength: 3
+          minLength: 3
+          type:
+          - string
+          - 'null'
+          description: ISO 3 currency code applicable to fee amount
+          example: USD
+      additionalProperties: false
+    parcelRequestModel:
+      required:
+      - accountNumber
+      - labelType
+      - productCode
+      type: object
+      properties:
+        accountNumber:
+          maxLength: 12
+          type: string
+          description: Asendia's account number designated for the shipper. This will be provided at account setup.
+          example: US21110012
+        subAccountNumber:
+          maxLength: 12
+          type:
+          - string
+          - 'null'
+          description: Asendia's sub account number designated for the shipper, if applicable. This will be provided at account setup.
+        processingPoint:
+          type:
+          - string
+          - 'null'
+          description: The Asendia's location code where the physical package will be processed
+          example: SCL
+        isDirectAccess:
+          type:
+          - boolean
+          - 'null'
+          description: 'Signifyes wheter this parcel is Direct Access or not
+
+            <br>Possible Values: true, false (default value if null)<example>false</example>'
+        includeRate:
+          type:
+          - boolean
+          - 'null'
+          description: 'Signifyes whether or not to send back the Rate for this parcel.
+
+            <br>Possible Values: true, false (default value if null)'
+          example: false
+        labelType:
+          type: string
+          description: 'This is the preferred format for the returned label. Available formats are PDF, PNG, ZPL and ZPL300
+
+            <br>Possible Values: [ PDF, PNG, ZPL, ZPL300 ]'
+          example: PNG
+        labelRotation:
+          type:
+          - integer
+          - 'null'
+          description: 'Allows you to rotate PDF and PNG labels. Null is the default portrait orientation (top on the right). 90 and 270 values returns a label in landscape format. And 180 also returns a portrait label (top on the left).
+
+            <br>Possible Values: null, [90, 180, 270]'
+          format: int32
+          example: 270
+        customsDocumentType:
+          type:
+          - string
+          - 'null'
+          description: 'Preferred format for customs-related documents returned with the parcel (for example commercial invoice or CN22).
+
+            When omitted, customs documents use the same format as A1.Domain.External.ShippingPlatform.Model.parcelRequestModel.labelType.
+
+            <br>Possible Values: [ PDF, ZPL ]'
+          example: PDF
+        getLabel:
+          type:
+          - boolean
+          - 'null'
+          description: 'By default you get the label back in the response (= true) but you can decide to retrieve it later (=false) using the API method "Print Parcel" (available in a future release)
+
+            <br>Possible Values: true (default value if null), false'
+          example: true
+        productCode:
+          type: string
+          description: The Product Codes will be provided on a per-integration basis. This indicates the customer's preferred service or routing for the parcel
+          example: EPAQSTD_CUP
+        quoteCode:
+          type:
+          - string
+          - 'null'
+          description: In addition to the Products Codes, you may also get Quotes Codes when multiple services or routing are available for the same destination. Can be ignored except if instructed differently during integration
+          example: '180317'
+        insurance:
+          type:
+          - string
+          - 'null'
+          description: 'Used to capture the liability amount: EL45, EL150 or EL500
+
+            <br>Possible Values: null, [EL45, EL150, EL500]'
+          example: EL45
+        injectionPoint:
+          type:
+          - string
+          - 'null'
+          description: 'Injection Point
+
+            <br>Possible Values: null'
+          example: AKL
+        parcel:
+          allOf:
+          - $ref: '#/components/schemas/parcelModel'
+        sender:
+          allOf:
+          - $ref: '#/components/schemas/senderModel'
+        seller:
+          allOf:
+          - $ref: '#/components/schemas/sellerModel'
+        recipient:
+          allOf:
+          - $ref: '#/components/schemas/recipientModel'
+        importer:
+          allOf:
+          - $ref: '#/components/schemas/importerModel'
+        returns:
+          allOf:
+          - $ref: '#/components/schemas/returnsModel'
+        pudoAddress:
+          allOf:
+          - $ref: '#/components/schemas/pudoAddress'
+      additionalProperties: false
+    parcel:
+      type: object
+      properties:
+        orderNumber:
+          maxLength: 35
+          type:
+          - string
+          - 'null'
+        parcelID:
+          maxLength: 35
+          minLength: 4
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ukSellerModel:
+      type: object
+      properties:
+        sellerFirstName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel seller's first name
+        sellerLastName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel seller's last name
+        sellerBusinessName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel seller's company name
+        sellerAddressLine1:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The first line of the seller's street address
+        sellerAddressLine2:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The second line of the seller's street address
+        sellerAddressLine3:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The third line of the seller's street address
+        sellerCity:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The city of the seller's street address
+        sellerProvince:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The state or province of the seller's street address
+        sellerPostalCode:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+          description: The seller's postal code
+        sellerCountryCode:
+          maxLength: 2
+          minLength: 2
+          type:
+          - string
+          - 'null'
+          description: 'The 2-character ISO country code for the seller''s street address. See for more information: http://www.iso.org/iso/country_codes'
+        sellerPhoneNumber:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+          description: The seller's phone number
+          format: tel
+        sellerMobileNumber:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+          description: The seller's mobile phone number
+          format: tel
+        sellerEmail:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The seller's email address
+          format: email
+        sellerEORI:
+          maxLength: 15
+          type:
+          - string
+          - 'null'
+          description: The seller's EORI (Economic Operator Registration and Identification) number
+        sellerIOSS:
+          type:
+          - string
+          - 'null'
+          description: The seller's IOSS (Import One Stop Shop) number
+        sellerTaxID:
+          type:
+          - string
+          - 'null'
+          description: The seller's Tax ID, VAT or GST number in destination country
+          example: 222.259.895 or 222259895 for Switzerland
+        sellerOriginTaxID:
+          type:
+          - string
+          - 'null'
+          description: The seller's Tax ID, VAT or GST number in country of origin
+        sellerAEO:
+          type:
+          - string
+          - 'null'
+          description: The seller's AEO (Authorised Economic Operator) number
+        sellerIdentificationNumber:
+          type:
+          - string
+          - 'null'
+          description: 'The seller''s company/business registration number in the destination country
+
+            <br>Ex: Swiss UID
+
+            Used to capture sender ABN/ARN in Australia'
+          example: CHE-116.281.710 or CHE116281710
+      additionalProperties: false
+    ukImporterModel:
+      type: object
+      properties:
+        importerFirstName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel importer's first name
+        importerLastName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel importer's last name
+        importerBusinessName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel importer's business name
+        importerAddressLine1:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The first line of the parcel importer's street address
+        importerAddressLine2:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The second line of the parcel importer's street address
+        importerAddressLine3:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The third line of the parcel importer's street address
+        importerHouseNumber:
+          maxLength: 10
+          type:
+          - string
+          - 'null'
+          description: The parcel importer's house number
+        importerCity:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The city of the package importer's street address
+        importerProvince:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The state or province of the package importer's street address
+        importerPostalCode:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+          description: The package importer's postal code
+        importerCountryCode:
+          maxLength: 2
+          minLength: 2
+          type:
+          - string
+          - 'null'
+          description: 'The 2-character ISO country code for the package importer''s street address. See for more information: http://www.iso.org/iso/country_codes'
+        importerEmail:
+          maxLength: 75
+          type:
+          - string
+          - 'null'
+          description: The package importer's email address
+          format: email
+        importerPhoneNumber:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+          description: The package importer's phone number
+          format: tel
+        importerMobileNumber:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+          description: The package importer's phone number
+          format: tel
+        importerEORI:
+          type:
+          - string
+          - 'null'
+          description: The importer's EORI (Economic Operator Registration and Identification) number
+        importerTaxID:
+          type:
+          - string
+          - 'null'
+          description: The importer's Tax ID, VAT or GST number in destination country
+          example: 222.259.895 or 222259895 for Switzerland
+        importerAEO:
+          type:
+          - string
+          - 'null'
+          description: The importer's AEO (Authorised Economic Operator) number
+        importerIdentificationNumber:
+          type:
+          - string
+          - 'null'
+          description: 'The importer''s company/business registration number in the destination country
+
+            <br>Ex: Swiss UID
+
+            Used to capture sender ABN/ARN in Australia'
+          example: CHE-116.281.710 or CHE116281710
+      additionalProperties: false
+    customerParcelRequestModel:
+      required:
+      - accountNumber
+      - labelType
+      - productCode
+      type: object
+      properties:
+        masterServiceId:
+          type:
+          - string
+          - 'null'
+        masterServiceName:
+          type:
+          - string
+          - 'null'
+        customerOriginImpc:
+          type:
+          - string
+          - 'null'
+        accountNumber:
+          maxLength: 12
+          type: string
+          description: Asendia's account number designated for the shipper. This will be provided at account setup.
+          example: US21110012
+        subAccountNumber:
+          maxLength: 12
+          type:
+          - string
+          - 'null'
+          description: Asendia's sub account number designated for the shipper, if applicable. This will be provided at account setup.
+        processingPoint:
+          type:
+          - string
+          - 'null'
+          description: The Asendia's location code where the physical package will be processed
+          example: SCL
+        isDirectAccess:
+          type:
+          - boolean
+          - 'null'
+          description: 'Signifyes wheter this parcel is Direct Access or not
+
+            <br>Possible Values: true, false (default value if null)<example>false</example>'
+        includeRate:
+          type:
+          - boolean
+          - 'null'
+          description: 'Signifyes whether or not to send back the Rate for this parcel.
+
+            <br>Possible Values: true, false (default value if null)'
+          example: false
+        labelType:
+          type: string
+          description: 'This is the preferred format for the returned label. Available formats are PDF, PNG, ZPL and ZPL300
+
+            <br>Possible Values: [ PDF, PNG, ZPL, ZPL300 ]'
+          example: PNG
+        labelRotation:
+          type:
+          - integer
+          - 'null'
+          description: 'Allows you to rotate PDF and PNG labels. Null is the default portrait orientation (top on the right). 90 and 270 values returns a label in landscape format. And 180 also returns a portrait label (top on the left).
+
+            <br>Possible Values: null, [90, 180, 270]'
+          format: int32
+          example: 270
+        customsDocumentType:
+          type:
+          - string
+          - 'null'
+          description: 'Preferred format for customs-related documents returned with the parcel (for example commercial invoice or CN22).
+
+            When omitted, customs documents use the same format as A1.Domain.External.ShippingPlatform.Model.parcelRequestModel.labelType.
+
+            <br>Possible Values: [ PDF, ZPL ]'
+          example: PDF
+        getLabel:
+          type:
+          - boolean
+          - 'null'
+          description: 'By default you get the label back in the response (= true) but you can decide to retrieve it later (=false) using the API method "Print Parcel" (available in a future release)
+
+            <br>Possible Values: true (default value if null), false'
+          example: true
+        productCode:
+          type: string
+          description: The Product Codes will be provided on a per-integration basis. This indicates the customer's preferred service or routing for the parcel
+          example: EPAQSTD_CUP
+        quoteCode:
+          type:
+          - string
+          - 'null'
+          description: In addition to the Products Codes, you may also get Quotes Codes when multiple services or routing are available for the same destination. Can be ignored except if instructed differently during integration
+          example: '180317'
+        insurance:
+          type:
+          - string
+          - 'null'
+          description: 'Used to capture the liability amount: EL45, EL150 or EL500
+
+            <br>Possible Values: null, [EL45, EL150, EL500]'
+          example: EL45
+        injectionPoint:
+          type:
+          - string
+          - 'null'
+          description: 'Injection Point
+
+            <br>Possible Values: null'
+          example: AKL
+        parcel:
+          allOf:
+          - $ref: '#/components/schemas/parcelModel'
+        sender:
+          allOf:
+          - $ref: '#/components/schemas/senderModel'
+        seller:
+          allOf:
+          - $ref: '#/components/schemas/sellerModel'
+        recipient:
+          allOf:
+          - $ref: '#/components/schemas/recipientModel'
+        importer:
+          allOf:
+          - $ref: '#/components/schemas/importerModel'
+        returns:
+          allOf:
+          - $ref: '#/components/schemas/returnsModel'
+        pudoAddress:
+          allOf:
+          - $ref: '#/components/schemas/pudoAddress'
+      additionalProperties: false
+    shippingRate:
+      type: object
+      properties:
+        productCode:
+          type:
+          - string
+          - 'null'
+          description: Service Type codes will be provided on a per-integration basis. This indicates the customer’s preferred service or routing for the package.
+        rate:
+          type: number
+          description: Total rate for this package in USD.
+          format: double
+        currencyType:
+          type:
+          - string
+          - 'null'
+          description: The currency for all given values related to the package and items. This is required to be USD.
+        quoteCode:
+          type:
+          - string
+          - 'null'
+        systemMessage:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    tradeItemNumberTypeEnum:
+      enum:
+      - EAN
+      - UPC
+      - JAN
+      - ISBN
+      type: string
+    recipientModel:
+      required:
+      - recipientAddressLine1
+      - recipientCity
+      - recipientCountryCode
+      - recipientFirstName
+      - recipientLastName
+      - recipientPostalCode
+      type: object
+      properties:
+        recipientFirstName:
+          maxLength: 50
+          type: string
+          description: The parcel recipient's first name
+        recipientLastName:
+          maxLength: 50
+          type: string
+          description: The parcel recipient's last name
+        recipientBusinessName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel recipient's business name
+        recipientAddressLine1:
+          maxLength: 50
+          type: string
+          description: The first line of the parcel recipient's street address
+        recipientAddressLine2:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The second line of the parcel recipient's street address
+        recipientAddressLine3:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The third line of the parcel recipient's street address
+        recipientHouseNumber:
+          maxLength: 10
+          type:
+          - string
+          - 'null'
+          description: The parcel recipient's house number
+        recipientCity:
+          maxLength: 50
+          type: string
+          description: The city of the package recipient's street address
+        recipientProvince:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The state or province of the package recipient's street address
+        recipientPostalCode:
+          maxLength: 50
+          type: string
+          description: The parcel recipient's postal code
+        recipientCountryCode:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: 'The 2-character ISO country code for the parcel recipient''s street address. See for more information: http://www.iso.org/iso/country_codes'
+        recipientEmail:
+          maxLength: 75
+          type:
+          - string
+          - 'null'
+          description: The parcel recipient's email address
+        recipientPhoneNumber:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+          description: The parcel recipient's phone number
+        recipientMobileNumber:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+          description: The parcel recipient's mobile phone number
+        recipientIdentificationNumber:
+          type:
+          - string
+          - 'null'
+          description: The parcel recipient's identification number. Type is provided in recipientIdentificationType
+        recipientIdentificationType:
+          type:
+          - string
+          - 'null'
+          description: 'Recipient ID type (number must be provided in field recipientIdentificationNumber) :
+
+            <br> PASSP - Passport <br> IDCARD - National Identity Card <br> DRIVL - Driver License <br> CHUID - Swiss UID <br> ABN - ABN (Australian Business Number) '
+        recipientTaxID:
+          type:
+          - string
+          - 'null'
+          description: "Recipient Tax/VAT number in the destination country.\n <br> Ch VAT (VAT number in Switzerland) <br> CPF (individual tax id in Brazil) <br> CNPJ (business tax ID in Brazil) "
+        recipientEORI:
+          maxLength: 17
+          type:
+          - string
+          - 'null'
+          description: Recipient's EORI number (when recipient is a company)
+        recipientAEO:
+          type:
+          - string
+          - 'null'
+          description: The recipient's AEO (Authorised Economic Operator) number (when recipient is a company)
+        recipientLatitude:
+          pattern: ^(0|-?\d{0,9}(\.\d{0,6})?)$
+          type:
+          - number
+          - 'null'
+          description: Latitude coordinates of the delivery address
+          format: double
+        recipientLongitude:
+          pattern: ^(0|-?\d{0,9}(\.\d{0,6})?)$
+          type:
+          - number
+          - 'null'
+          description: Longitude coordinates of the delivery address
+          format: double
+        recipientPudoId:
+          type:
+          - string
+          - 'null'
+          description: PUDO Identifier for parcels delivered to a PickUp/DropOff point
+      additionalProperties: false
+    parcelModel:
+      required:
+      - dispatchNumber
+      - orderNumber
+      - parcelId
+      - parcelWeight
+      - reasonForExport
+      - weightUnit
+      type: object
+      properties:
+        orderNumber:
+          maxLength: 35
+          type: string
+          description: The order identifier number. This is the number representing all parcels within an order. Multiple parcels can have the same order number if order is shipped in different parcels
+          example: ORD12345
+        dispatchNumber:
+          maxLength: 100
+          type: string
+          description: '   A number assigned by customer to any grouping of parcels from a shipment. This can be leveraged for a variety of purposes:
+
+            <br>1. Use dispatchNumber of 0 for any outstanding parcels. Closing the dispatch is optional.<br>2. Use customized dispatchNumber. Optionally, you can close that dispatchNumber (at the end of the day or whenever you want to physically ship) and it will close all the parcels that are part of that dispatchNumber. (Please note: that dispatchNumber can not be used again)<br>3. Use parcelID as the dispatchNumber. Optionally, you can close that dispatchNumber after receiving label and it will close out only that package.'
+          example: PAR202309060001
+        parcelId:
+          maxLength: 35
+          minLength: 4
+          type: string
+          description: Unique identifier given by customer to each physical parcel. This number cannot be reused during the next 12 months. We recommend this to be 20 characters or under alphanumeric, no spaces, special characters or hyphens.
+          example: PAR202309060001
+        trackingNumber:
+          maxLength: 100
+          minLength: 4
+          type:
+          - string
+          - 'null'
+          description: Applicable when a tracking number range has been pre-assigned to a customer. Tracking number allocated to an order parcel will match the final label barcode. Not applicable to all destinations/services
+          example: UX000352872CH
+        ashid:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+          description: Asendia Unique Identifier. Applicable when a identifier number range has been pre-assigned to a customer. AHSID allocated to an order parcel can be used to track the parcel. ASHID is printed on label when possible
+          example: ASHK12123456789011
+        returnToSender:
+          type:
+          - boolean
+          - 'null'
+          description: 'true = sender address is used by final carrier to return undeliverable parcels. Sender address is printed in the FROM area of parcel label false = returns address is used instead of sender address for undeliverables. Returns address will be printed in the FROM area of parcel label (instead of sender address, except if label offers a dedicated area for undeliverables). Returns address can be a Asendia Returns centre or a customer warehouse, usually in the same country as recipient
+
+            <br>Possible Values: true, false (default value if null)'
+          example: true
+        parcelWeight:
+          type: number
+          description: The parcel's actual weight Dot ""."" must be used as decimal separator
+          format: double
+          example: 1.2
+        weightUnit:
+          type: string
+          description: 'The parcel''s unit of weight: Lb or Kg
+
+            <br>Possible Values: [ Lb, Kg ]'
+          example: Kg
+        dimLength:
+          type:
+          - number
+          - 'null'
+          description: The parcel's dimensional length
+          format: double
+          example: 25
+        dimWidth:
+          type:
+          - number
+          - 'null'
+          description: The parcel's dimensional width
+          format: double
+          example: 15
+        dimHeight:
+          type:
+          - number
+          - 'null'
+          description: The parcel's dimensional height
+          format: double
+          example: 10
+        dimUnit:
+          type:
+          - string
+          - 'null'
+          description: 'The parcel''s dimensional unit: only IN (for Inches) or CM (for Centimeters) are allowed
+
+            <br>Possible Values: [ IN, CM ]'
+          example: CM
+        format:
+          type:
+          - string
+          - 'null'
+          description: 'The parcel''s format: B for Boxable, N for Non-boxable, L for Large, XL for Extra Large and XXL. Mandatory for e-PAQ Standard, e-PAQ Plus using La Poste or Swiss Post labels (format is B or N), and for e-PAQ Select Mailbox Plus to Switerland.Can be null for e-PAQ Select and e-PAQ Elite except if instructed differently by commercial teams.
+
+            <br>Possible Values: null, [B, N, L, XL, XXL]'
+          example: B
+        parcelValue:
+          type:
+          - number
+          - 'null'
+          description: The total value of the parcel
+          format: double
+          example: 10
+        currencyType:
+          type:
+          - string
+          - 'null'
+          description: 'The currency for all given values related to the package and items
+
+            <br>Possible Values: [ USD, GBP, EUR, SEK, AUD, HKD, JPY, SGD, TWD, DKK, ILS, NZD, NOK, CHF, CAD ] To be amended'
+          example: EUR
+        customerReferenceNumber1:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: A customer reference number that can be used to identify the parcel. This can be set up to be used on a per-integration basis.
+          example: Ref1
+        customerReferenceNumber2:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: A second customer reference number that can be used to identify the parcel. This can be set up to be used on a per-integration basis.
+          example: Ref2
+        customerReferenceNumber3:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: A third customer reference number that can be used to identify the parcel. This can be set up to be used on a per-integration basis.
+          example: Ref3
+        reasonForExport:
+          type: string
+          description: 'Category of what is in the parcel. (Most common is M):
+
+            <br>D = Document<br>M= Merchandise, Goods<br>G = Gift<br>S = Sample of goods<br>R = Returned goods<br>O = Others'
+          example: M
+        parcelContentDescription:
+          maxLength: 150
+          type:
+          - string
+          - 'null'
+          description: A short description of the category of the parcel's contents.
+          example: 2 watches
+        customsPaymentMethod:
+          type:
+          - string
+          - 'null'
+          description: 'This is the payment method for duties and taxes.  Possible options are:
+
+            <br> RETPAID – Retailer/Seller Paid <br> SHOPAIDORIG – Shopper/Buyer/Consumer Paid; held at origin <br> SHOPAIDDEST– Shopper/Buyer/Consumer Paid; collected at destination <br> DOMESTIC– Domestic <br> INTRAEU– Intra-EU <br> OWNCLEAR – Retailer/Seller manages own clearance <br> DDP - Delivered Duty Paid (Incoterm)<br> DAP - Delivery At Place (Incoterm)<br> PDDP – PDDP (this incoterm is applicable for La Poste labels) <br> Possible Values: [RETPAID,SHOPAIDORIG,SHOPAIDDEST,DOMESTIC,INTRAEU,OWNCLEAR,DDP,DAP,PDDP] '
+        gstCollected:
+          type:
+          - boolean
+          - 'null'
+          description: 'Possible Values: true, false (default value if null)'
+          example: false
+        gstExemptionCode:
+          type:
+          - string
+          - 'null'
+          description: 'When GST has not been charged, an exception code has to be provided.
+
+            Applicable for instance for Australia destination
+
+            <br> Ex: AB5 for milk (Australia)'
+          example: AB5
+        cpCcode:
+          maxLength: 35
+          type:
+          - string
+          - 'null'
+          description: Code for UK import/export
+          example: 4000C07
+        invoiceNumber:
+          type:
+          - string
+          - 'null'
+          description: Invoice number
+          example: INV202309190001
+        invoiceDate:
+          type:
+          - string
+          - 'null'
+          description: Invoice date YYYY-MM-DD
+          format: date-time
+          example: '2023-09-19T00:00:00.0000000'
+        discountAmount:
+          pattern: ^(0|-?\d{0,10}(\.\d{0,4})?)$
+          type:
+          - number
+          - 'null'
+          description: Discount amount. To be populated if needed on invoice and/or if requested by customs authorities
+          format: double
+        pcccCode:
+          type:
+          - string
+          - 'null'
+          description: 'Code for Korea Post Packages. Format: P followed by 12 digits'
+          example: P123456789012
+        asendiaPudoPointID:
+          maxLength: 64
+          type:
+          - string
+          - 'null'
+          description: Asendia PUDO point identifier used to retrieve PUDO address details.
+        articles:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/articlesModel'
+        fees:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/feesModel'
+      additionalProperties: false
+    postParcelRequestModel:
+      type: object
+      properties:
+        createParcelRequest:
+          allOf:
+          - $ref: '#/components/schemas/parcelRequestModel'
+      additionalProperties: false
+    ukArticlesModel:
+      type: object
+      properties:
+        sku:
+          maxLength: 40
+          type:
+          - string
+          - 'null'
+          description: 'The item''s SKU number or other searchable product identifier. PLEASE NOTE: The SKU max field length is 40 characters but will be truncated to 20 characters upon import to Asendia Systems. This means if a SKU is 22 characters it will import into Asendia systems as 20 characters.'
+          example: BLUW12345678
+        articleDescription:
+          maxLength: 150
+          type:
+          - string
+          - 'null'
+          description: The item description that describes what the item is.
+          example: Blue watch
+        articleDescriptionCn:
+          maxLength: 150
+          type:
+          - string
+          - 'null'
+          description: Chinese description of the article
+          example: 中文货品
+        unitValue:
+          maximum: 10000000000
+          minimum: 0.01
+          type: number
+          description: The retail price for a single unit of the product.
+          format: double
+          example: 10
+        quantity:
+          maximum: 1000
+          minimum: 0
+          type: integer
+          description: The total quantity of the product units within the package.
+          format: int32
+          example: 1
+        unitWeight:
+          maximum: 1000
+          minimum: 0
+          type: number
+          description: The total weight for a single unit of the product Related unit (Kg or Lb) is defined in field "weightUnit"
+          format: double
+          example: 0.1
+        countryOfOrigin:
+          maxLength: 2
+          minLength: 2
+          type:
+          - string
+          - 'null'
+          description: 'The 2-character ISO country code in which the product was manufactured, as required by international customs specifications. See for more information: http://www.iso.org/iso/country_codes'
+          example: DE
+        harmonizedCode:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+          description: The harmonized code required by international customs specifications. HS code or HST code ; depends on final carrier and customs requirements
+          example: '910310'
+        originPostalCode:
+          type:
+          - string
+          - 'null'
+          description: The postal code within the country where the product was manufactured. Can be requested if countryOfOrigin = CN and destination county = US
+        originManufacturer:
+          type:
+          - string
+          - 'null'
+          description: The name of the product manufacturer. Can be requested if countryOfOrigin = CN and destination county = US
+        destinationTariffCode:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+          description: Destination tariff code used for import clearance purposes. VAT codes for VAT exemptions or reduced VAT can be filled here
+          example: 'Exemption codes examples (IE destination):
+
+            <br>6VTF = Reduced VAT Rate <br>6VTT = Second Reduced VAT Rate <br>6VTA = Agricultural VAT Rate <br>6VTZ = Zero VAT Rate '
+        productURL:
+          maxLength: 255
+          type:
+          - string
+          - 'null'
+          description: Direct link to the product page
+          example: https://www.acme.com/SKU
+        composition:
+          type:
+          - string
+          - 'null'
+          description: 'Example: 100% polyurethane, Cotton, aluminium'
+          example: 100% polyurethane, Cotton, aluminium
+        tradeItemNumber:
+          type:
+          - string
+          - 'null'
+          description: 'GTIN (Global Trade Item Number) or the article or ISBN (International Standard Book Number) for Books
+
+            <br> GTIN: can be EAN (European Article Number) also called GTIN-13 or UPC (Universal Product Code) also called GTIN-12 and used in USA and Canada '
+        tradeItemNumberType:
+          allOf:
+          - $ref: '#/components/schemas/tradeItemNumberTypeEnum'
+          description: 'Type of trade item number. Possible value are: EAN, UPC, JAN or ISBN'
+        fdaPriorNotice:
+          maxLength: 12
+          minLength: 12
+          type:
+          - string
+          - 'null'
+          description: FDA (US Food and Drug Administration) Prior Notice number (12c) A Prior Notice declaration must be done for each food or beverage article to the USA.
+        hasBattery:
+          type:
+          - boolean
+          - 'null'
+          description: 'Parcel contains batterie True/False
+
+            <br>Possible Values: true, false (default value if null)'
+          example: false
+        dgnFlag:
+          type:
+          - boolean
+          - 'null'
+          description: 'Dangerous Goods (DGN) flag true/false
+
+            <br>Possible Values: true, false (default value if null)'
+          example: true
+        dgnCategory:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+          description: Dangerous goods category
+          example: Oxidizing substances
+        dgnUnNumber:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+          description: Unique reference for dangerous goods
+          example: UN 1993
+        dgnPInumber:
+          maxLength: 6
+          type:
+          - string
+          - 'null'
+          description: Packing Instruction Number used by Ops
+          example: PI 966
+        dgnEccn:
+          maxLength: 35
+          type:
+          - string
+          - 'null'
+          description: Export control classification number
+          example: 9E003
+        cpcCode:
+          maxLength: 35
+          type:
+          - string
+          - 'null'
+          description: Code for UK import/export
+          example: 4000C07
+      additionalProperties: false
+    responseStatus:
+      type: object
+      properties:
+        responseStatusCode:
+          type: integer
+          description: This is used to display the code for the return status.
+          format: int32
+        responseStatusMessage:
+          type:
+          - string
+          - 'null'
+          description: This is used for a human readable return status message.
+      additionalProperties: false
+      description: Displays the status of the Return
+    label:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        type:
+          type:
+          - string
+          - 'null'
+        content:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    pudoAddress:
+      type: object
+      properties:
+        address1:
+          type:
+          - string
+          - 'null'
+        address2:
+          type:
+          - string
+          - 'null'
+        address3:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        zipCode:
+          type:
+          - string
+          - 'null'
+        countryCode:
+          type:
+          - string
+          - 'null'
+        pudoId:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        suburb:
+          type:
+          - string
+          - 'null'
+        streetNumber:
+          type:
+          - string
+          - 'null'
+        latitude:
+          type:
+          - number
+          - 'null'
+          format: double
+        longitude:
+          type:
+          - number
+          - 'null'
+          format: double
+        radius:
+          type:
+          - number
+          - 'null'
+          format: double
+        type:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    importerModel:
+      type: object
+      properties:
+        importerFirstName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel importer's first name
+        importerLastName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel importer's last name
+        importerBusinessName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel importer's business name
+        importerAddressLine1:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The first line of the parcel importer's street address
+        importerAddressLine2:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The second line of the parcel importer's street address
+        importerAddressLine3:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The third line of the parcel importer's street address
+        importerHouseNumber:
+          maxLength: 10
+          type:
+          - string
+          - 'null'
+          description: The parcel importer's house number
+        importerCity:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The city of the package importer's street address
+        importerProvince:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The state or province of the package importer's street address
+        importerPostalCode:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+          description: The package importer's postal code
+        importerCountryCode:
+          maxLength: 2
+          minLength: 2
+          type:
+          - string
+          - 'null'
+          description: 'The 2-character ISO country code for the package importer''s street address. See for more information: http://www.iso.org/iso/country_codes'
+        importerEmail:
+          maxLength: 75
+          type:
+          - string
+          - 'null'
+          description: The package importer's email address
+        importerPhoneNumber:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+          description: The package importer's phone number
+        importerMobileNumber:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+          description: The package importer's phone number
+        importerEORI:
+          maxLength: 17
+          type:
+          - string
+          - 'null'
+          description: The importer's EORI (Economic Operator Registration and Identification) number
+        importerTaxID:
+          type:
+          - string
+          - 'null'
+          description: The importer's Tax ID, VAT or GST number in destination country
+          example: 222.259.895 or 222259895 for Switzerland
+        importerAEO:
+          type:
+          - string
+          - 'null'
+          description: The importer's AEO (Authorised Economic Operator) number
+        importerIdentificationNumber:
+          type:
+          - string
+          - 'null'
+          description: 'The importer''s company/business registration number in the destination country
+
+            <br>Ex: Swiss UID
+
+            Used to capture sender ABN/ARN in Australia'
+          example: CHE-116.281.710 or CHE116281710
+      additionalProperties: false
+    senderModel:
+      required:
+      - senderAddressLine1
+      - senderCity
+      - senderCountryCode
+      - senderFirstName
+      - senderPostalCode
+      type: object
+      properties:
+        senderFirstName:
+          maxLength: 50
+          type: string
+          description: The parcel sender's first name
+        senderLastName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel sender's last name
+        senderBusinessName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel sender's company name
+        senderAddressLine1:
+          maxLength: 50
+          type: string
+          description: The first line of the sender's street address
+        senderAddressLine2:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The second line of the sender's street address
+        senderAddressLine3:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The third line of the sender's street address
+        senderCity:
+          maxLength: 50
+          type: string
+          description: The city of the sender's street address
+        senderProvince:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The state or province of the sender's street address
+        senderPostalCode:
+          maxLength: 20
+          type: string
+          description: The sender's postal code
+        senderCountryCode:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: 'The 2-character ISO country code for the sender''s street address. See for more information: http://www.iso.org/iso/country_codes'
+        senderPhoneNumber:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+          description: The sender's phone number
+        senderMobileNumber:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+          description: The sender's mobile phone number
+        senderEmail:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The sender's email address
+        senderEORI:
+          maxLength: 17
+          type:
+          - string
+          - 'null'
+          description: The sender's EORI (Economic Operator Registration and Identification) number
+        senderIOSS:
+          type:
+          - string
+          - 'null'
+          description: The sender's IOSS (Import One Stop Shop) number
+        senderTaxID:
+          type:
+          - string
+          - 'null'
+          description: The sender's Tax ID, VAT or GST number in destination country
+          example: 222.259.895 or 222259895 for Switzerland
+        senderOriginTaxID:
+          type:
+          - string
+          - 'null'
+          description: The sender's Tax ID, VAT or GST number in country of origin
+        senderAEO:
+          type:
+          - string
+          - 'null'
+          description: The sender's AEO (Authorised Economic Operator) number
+        senderIdentificationNumber:
+          type:
+          - string
+          - 'null'
+          description: 'The sender''s company/business registration number in the destination country
+
+            <br>Ex: Swiss UID
+
+            Used to capture sender ABN/ARN in Australia'
+          example: CHE-116.281.710 or CHE116281710
+      additionalProperties: false
+    postUKParcelRequestModel:
+      type: object
+      properties:
+        createParcelRequest:
+          allOf:
+          - $ref: '#/components/schemas/ukParcelRequestModel'
+      additionalProperties: false
+    ukParcelRequestModel:
+      required:
+      - accountNumber
+      - locationName
+      type: object
+      properties:
+        parcelCount:
+          type: integer
+          format: int32
+        parcelIndex:
+          type: integer
+          format: int32
+        parcelStatus:
+          type:
+          - string
+          - 'null'
+        asukServiceCode:
+          type:
+          - string
+          - 'null'
+        asukSubService:
+          type:
+          - string
+          - 'null'
+        overLabelFlag:
+          type:
+          - boolean
+          - 'null'
+        barcode:
+          type:
+          - string
+          - 'null'
+        flag:
+          type: integer
+          format: int32
+        routeCode:
+          type:
+          - string
+          - 'null'
+        splitType:
+          pattern: ^(?i:[a-z0-9]+(?:[-_][a-z0-9]+)*)$
+          type:
+          - string
+          - 'null'
+        injectionPoint:
+          pattern: ^(?![\d.]+$).*$
+          type:
+          - string
+          - 'null'
+          description: 'Injection Point
+
+            <br>Possible Values: null'
+          example: AKL
+        customerCode:
+          type:
+          - string
+          - 'null'
+        exceptionCode:
+          type:
+          - string
+          - 'null'
+        exceptionReason:
+          type:
+          - string
+          - 'null'
+        labelError:
+          type:
+          - string
+          - 'null'
+        uiError:
+          type:
+          - string
+          - 'null'
+        deliveryOptionDeliveryNotification:
+          type:
+          - string
+          - 'null'
+        consignmentWeight:
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          format: double
+        deliveryType:
+          pattern: ^(?![\d.]+$).*$
+          type:
+          - string
+          - 'null'
+        released:
+          type:
+          - boolean
+          - 'null'
+        releaseDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        accountNumber:
+          maxLength: 12
+          type: string
+          description: Asendia's account number designated for the shipper. This will be provided at account setup.
+          example: US21110012
+        subAccountNumber:
+          maxLength: 12
+          type:
+          - string
+          - 'null'
+          description: Asendia's sub account number designated for the shipper, if applicable. This will be provided at account setup.
+        locationName:
+          minLength: 2
+          type: string
+          description: The Asendia's location code where the physical package will be processed
+          example: SCL
+        includeRate:
+          type:
+          - boolean
+          - 'null'
+          description: 'Signifyes whether or not to send back the Rate for this parcel.
+
+            <br>Possible Values: true, false (default value if null)'
+          example: false
+        labelType:
+          type:
+          - string
+          - 'null'
+          description: 'This is the preferred format for the returned label. Available formats are PDF, PNG, ZPL and ZPL300
+
+            <br>Possible Values: [ PDF, PNG, ZPL, ZPL300 ]'
+          example: PNG
+        labelRotation:
+          type:
+          - integer
+          - 'null'
+          description: 'Allows you to rotate PDF and PNG labels. Null is the default portrait orientation (top on the right). 90 and 270 values returns a label in landscape format. And 180 also returns a portrait label (top on the left).
+
+            <br>Possible Values: null, [90, 180, 270]'
+          format: int32
+          example: 270
+        isDirectAccess:
+          type:
+          - boolean
+          - 'null'
+          description: 'Signifyes wheter this parcel is Direct Access or not
+
+            <br>Possible Values: true, false (default value if null)<example>false</example>'
+        getLabel:
+          type:
+          - boolean
+          - 'null'
+          description: 'By default you get the label back in the response (= true) but you can decide to retrieve it later (=false) using the API method "Print Parcel" (available in a future release)
+
+            <br>Possible Values: true (default value if null), false'
+          example: true
+        productCode:
+          type:
+          - string
+          - 'null'
+          description: The Product Codes will be provided on a per-integration basis. This indicates the customer’s preferred service or routing for the parcel
+          example: EPAQSTD_CUP
+        quoteCode:
+          type:
+          - string
+          - 'null'
+          description: In addition to the Products Codes, you may also get Quotes Codes when multiple services or routing are available for the same destination. Can be ignored except if instructed differently during integration
+          example: '180317'
+        insurance:
+          type:
+          - string
+          - 'null'
+          description: 'Used to capture the liability amount: EL45, EL150 or EL500
+
+            <br>Possible Values: null, [EL45, EL150, EL500]'
+          example: EL45
+        parcel:
+          allOf:
+          - $ref: '#/components/schemas/ukParcelModel'
+        sender:
+          allOf:
+          - $ref: '#/components/schemas/ukSenderModel'
+        seller:
+          allOf:
+          - $ref: '#/components/schemas/ukSellerModel'
+        recipient:
+          allOf:
+          - $ref: '#/components/schemas/ukRecipientModel'
+        importer:
+          allOf:
+          - $ref: '#/components/schemas/ukImporterModel'
+        returns:
+          allOf:
+          - $ref: '#/components/schemas/ukReturnsModel'
+      additionalProperties: false
+    ukSenderModel:
+      type: object
+      properties:
+        senderFirstName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel sender's first name
+        senderLastName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel sender's last name
+        senderBusinessName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The parcel sender's company name
+        senderAddressLine1:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The first line of the sender's street address
+        senderAddressLine2:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The second line of the sender's street address
+        senderAddressLine3:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The third line of the sender's street address
+        senderCity:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The city of the sender's street address
+        senderProvince:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The state or province of the sender's street address
+        senderPostalCode:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+          description: The sender's postal code
+        senderCountryCode:
+          maxLength: 2
+          minLength: 2
+          type:
+          - string
+          - 'null'
+          description: 'The 2-character ISO country code for the sender''s street address. See for more information: http://www.iso.org/iso/country_codes'
+        senderPhoneNumber:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+          description: The sender's phone number
+          format: tel
+        senderMobileNumber:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+          description: The sender's mobile phone number
+          format: tel
+        senderEmail:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: The sender's email address
+          format: email
+        senderEORI:
+          maxLength: 15
+          type:
+          - string
+          - 'null'
+          description: The sender's EORI (Economic Operator Registration and Identification) number
+        senderIOSS:
+          type:
+          - string
+          - 'null'
+          description: The sender's IOSS (Import One Stop Shop) number
+        senderTaxID:
+          type:
+          - string
+          - 'null'
+          description: The sender's Tax ID, VAT or GST number in destination country
+          example: 222.259.895 or 222259895 for Switzerland
+        senderOriginTaxID:
+          type:
+          - string
+          - 'null'
+          description: The sender's Tax ID, VAT or GST number in country of origin
+        senderAEO:
+          type:
+          - string
+          - 'null'
+          description: The sender's AEO (Authorised Economic Operator) number
+        senderIdentificationNumber:
+          type:
+          - string
+          - 'null'
+          description: 'The sender''s company/business registration number in the destination country
+
+            <br>Ex: Swiss UID
+
+            Used to capture sender ABN/ARN in Australia'
+          example: CHE-116.281.710 or CHE116281710
+      additionalProperties: false
+    feesModel:
+      type: object
+      properties:
+        feeAmount:
+          pattern: ^(0|-?\d{0,7}(\.\d{0,2})?)$
+          type:
+          - number
+          - 'null'
+          description: Fee amount for the selected type (see feeType). Related currency is defined in feeCurrencyCode Multiple entries are possible
+          format: double
+          example: 50
+        feeType:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+          description: 'Fee type. Multiple entries are possible. Possible types are:
+
+            <br>Possible Values: COD, FreightFee, AdminFee,ShippingCost, InsuranceAmount, VATamount, TobaccoTax, AlcoholTax, OtherExciseTax, CustomsDuties'
+          example: ShippingCost
+        feeCurrencyCode:
+          maxLength: 3
+          minLength: 3
+          type:
+          - string
+          - 'null'
+          description: ISO 3 currency code applicable to fee amount
+          example: USD
+      additionalProperties: false
+    ukParcelModel:
+      required:
+      - parcelId
+      type: object
+      properties:
+        orderNumber:
+          maxLength: 35
+          type:
+          - string
+          - 'null'
+          description: The order identifier number. This is the number representing all parcels within an order. Multiple parcels can have the same order number if order is shipped in different parcels
+          example: ORD12345
+        dispatchNumber:
+          maxLength: 100
+          type:
+          - string
+          - 'null'
+          description: '   A number assigned by customer to any grouping of parcels from a shipment. This can be leveraged for a variety of purposes:
+
+            <br>1. Use dispatchNumber of 0 for any outstanding parcels. Closing the dispatch is optional.<br>2. Use customized dispatchNumber. Optionally, you can close that dispatchNumber (at the end of the day or whenever you want to physically ship) and it will close all the parcels that are part of that dispatchNumber. (Please note: that dispatchNumber can not be used again)<br>3. Use parcelID as the dispatchNumber. Optionally, you can close that dispatchNumber after receiving label and it will close out only that package.'
+          example: PAR202309060001
+        parcelId:
+          maxLength: 35
+          minLength: 4
+          type: string
+          description: Unique identifier given by customer to each physical parcel. This number cannot be reused during the next 12 months. We recommend this to be 20 characters or under alphanumeric, no spaces, special characters or hyphens.
+          example: PAR202309060001
+        trackingNumber:
+          maxLength: 100
+          minLength: 4
+          type:
+          - string
+          - 'null'
+          description: Applicable when a tracking number range has been pre-assigned to a customer. Tracking number allocated to an order parcel will match the final label barcode. Not applicable to all destinations/services
+          example: UX000352872CH
+        ashid:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+          description: Asendia Unique Identifier. Applicable when a identifier number range has been pre-assigned to a customer. AHSID allocated to an order parcel can be used to track the parcel. ASHID is printed on label when possible
+          example: ASHK12123456789011
+        returnToSender:
+          type:
+          - boolean
+          - 'null'
+          description: 'true = sender address is used by final carrier to return undeliverable parcels. Sender address is printed in the FROM area of parcel label false = returns address is used instead of sender address for undeliverables. Returns address will be printed in the FROM area of parcel label (instead of sender address, except if label offers a dedicated area for undeliverables). Returns address can be a Asendia Returns centre or a customer warehouse, usually in the same country as recipient
+
+            <br>Possible Values: true, false (default value if null)'
+          example: true
+        parcelWeight:
+          type: number
+          description: The parcel's actual weight Dot ""."" must be used as decimal separator
+          format: double
+          example: 1.2
+        weightUnit:
+          type:
+          - string
+          - 'null'
+          description: 'The parcel''s unit of weight: Lb or Kg
+
+            <br>Possible Values: [ Lb, Kg ]'
+          example: Kg
+        dimLength:
+          type:
+          - number
+          - 'null'
+          description: The parcel's dimensional length
+          format: double
+          example: 25
+        dimWidth:
+          type:
+          - number
+          - 'null'
+          description: The parcel's dimensional width
+          format: double
+          example: 15
+        dimHeight:
+          type:
+          - number
+          - 'null'
+          description: The parcel's dimensional height
+          format: double
+          example: 10
+        dimUnit:
+          type:
+          - string
+          - 'null'
+          description: 'The parcel''s dimensional unit: only IN (for Inches) or CM (for Centimeters) are allowed
+
+            <br>Possible Values: [ IN, CM ]'
+          example: CM
+        format:
+          type:
+          - string
+          - 'null'
+          description: 'The parcel''s format: B for Boxable, N for Non-boxable, L for Large, XL for Extra Large and XXL. Mandatory for e-PAQ Standard, e-PAQ Plus using La Poste or Swiss Post labels (format is B or N), and for e-PAQ Select Mailbox Plus to Switerland.Can be null for e-PAQ Select and e-PAQ Elite except if instructed differently by commercial teams.
+
+            <br>Possible Values: null, [B, N, L, XL, XXL]'
+          example: B
+        parcelValue:
+          type: number
+          description: The total value of the parcel
+          format: double
+          example: 10
+        currencyType:
+          type:
+          - string
+          - 'null'
+          description: 'The currency for all given values related to the package and items
+
+            <br>Possible Values: [ USD, GBP, EUR, SEK, AUD, HKD, JPY, SGD, TWD, DKK, ILS, NZD, NOK, CHF, CAD ] To be amended'
+          example: EUR
+        customerReferenceNumber1:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: A customer reference number that can be used to identify the parcel. This can be set up to be used on a per-integration basis.
+          example: Ref1
+        customerReferenceNumber2:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: A second customer reference number that can be used to identify the parcel. This can be set up to be used on a per-integration basis.
+          example: Ref2
+        customerReferenceNumber3:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+          description: A third customer reference number that can be used to identify the parcel. This can be set up to be used on a per-integration basis.
+          example: Ref3
+        reasonForExport:
+          type:
+          - string
+          - 'null'
+          description: 'Category of what is in the parcel. (Most common is M):
+
+            <br>D = Document<br>M= Merchandise, Goods<br>G = Gift<br>S = Sample of goods<br>R = Returned goods<br>O = Others'
+          example: M
+        parcelContentDescription:
+          maxLength: 150
+          type:
+          - string
+          - 'null'
+          description: A short description of the category of the parcel's contents.
+          example: 2 watches
+        customsPaymentMethod:
+          type:
+          - string
+          - 'null'
+          description: 'This is the payment method for duties and taxes.  Possible options are:
+
+            <br> RETPAID – Retailer/Seller Paid <br> SHOPAIDORIG – Shopper/Buyer/Consumer Paid; held at origin <br> SHOPAIDDEST– Shopper/Buyer/Consumer Paid; collected at destination <br> DOMESTIC– Domestic <br> INTRAEU– Intra-EU <br> OWNCLEAR – Retailer/Seller manages own clearance <br> DDP - Delivered Duty Paid (Incoterm)<br> DAP - Delivery At Place (Incoterm)<br> PDDP – PDDP (this incoterm is applicable for La Poste labels) <br> Possible Values: [RETPAID,SHOPAIDORIG,SHOPAIDDEST,DOMESTIC,INTRAEU,OWNCLEAR,DDP,DAP,PDDP] '
+        gstCollected:
+          type:
+          - boolean
+          - 'null'
+          description: 'Possible Values: true, false (default value if null)'
+          example: false
+        gstExemptionCode:
+          type:
+          - string
+          - 'null'
+          description: 'When GST has not been charged, an exception code has to be provided.
+
+            Applicable for instance for Australia destination
+
+            <br> Ex: AB5 for milk (Australia)'
+          example: AB5
+        invoiceNumber:
+          type:
+          - string
+          - 'null'
+          description: Invoice number
+          example: INV202309190001
+        invoiceDate:
+          type:
+          - string
+          - 'null'
+          description: Invoice date YYYY-MM-DD
+          format: date-time
+          example: '2023-09-19T00:00:00.0000000'
+        discountAmount:
+          pattern: ^(0|-?\d{0,10}(\.\d{0,4})?)$
+          type:
+          - number
+          - 'null'
+          description: Discount amount. To be populated if needed on invoice and/or if requested by customs authorities
+          format: double
+        dgnFlag:
+          type:
+          - boolean
+          - 'null'
+        ducr:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        articles:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ukArticlesModel'
+        fees:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ukFeesModel'
+      additionalProperties: false
+x-refined-from:
+- asendia-a1-parcel-swagger.json
+- asendia-a1-parcel-openapi.yml

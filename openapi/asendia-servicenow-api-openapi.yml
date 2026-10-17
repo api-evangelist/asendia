@@ -1,0 +1,240 @@
+openapi: 3.2.0
+info:
+  title: Asendia Service Now API
+  version: ServiceNow v1.0
+  contact:
+    name: Asendia USA Web Service Team for any questions or comments.
+    email: john.mcshane@asendia.com;chris.joiner@asendia.com;katie.vogt@asendia.com;ammi.cabrera@asendia.com
+  description: 'Operations tagged ServiceNow across 2 of this provider''s published API definitions: asendia-a1-servicenow-swagger.json, asendia-a1-servicenow-openapi.yml. Each path carries the servers of the definition it was published in.'
+tags:
+- name: ServiceNow
+paths:
+  /api/A1/v1.0/ServiceNow/Account:
+    get:
+      tags:
+      - ServiceNow
+      parameters:
+      - name: accountNumber
+        in: query
+        schema:
+          type: string
+      - name: fromDate
+        in: query
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CustomerAccountListApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerAccountListApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CustomerAccountListApiResponse'
+      summary: Get api a1 service now account
+      x-summary-source: derived
+      operationId: getApiA1V10ServiceNowAccount
+      x-operation-id-source: derived
+  /api/A1/v1.0/ServiceNow/Contact:
+    get:
+      tags:
+      - ServiceNow
+      parameters:
+      - name: accountNumber
+        in: query
+        schema:
+          type: string
+      - name: fromDate
+        in: query
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CustomerContactListApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerContactListApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CustomerContactListApiResponse'
+      summary: Get api a1 service now contact
+      x-summary-source: derived
+      operationId: getApiA1V10ServiceNowContact
+      x-operation-id-source: derived
+components:
+  schemas:
+    Contact:
+      type: object
+      properties:
+        contactTypes:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        active:
+          type: boolean
+        firstName:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        addressLine1:
+          type:
+          - string
+          - 'null'
+        addressLine2:
+          type:
+          - string
+          - 'null'
+        addressLine3:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        province:
+          type:
+          - string
+          - 'null'
+        postalCode:
+          type:
+          - string
+          - 'null'
+        countryIso2:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    CustomerAccountListApiResponse:
+      type: object
+      properties:
+        data:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomerAccount'
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+      additionalProperties: false
+    CustomerContactListApiResponse:
+      type: object
+      properties:
+        data:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomerContact'
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+      additionalProperties: false
+    CustomerAccount:
+      type: object
+      properties:
+        accountCode:
+          type:
+          - string
+          - 'null'
+        companyName:
+          type:
+          - string
+          - 'null'
+        division:
+          type:
+          - string
+          - 'null'
+        parentAccount:
+          type:
+          - string
+          - 'null'
+        salesReps:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        customerCareReps:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        a1CustomerServiceNotes:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        updatedOn:
+          type: string
+          format: date-time
+      additionalProperties: false
+    ResponseStatus:
+      type: object
+      properties:
+        responseStatusCode:
+          type: integer
+          description: This is used to display the code for the return status.
+          format: int32
+        responseStatusMessage:
+          type:
+          - string
+          - 'null'
+          description: This is used for a human readable return status message.
+      additionalProperties: false
+      description: Displays the status of the Return
+    CustomerContact:
+      type: object
+      properties:
+        accountCode:
+          type:
+          - string
+          - 'null'
+        companyName:
+          type:
+          - string
+          - 'null'
+        updatedOn:
+          type: string
+          format: date-time
+        contacts:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Contact'
+      additionalProperties: false
+x-refined-from:
+- asendia-a1-servicenow-swagger.json
+- asendia-a1-servicenow-openapi.yml

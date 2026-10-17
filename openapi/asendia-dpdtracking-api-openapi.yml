@@ -1,0 +1,435 @@
+openapi: 3.2.0
+info:
+  title: Asendia DPD Tracking API
+  version: DPD Tracking v1.0
+  contact:
+    name: Asendia USA Web Service Team for any questions or comments.
+    email: john.mcshane@asendia.com;chris.joiner@asendia.com;katie.vogt@asendia.com;ammi.cabrera@asendia.com
+  description: 'Operations tagged DPDTracking across 2 of this provider''s published API definitions: asendia-a1-dpd-tracking-swagger.json, asendia-a1-dpd-tracking-openapi.yml. Each path carries the servers of the definition it was published in.'
+tags:
+- name: DPDTracking
+paths:
+  /api/A1/v1.0/DPDTracking/TTEvents:
+    post:
+      tags:
+      - DPDTracking
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TTEventsRequest'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TTEventsRequest'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TTEventsRequest'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TTEventsRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TTEventsResponseApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TTEventsResponseApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TTEventsResponseApiResponse'
+      summary: Create api a1 dpd tracking tt events
+      x-summary-source: derived
+      operationId: postApiA1V10DPDTrackingTTEvents
+      x-operation-id-source: derived
+components:
+  schemas:
+    Destination:
+      type: object
+      properties:
+        zipCode:
+          type:
+          - string
+          - 'null'
+        countryCode:
+          type:
+          - string
+          - 'null'
+        destinationDepot:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ReceiverAddress:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        propertyNumber:
+          type:
+          - string
+          - 'null'
+        street:
+          type:
+          - string
+          - 'null'
+        zipCode:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TranscodedItem:
+      type: object
+      properties:
+        scanCode:
+          type:
+          - string
+          - 'null'
+        reasonCodes:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        compInfos:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            additionalProperties: false
+        compInfosJson:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ServiceCodes:
+      type: object
+      properties:
+        asCode:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+        soCode:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TTEventsResponseApiResponse:
+      type: object
+      properties:
+        data:
+          allOf:
+          - $ref: '#/components/schemas/TTEventsResponse'
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+      additionalProperties: false
+    Gps:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+      additionalProperties: false
+    TTEventsResponse:
+      type: object
+      properties:
+        messages:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    Transcodification:
+      type: object
+      properties:
+        language:
+          type:
+          - string
+          - 'null'
+        transcodedItems:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TranscodedItem'
+      additionalProperties: false
+    Weight:
+      type: object
+      properties:
+        value:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        qualif:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TourInfo:
+      type: object
+      properties:
+        area:
+          type:
+          - string
+          - 'null'
+        stop:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+        deliveryTour:
+          type:
+          - string
+          - 'null'
+        runSheetNumber:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    EventLocation:
+      type: object
+      properties:
+        city:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+        countryCode:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ResponseStatus:
+      type: object
+      properties:
+        responseStatusCode:
+          type: integer
+          description: This is used to display the code for the return status.
+          format: int32
+        responseStatusMessage:
+          type:
+          - string
+          - 'null'
+          description: This is used for a human readable return status message.
+      additionalProperties: false
+      description: Displays the status of the Return
+    ParcelInfos:
+      type: object
+      properties:
+        parcelNumber:
+          type:
+          - string
+          - 'null'
+        originParcelNumber:
+          type:
+          - string
+          - 'null'
+        returnParcelNumber:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+        weightAndDimension:
+          allOf:
+          - $ref: '#/components/schemas/WeightAndDimension'
+        mpsId:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+        originMpsId:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+      additionalProperties: false
+    TTEventsRequest:
+      type: object
+      properties:
+        parcelInfos:
+          allOf:
+          - $ref: '#/components/schemas/ParcelInfos'
+        statusType:
+          type:
+          - string
+          - 'null'
+        serviceCodes:
+          allOf:
+          - $ref: '#/components/schemas/ServiceCodes'
+        destination:
+          allOf:
+          - $ref: '#/components/schemas/Destination'
+        scanCode:
+          type:
+          - string
+          - 'null'
+        reasonCodes:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        depot:
+          type:
+          - string
+          - 'null'
+        statusDateTime:
+          type: string
+          format: date-time
+        tourInfo:
+          allOf:
+          - $ref: '#/components/schemas/TourInfo'
+        actorId:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+        operativerId:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+        buDateTime:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+        dueDateTime:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+        pickupOrderNumber:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+        scanGenerated:
+          type: boolean
+        compInfos:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            additionalProperties: false
+        agent:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+        container:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+        currentContainer:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+        externalRef:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+        eventLocation:
+          allOf:
+          - $ref: '#/components/schemas/EventLocation'
+        timeSlot:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+        gps:
+          allOf:
+          - $ref: '#/components/schemas/Gps'
+        images:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            additionalProperties: false
+        notifications:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            additionalProperties: false
+        receiverAddress:
+          allOf:
+          - $ref: '#/components/schemas/ReceiverAddress'
+        thirdPartyAddress:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+        transcodifications:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Transcodification'
+      additionalProperties: false
+    WeightAndDimension:
+      type: object
+      properties:
+        weight:
+          allOf:
+          - $ref: '#/components/schemas/Weight'
+        dimensions:
+          allOf:
+          - $ref: '#/components/schemas/Dimensions'
+      additionalProperties: false
+    Dimensions:
+      type: object
+      properties:
+        length:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+        width:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+        height:
+          type:
+          - object
+          - 'null'
+          additionalProperties: false
+        qualif:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+x-refined-from:
+- asendia-a1-dpd-tracking-swagger.json
+- asendia-a1-dpd-tracking-openapi.yml

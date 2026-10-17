@@ -1,0 +1,228 @@
+openapi: 3.2.0
+info:
+  title: Asendia NPI API
+  version: NPI v1.0
+  contact:
+    name: Asendia USA Web Service Team for any questions or comments.
+    email: john.mcshane@asendia.com;chris.joiner@asendia.com;katie.vogt@asendia.com;ammi.cabrera@asendia.com
+  description: 'Operations tagged NPI across 2 of this provider''s published API definitions: asendia-a1-npi-swagger.json, asendia-a1-npi-openapi.yml. Each path carries the servers of the definition it was published in.'
+tags:
+- name: NPI
+paths:
+  /api/A1/Operation/NPI/Bin:
+    get:
+      tags:
+      - NPI
+      parameters:
+      - name: processingLocation
+        in: query
+        description: 'The Asendia''s location in where the physical package will be processed.
+
+          Possible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC, TOR, CAL'
+        required: true
+        schema:
+          maxLength: 3
+          minLength: 3
+          type: string
+      - name: trackingNumber
+        in: query
+        description: Array of tracking numbers
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: id
+        in: query
+        description: NPI Package Unique identifier
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/getBinNumberResponseApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getBinNumberResponseApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/getBinNumberResponseApiResponse'
+      summary: Get api a1 operation npi bin
+      x-summary-source: derived
+      operationId: getApiA1OperationNPIBin
+      x-operation-id-source: derived
+    put:
+      tags:
+      - NPI
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/putPackageToBinRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putPackageToBinRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/putPackageToBinRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/putPackageToBinRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+      summary: Replace api a1 operation npi bin
+      x-summary-source: derived
+      operationId: putApiA1OperationNPIBin
+      x-operation-id-source: derived
+  /api/A1/Operation/NPI/BinClose:
+    put:
+      tags:
+      - NPI
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/putBinCloseRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putBinCloseRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/putBinCloseRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/putBinCloseRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BooleanApiResponse'
+      summary: Replace api a1 operation npi bin close
+      x-summary-source: derived
+      operationId: putApiA1OperationNPIBinClose
+      x-operation-id-source: derived
+components:
+  schemas:
+    getBinNumberResponseApiResponse:
+      type: object
+      properties:
+        data:
+          allOf:
+          - $ref: '#/components/schemas/getBinNumberResponse'
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+      additionalProperties: false
+    putBinCloseRequest:
+      required:
+      - binNumber
+      - processingLocation
+      type: object
+      properties:
+        binNumber:
+          type: string
+          description: The Bin number of the request
+        processingLocation:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: 'The Asendia''s location in where the physical package will be processed.
+
+            Possible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC, TOR, CAL'
+      additionalProperties: false
+    putPackageToBinRequest:
+      required:
+      - binNumber
+      - processingLocation
+      - trackingNumber
+      type: object
+      properties:
+        binNumber:
+          type: string
+          description: The Bin number of the request
+        processingLocation:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: 'The Asendia''s location in where the physical package will be processed.
+
+            Possible values: SFO, MIA, JFK, PHL, ORD, LAX, SLC, TOR, CAL'
+        trackingNumber:
+          type: string
+          description: The Tracking number of the request
+        errorCode:
+          type:
+          - string
+          - 'null'
+          description: Error Code
+        errorDescription:
+          type:
+          - string
+          - 'null'
+          description: Error Description
+      additionalProperties: false
+    ResponseStatus:
+      type: object
+      properties:
+        responseStatusCode:
+          type: integer
+          description: This is used to display the code for the return status.
+          format: int32
+        responseStatusMessage:
+          type:
+          - string
+          - 'null'
+          description: This is used for a human readable return status message.
+      additionalProperties: false
+      description: Displays the status of the Return
+    BooleanApiResponse:
+      type: object
+      properties:
+        data:
+          type: boolean
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+      additionalProperties: false
+    getBinNumberResponse:
+      required:
+      - bin
+      - trackingNumber
+      type: object
+      properties:
+        bin:
+          type: array
+          items:
+            type: string
+          description: Array of assigned bins
+        trackingNumber:
+          type: string
+          description: Tracking number found
+      additionalProperties: false
+x-refined-from:
+- asendia-a1-npi-swagger.json
+- asendia-a1-npi-openapi.yml

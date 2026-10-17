@@ -1,0 +1,345 @@
+openapi: 3.2.0
+info:
+  title: Asendia Tracking API
+  contact:
+    name: Asendia USA Web Service Team for any questions or comments.
+    email: john.mcshane@asendia.com;chris.joiner@asendia.com;katie.vogt@asendia.com;ammi.cabrera@asendia.com
+  version: '1.0'
+  description: 'Operations tagged Tracking across 4 of this provider''s published API definitions: asendia-a1-tracking-swagger.json, asendia-a1-tracking-v2-swagger.json, asendia-a1-tracking-openapi.yml, asendia-a1-tracking-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
+tags:
+- name: Tracking
+paths:
+  /api/A1/v1.0/Tracking/Detail:
+    get:
+      tags:
+      - Tracking
+      summary: Get api a1 tracking detail
+      parameters:
+      - name: trackingNumberVendor
+        in: query
+        description: The tracking number belonging to the package you're looking for details of.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/getTrackingDetailResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTrackingDetailResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/getTrackingDetailResponse'
+      x-summary-source: derived
+      operationId: getApiA1V10TrackingDetail
+      x-operation-id-source: derived
+  /api/A1/v1.0/Tracking/Milestone:
+    get:
+      tags:
+      - Tracking
+      summary: Get api a1 tracking milestone
+      parameters:
+      - name: trackingNumberVendor
+        in: query
+        description: The tracking number belonging to the package you're looking for milestones of.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/getTrackingMilestoneResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTrackingMilestoneResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/getTrackingMilestoneResponse'
+      x-summary-source: derived
+      operationId: getApiA1V10TrackingMilestone
+      x-operation-id-source: derived
+  /api/A1/v2.0/Tracking/Detail:
+    get:
+      tags:
+      - Tracking
+      summary: Get api a1 tracking detail
+      parameters:
+      - name: trackingNumberVendor
+        in: query
+        description: The tracking numbers belonging to the packages you're looking for details of. Accepts up to 10 numbers separated by a comma.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/trackingDetailListApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/trackingDetailListApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/trackingDetailListApiResponse'
+      x-summary-source: derived
+      operationId: getApiA1V20TrackingDetail
+      x-operation-id-source: derived
+  /api/A1/v2.0/Tracking/Milestone:
+    get:
+      tags:
+      - Tracking
+      summary: Get api a1 tracking milestone
+      parameters:
+      - name: trackingNumberVendor
+        in: query
+        description: The tracking number belonging to the package you're looking for milestones of. Accepts up to 10 numbers separated by a comma.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/trackingMilestoneListApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/trackingMilestoneListApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/trackingMilestoneListApiResponse'
+      x-summary-source: derived
+      operationId: getApiA1V20TrackingMilestone
+      x-operation-id-source: derived
+components:
+  schemas:
+    trackingDetail:
+      type: object
+      properties:
+        trackingNumberVendor:
+          type:
+          - string
+          - 'null'
+        trackingNumberCustomer:
+          type:
+          - string
+          - 'null'
+        trackingNumberCustomerCarrierOriginal:
+          type:
+          - string
+          - 'null'
+        customerReferenceNumber:
+          type:
+          - string
+          - 'null'
+        trackingProduct:
+          allOf:
+          - $ref: '#/components/schemas/trackingProduct'
+        trackingDetailEvents:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/trackingDetailEvents'
+      additionalProperties: false
+    trackingMilestoneEvents:
+      type: object
+      properties:
+        eventCode:
+          type:
+          - string
+          - 'null'
+        eventDescription:
+          type:
+          - string
+          - 'null'
+        eventLocation:
+          type:
+          - string
+          - 'null'
+        eventOn:
+          type: string
+          format: date-time
+      additionalProperties: false
+    trackingProduct:
+      type: object
+      properties:
+        productCode:
+          type:
+          - string
+          - 'null'
+        productName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    getTrackingMilestoneResponse:
+      required:
+      - responseStatus
+      - trackingMilestone
+      type: object
+      properties:
+        trackingMilestone:
+          allOf:
+          - $ref: '#/components/schemas/trackingMilestone'
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/responseStatus'
+      additionalProperties: false
+    responseStatus:
+      type: object
+      properties:
+        responseStatusCode:
+          type: integer
+          description: This is used to display the code for the return status.
+          format: int32
+        responseStatusMessage:
+          type:
+          - string
+          - 'null'
+          description: This is used for a human readable return status message.
+      additionalProperties: false
+      description: Displays the status of the Return
+    trackingMilestone:
+      type: object
+      properties:
+        trackingNumberVendor:
+          type:
+          - string
+          - 'null'
+        trackingNumberCustomer:
+          type:
+          - string
+          - 'null'
+        trackingNumberCustomerCarrierOriginal:
+          type:
+          - string
+          - 'null'
+        customerReferenceNumber:
+          type:
+          - string
+          - 'null'
+        trackingProduct:
+          allOf:
+          - $ref: '#/components/schemas/trackingProduct'
+        trackingMilestoneEvents:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/trackingMilestoneEvents'
+      additionalProperties: false
+    trackingDetailEvents:
+      type: object
+      properties:
+        eventCode:
+          type:
+          - string
+          - 'null'
+        eventDescription:
+          type:
+          - string
+          - 'null'
+        eventLocationDetails:
+          allOf:
+          - $ref: '#/components/schemas/trackingEventLocationDetails'
+        eventOn:
+          type: string
+          format: date-time
+        eventSource:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    getTrackingDetailResponse:
+      required:
+      - responseStatus
+      - trackingDetail
+      type: object
+      properties:
+        trackingDetail:
+          allOf:
+          - $ref: '#/components/schemas/trackingDetail'
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/responseStatus'
+      additionalProperties: false
+    trackingEventLocationDetails:
+      type: object
+      properties:
+        addressLine1:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        province:
+          type:
+          - string
+          - 'null'
+        postalCode:
+          type:
+          - string
+          - 'null'
+        countryIso2:
+          type:
+          - string
+          - 'null'
+        countryName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    trackingDetailListApiResponse:
+      type: object
+      properties:
+        data:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/trackingDetail'
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+      additionalProperties: false
+    ResponseStatus:
+      type: object
+      properties:
+        responseStatusCode:
+          type: integer
+          description: This is used to display the code for the return status.
+          format: int32
+        responseStatusMessage:
+          type:
+          - string
+          - 'null'
+          description: This is used for a human readable return status message.
+      additionalProperties: false
+      description: Displays the status of the Return
+    trackingMilestoneListApiResponse:
+      type: object
+      properties:
+        data:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/trackingMilestone'
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+      additionalProperties: false
+x-refined-from:
+- asendia-a1-tracking-swagger.json
+- asendia-a1-tracking-v2-swagger.json
+- asendia-a1-tracking-openapi.yml
+- asendia-a1-tracking-v2-openapi.yml

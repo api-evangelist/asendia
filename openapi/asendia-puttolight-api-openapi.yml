@@ -1,0 +1,150 @@
+openapi: 3.2.0
+info:
+  title: Asendia Put To Light API
+  version: Put To Light v1.0
+  contact:
+    name: Asendia USA Web Service Team for any questions or comments.
+    email: john.mcshane@asendia.com;chris.joiner@asendia.com;katie.vogt@asendia.com;ammi.cabrera@asendia.com
+  description: 'Operations tagged PutToLight across 2 of this provider''s published API definitions: asendia-a1-put-to-light-swagger.json, asendia-a1-put-to-light-openapi.yml. Each path carries the servers of the definition it was published in.'
+tags:
+- name: PutToLight
+paths:
+  /api/A1/Operation/PutToLight/Barcode:
+    post:
+      tags:
+      - PutToLight
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/BarcodeScan'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BarcodeScan'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/BarcodeScan'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/BarcodeScan'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringApiResponse'
+      summary: Create api a1 operation put to light barcode
+      x-summary-source: derived
+      operationId: postApiA1OperationPutToLightBarcode
+      x-operation-id-source: derived
+  /api/A1/Operation/PutToLight/Barcode2:
+    post:
+      tags:
+      - PutToLight
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/BarcodeScan'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BarcodeScan'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/BarcodeScan'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/BarcodeScan'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringApiResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringApiResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringApiResponse'
+      summary: Create api a1 operation put to light barcode2
+      x-summary-source: derived
+      operationId: postApiA1OperationPutToLightBarcode2
+      x-operation-id-source: derived
+components:
+  schemas:
+    StringApiResponse:
+      type: object
+      properties:
+        data:
+          type:
+          - string
+          - 'null'
+        responseStatus:
+          allOf:
+          - $ref: '#/components/schemas/ResponseStatus'
+      additionalProperties: false
+    BarcodeScan:
+      required:
+      - barcodes
+      - moduleName
+      type: object
+      properties:
+        barcodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Barcode'
+          description: List of objects containing barcode data
+        moduleName:
+          type: string
+          description: The name of the module that scanned the barcode.
+        timeStamp:
+          type:
+          - string
+          - 'null'
+          description: The date and time the barcode was scanned. This field should use the ISO-8601 format of 'YYYY-MM-DDThh:mm:ss.sssZ'
+        subscriptionId:
+          type:
+          - string
+          - 'null'
+          description: <br>Will not be used
+      additionalProperties: false
+    ResponseStatus:
+      type: object
+      properties:
+        responseStatusCode:
+          type: integer
+          description: This is used to display the code for the return status.
+          format: int32
+        responseStatusMessage:
+          type:
+          - string
+          - 'null'
+          description: This is used for a human readable return status message.
+      additionalProperties: false
+      description: Displays the status of the Return
+    Barcode:
+      required:
+      - data
+      type: object
+      properties:
+        aimCode:
+          type:
+          - string
+          - 'null'
+          description: Will not be used
+        data:
+          type: string
+          description: Raw barcode string.
+      additionalProperties: false
+x-refined-from:
+- asendia-a1-put-to-light-swagger.json
+- asendia-a1-put-to-light-openapi.yml
