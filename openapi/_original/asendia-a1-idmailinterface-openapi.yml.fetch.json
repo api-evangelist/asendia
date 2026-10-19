@@ -1,0 +1,12 @@
+{
+ "url": "https://a1api.asendiausa.com/swagger/IDMailInterface/swagger.json",
+ "requested_url": "https://a1api.asendiausa.com/swagger/IDMailInterface/swagger.json",
+ "status": 200,
+ "content_type": "application/json;charset=utf-8",
+ "bytes": 10184,
+ "sha256": "5a11458de192d6a72120aaf3d1e418f7b0a1a14ac6d8d5cdcb23b735cfad785d",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
